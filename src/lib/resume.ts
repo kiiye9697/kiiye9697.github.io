@@ -1,118 +1,222 @@
-export const profile = {
-  name: "Land1ngW",
-  nameReal: "王若淼",
-  title: "游戏引擎开发 / 图形渲染工程师",
-  subtitle: "UE5 · 全局光照 · 渲染管线 · 光线追踪",
-  email: "1738832489@qq.com",
-  phone: "17304471585",
-  zhihu: "https://www.zhihu.com/people/wrm-66-76",
-  github: "https://github.com/LandingW",
+export type NavSection = {
+  id: string;
+  label: string;
 };
 
-export const education = [
+export type HeroAction = {
+  label: string;
+  href: string;
+};
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  value: string;
+  note: string;
+};
+
+export type Experience = {
+  kind: string;
+  title: string;
+  org: string;
+  period: string;
+  description: string;
+  details: string[];
+};
+
+export type PortfolioItem = {
+  title: string;
+  summary: string;
+  tags: string[];
+  cover: string;
+  previewPdf: string;
+  pdf: string;
+  slides: string;
+};
+
+export type Project = {
+  title: string;
+  subtitle: string;
+  summary: string;
+  tags: string[];
+  href: string;
+  github: string;
+};
+
+export const siteConfig = {
+  navSections: [
+    { id: "about", label: "About" },
+    { id: "portfolio", label: "Portfolio" },
+    { id: "projects", label: "Projects" },
+    { id: "posts", label: "Posts" },
+    { id: "links", label: "Links" },
+  ] satisfies NavSection[],
+  heroActions: [
+    { label: "View Portfolio", href: "#portfolio" },
+    { label: "View Projects", href: "#projects" },
+    { label: "Read Posts", href: "#posts" },
+  ] satisfies HeroAction[],
+  postsLimit: 6,
+};
+
+export const profile = {
+  name: "Land1ngW",
+  title: "Graphics / Engine / Systems Developer",
+  subtitle: "C++ | Vulkan | Unreal | Embedded | Vision",
+  summary:
+    "A long-term maintainable personal site template for portfolio work, projects, technical writing, and resume content. Replace this data file and the public asset folders to personalize the entire homepage.",
+  location: "Guangzhou, China",
+  domain: "kiiye9697.github.io",
+  email: "1738832489@qq.com",
+  avatarInitials: "LW",
+  currentFocus: "Realtime graphics, tooling, embedded systems, and practical AI workflows.",
+  sitePosition: "Personal site / portfolio / writing archive",
+  availability: "Open to collaboration, engineering roles, and technical conversations.",
+};
+
+export const skills = [
+  "C / C++",
+  "Vulkan",
+  "ImGui",
+  "Unity",
+  "Python",
+  "FPGA / Verilog",
+  "Embedded",
+  "YOLO / AI",
+  "Git / GitHub",
+];
+
+export const socialLinks = [
   {
-    school: "华南理工大学",
-    badge: "985 · 双一流",
-    degree: "本科 · 软件工程",
-    period: "2024.09 — 至今",
+    label: "GitHub",
+    href: "https://github.com/LandingW",
+    value: "@LandingW",
+    note: "Code, experiments, and long-term archive.",
+  },
+  {
+    label: "Email",
+    href: "mailto:1738832489@qq.com",
+    value: "1738832489@qq.com",
+    note: "Hiring, collaboration, and technical conversations.",
+  },
+  {
+    label: "Zhihu",
+    href: "https://www.zhihu.com/people/wrm-66-76",
+    value: "Zhihu Column",
+    note: "Synced technical posts and article archive.",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/replace-this-profile/",
+    value: "replace-this-profile",
+    note: "Replace with your actual professional profile link.",
+  },
+  {
+    label: "Other",
+    href: "https://x.com/replace-this-handle",
+    value: "custom channel",
+    note: "Reserve for blog, Bilibili, X, or another channel.",
   },
 ];
 
 export const experiences = [
   {
-    company: "腾讯 IEG",
-    department: "天美 G1 工作室",
-    role: "游戏引擎开发实习生（UE5）",
-    period: "2025.05 — 至今",
-    highlights: [
-      {
-        title: "独立支撑 G1 预研 3A 项目 GI 方案落地",
-        desc: "作为核心开发者，独立承担 G1 工作室预研 3A 项目全局光照技术方案的设计与工程落地。从零搭建适配中低算力平台的自研 GI 烘焙管线，将 Skylight Visibility 从运行时解耦为离线预计算，彻底替代 UE 原生 DFAO 方案；同时兼容 TOD（Time of Day）动态天光变化，系统性解决了漏光、性能瓶颈与画面稳定性问题，方案已通过项目组技术评审并进入集成阶段。",
-      },
-      {
-        title: "Probe 自适应偏移与有效性评估系统",
-        desc: "针对复杂几何场景下光照探针数据不稳定的共性问题，设计并实现 Probe 自适应偏移与有效性评估机制。通过对探针周围几何遮挡关系的离线分析，动态调整探针采样位置，配合有效性权重剔除无效探针数据，显著提升间接光结果在角色走廊、密集建筑等复杂场景下的可靠性与视觉稳定性。",
-      },
-      {
-        title: "大规模场景 GI 数据流式加载与显存优化",
-        desc: "针对预研 3A 项目超大开放世界地图的内存与显存压力，将全局光照系统与场景分块逻辑解耦，设计基于视距与探针重要度的独立 GI Streaming 机制。在给定 atlas 预算下进行异步优先级排序，自适应加载近场高精度探针数据，有效消除因场景流式加载/卸载引发的渲染线程帧率抖动，同时保证视觉质量不降级。",
-      },
-      {
-        title: "Nanite 架构下特效渲染管线定制",
-        desc: "针对 UE Nanite VisBuffer 架构无法直接兼容传统粒子特效渲染的深层痛点，深入 UE 渲染管线底层，定制 MeshDrawCommand 生成流程与 Primitive 收集逻辑，在完整保留 Nanite 虚拟几何高保真细节的前提下，成功支持特效所需的深度写入、模板测试与交互逻辑，打通了美术特效工作流与 Nanite 场景的协作瓶颈。",
-      },
-      {
-        title: "技术沉淀与跨团队输出",
-        desc: "结合项目实战，深度撰写多篇涵盖 UE 管线定制、GI 系统架构、源码模块解析的技术文档，多次入选公司级技术精选与头条推荐，有效沉淀了可复用的工程知识资产，并在跨项目组技术分享中获得正向反馈。",
-      },
+    kind: "Education",
+    title: "Software Engineering, B.Eng.",
+    org: "South China University of Technology",
+    period: "2024 - Present",
+    description:
+      "Use this entry for school, degree, academic focus, awards, and the strongest educational signal you want to show.",
+    details: [
+      "Replace with your school, major, honors, competitions, and GPA if needed.",
+      "Keep only the two or three strongest academic highlights instead of listing everything.",
     ],
   },
   {
-    company: "腾讯 IEG",
-    department: "游戏前沿技术部",
-    role: "腾讯引擎图形学远程人才培养计划",
-    period: "2024 — 2025",
-    highlights: [
-      {
-        title: "硬件光线追踪光照烘焙器开发",
-        desc: "参与并深度开发基于 DXR 硬件光线追踪的自研光照烘焙器，负责扩展材质采样模型，新增对半透明材质、薄玻璃等复杂能量传输路径的支持，完善光线在非不透明介质中的传输与衰减计算，为高质量间接光结果提供更准确的材质响应基础。",
-      },
-      {
-        title: "现代 GI 算法研究与工程实践",
-        desc: "系统研究并实践 ReSTIR GI / ReSTIR DI / DDGI 等现代全局光照技术，深入理解各方案的采样策略、收敛特性与工程约束；熟悉 DXR 与 NVIDIA OptiX 完整工作流，具备从加速结构构建、光线调度、着色到降噪协同的全链路工程级理解与实践经验。",
-      },
+    kind: "Experience",
+    title: "Graphics / Engine Intern",
+    org: "Tencent IEG",
+    period: "2025 - Present",
+    description:
+      "Use this card for internship or full-time work. Focus on the technical scope, engineering depth, and the outcomes you actually shipped.",
+    details: [
+      "Replace with your real role name, team, and primary responsibilities.",
+      "Keep two to four concrete outcomes instead of a long task list.",
+    ],
+  },
+  {
+    kind: "Direction",
+    title: "Projects Across Graphics, Hardware, and AI",
+    org: "Independent / Team Projects",
+    period: "Ongoing",
+    description:
+      "Use this section for your current direction, research track, or cross-domain projects such as Vulkan tooling, embedded systems, CV workflows, or FPGA labs.",
+    details: [
+      "You can also merge research, competitions, and open-source work into the same timeline.",
+      "Add more cards by extending this array. No component changes are required.",
     ],
   },
 ];
 
-export const skills = [
+export const portfolios = [
   {
-    category: "图形 API",
-    items: ["OpenGL", "Vulkan", "DirectX 12", "NVIDIA OptiX", "DXR"],
+    title: "Graphics Systems Portfolio",
+    summary:
+      "Use this card for rendering experiments, engine tooling, and portfolio notes. The component already supports cover art, PDF preview, and downloads.",
+    tags: ["Rendering", "Engine", "Slides"],
+    cover: "/images/portfolio/portfolio-graphics.svg",
+    previewPdf: "",
+    pdf: "",
+    slides: "",
   },
   {
-    category: "引擎与语言",
-    items: ["UE5 / Unreal Engine", "C++", "HLSL / GLSL", "Python"],
+    title: "Embedded / FPGA Showcase",
+    summary:
+      "Use this card for embedded boards, timing logic, hardware bring-up, and system integration work.",
+    tags: ["Embedded", "FPGA", "Verilog"],
+    cover: "/images/portfolio/portfolio-hardware.svg",
+    previewPdf: "",
+    pdf: "",
+    slides: "",
   },
   {
-    category: "渲染技术",
-    items: [
-      "全局光照 (GI)",
-      "路径追踪",
-      "ReSTIR GI / DI",
-      "DDGI",
-      "Nanite",
-      "光照烘焙",
-      "实时光追",
-    ],
-  },
-  {
-    category: "GPU 架构",
-    items: [
-      "TBR / TBDR 移动端架构",
-      "SIMT 执行模型",
-      "Shader 性能优化",
-      "Subpass / Framebuffer Fetch",
-    ],
-  },
-  {
-    category: "调试工具",
-    items: ["RenderDoc", "PIX", "Nsight", "WinDbg", "LLDB / Rider"],
-  },
-  {
-    category: "工程实践",
-    items: [
-      "UE5 源码级二次开发",
-      "渲染管线定制",
-      "Crash Dump 分析",
-      "AI 辅助工程（Cursor / Gemini CLI）",
-    ],
+    title: "AI Vision Deck",
+    summary:
+      "Use this card for detection, inference, deployment, and tooling decks. Swap the cover, PDF, and PPTX paths when you have real assets.",
+    tags: ["YOLO", "Inference", "Deployment"],
+    cover: "/images/portfolio/portfolio-vision.svg",
+    previewPdf: "",
+    pdf: "",
+    slides: "",
   },
 ];
 
-export const navSections = [
-  { id: "home", label: "Home" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
-  { id: "articles", label: "Writing" },
+export const projects = [
+  {
+    title: "Vulkan Debug Sandbox",
+    subtitle: "A compact renderer for learning, profiling, and tooling.",
+    summary:
+      "Replace this with your real graphics project. Describe the goal, the hard parts, the current state, and the part you personally owned.",
+    tags: ["Vulkan", "C++", "RenderDoc"],
+    href: "https://example.com/project/vulkan-sandbox",
+    github: "https://github.com/LandingW",
+  },
+  {
+    title: "Embedded Control Stack",
+    subtitle: "Hardware bring-up, drivers, communication, and system integration.",
+    summary:
+      "Use this slot for MCU, sensors, drivers, communication protocols, or control systems with clear engineering scope.",
+    tags: ["Embedded", "C", "UART", "RTOS"],
+    href: "https://example.com/project/embedded-stack",
+    github: "https://github.com/LandingW",
+  },
+  {
+    title: "Vision Pipeline Toolkit",
+    subtitle: "Training, evaluation, and deployment workflow for practical CV tasks.",
+    summary:
+      "Use this slot for YOLO, data pipelines, deployment scripts, or inference optimization with a clear experiment-to-production story.",
+    tags: ["Python", "YOLO", "OpenCV", "Automation"],
+    href: "https://example.com/project/vision-toolkit",
+    github: "https://github.com/LandingW",
+  },
 ];
