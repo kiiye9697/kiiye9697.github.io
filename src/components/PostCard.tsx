@@ -36,9 +36,9 @@ export default function PostCard({ post }: PostCardProps) {
       href={post.url}
       target="_blank"
       rel="noreferrer"
-      className="surface-card group block overflow-hidden rounded-[28px]"
+      className="surface-card post-card group block overflow-hidden rounded-[28px]"
     >
-      <div className="aspect-[16/10] border-b border-white/8 bg-[var(--panel-strong)]">
+      <div className="post-cover aspect-[16/10] border-b border-white/8 bg-[var(--panel-strong)]">
         {post.thumbnail ? (
           <img
             src={post.thumbnail}
@@ -52,6 +52,7 @@ export default function PostCard({ post }: PostCardProps) {
         )}
       </div>
       <div className="p-6">
+        <div className="card-index">Post</div>
         <div className="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
           <span>{formatDate(post.created)}</span>
           <span>Zhihu</span>

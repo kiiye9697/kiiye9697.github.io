@@ -6,7 +6,8 @@ type ProjectCardProps = {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="surface-card rounded-[28px] p-6">
+    <article className="surface-card project-card rounded-[28px] p-6">
+      <div className="card-index">Project</div>
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
           <span key={tag} className="meta-pill">

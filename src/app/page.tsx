@@ -43,13 +43,13 @@ const zhihuLink =
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-transparent text-[var(--text-main)]">
+    <div className="page-shell min-h-screen bg-transparent text-[var(--text-main)]">
       <SiteNav />
 
       <main className="mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <HeroSection />
 
-        <section id="about" className="section-shell">
+        <section id="about" className="section-shell section-frame">
           <SectionTitle
             eyebrow="About"
             title="Profile, core skills, and the main editing surface"
@@ -57,7 +57,7 @@ export default function Home() {
           />
 
           <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <article className="surface-card rounded-[28px] p-7 sm:p-8">
+            <article className="surface-card profile-card rounded-[28px] p-7 sm:p-8">
               <p className="text-sm uppercase tracking-[0.22em] text-[var(--text-dim)]">
                 Profile
               </p>
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="section-shell">
+        <section id="experience" className="section-shell section-frame">
           <SectionTitle
             eyebrow="Experience"
             title="Education and experience timeline"
@@ -108,20 +108,25 @@ export default function Home() {
           <ExperienceTimeline items={experiences} />
         </section>
 
-        <section id="portfolio" className="section-shell">
+        <section id="portfolio" className="section-shell section-frame">
           <SectionTitle
             eyebrow="Portfolio"
             title="Portfolio cards and downloadable material"
             description="Each card already supports a cover image, PDF preview, PDF download, and PPTX download. After uploading files, only update the paths in the data layer."
           />
           <div className="grid gap-6 lg:grid-cols-3">
-            {portfolios.map((item) => (
-              <PortfolioCard key={item.title} item={item} />
+            {portfolios.map((item, index) => (
+              <div
+                key={item.title}
+                className={index === 0 ? "lg:col-span-2" : ""}
+              >
+                <PortfolioCard item={item} />
+              </div>
             ))}
           </div>
         </section>
 
-        <section id="projects" className="section-shell">
+        <section id="projects" className="section-shell section-frame">
           <SectionTitle
             eyebrow="Projects"
             title="Projects and engineering work"
@@ -134,7 +139,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="posts" className="section-shell">
+        <section id="posts" className="section-shell section-frame">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionTitle
               eyebrow="Posts"

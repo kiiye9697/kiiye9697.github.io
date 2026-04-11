@@ -6,9 +6,13 @@ export default function SiteNav() {
       <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <a
           href="#home"
-          className="shrink-0 text-sm font-semibold uppercase tracking-[0.32em] text-[var(--text-main)]"
+          className="nav-brand shrink-0"
         >
-          {profile.name}
+          <span className="nav-brand-mark" />
+          <span>
+            <strong>{profile.name}</strong>
+            <em>{profile.title}</em>
+          </span>
         </a>
         <nav className="hide-scrollbar flex flex-1 items-center justify-end gap-2 overflow-x-auto">
           {siteConfig.navSections.map((item) => (

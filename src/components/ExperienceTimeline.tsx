@@ -14,7 +14,7 @@ export default function ExperienceTimeline({
         {items.map((item) => (
           <article key={`${item.org}-${item.title}`} className="relative">
             <span className="absolute left-[-4px] top-8 h-4 w-4 rounded-full border border-white/15 bg-[var(--brand-red)] shadow-[0_0_0_6px_rgba(200,16,46,0.12)] sm:left-[-18px]" />
-            <div className="surface-card rounded-[24px] p-6 sm:p-8">
+            <div className="surface-card timeline-card rounded-[24px] p-6 sm:p-8">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
                   <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.22em] text-[var(--brand-green-soft)]">

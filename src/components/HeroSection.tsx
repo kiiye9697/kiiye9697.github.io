@@ -6,7 +6,7 @@ export default function HeroSection() {
       id="home"
       className="section-shell grid gap-6 pt-10 lg:grid-cols-[1.35fr_0.9fr] lg:items-stretch"
     >
-      <div className="surface-card rounded-[32px] p-7 sm:p-10">
+      <div className="surface-card hero-primary rounded-[32px] p-7 sm:p-10">
         <span className="status-pill">{profile.availability}</span>
         <p className="mt-6 text-sm uppercase tracking-[0.28em] text-[var(--brand-green-soft)]">
           {profile.subtitle}
@@ -35,39 +35,69 @@ export default function HeroSection() {
             </a>
           ))}
         </div>
+
+        <div className="hero-meter-grid mt-10">
+          <HeroMeter label="Direction" value="Graphics / Embedded / AI" />
+          <HeroMeter label="Style" value="Dark, technical, long-term maintainable" />
+          <HeroMeter label="Stack" value="Static export + data-driven sections" />
+        </div>
       </div>
 
-      <aside className="surface-card rounded-[32px] p-7 sm:p-8">
-        <div className="avatar-mark">{profile.avatarInitials}</div>
-        <div className="mt-8 space-y-5">
-          <MetaRow label="Current Focus" value={profile.currentFocus} />
-          <MetaRow label="Site Position" value={profile.sitePosition} />
-          <MetaRow label="Location" value={profile.location} />
-          <MetaRow
-            label="Domain"
-            value={
-              <a
-                href="#home"
-                className="text-[var(--text-main)] underline-offset-4 hover:underline"
-              >
-                {profile.domain}
-              </a>
-            }
-          />
-          <MetaRow
-            label="Contact"
-            value={
-              <a
-                href={`mailto:${profile.email}`}
-                className="text-[var(--text-main)] underline-offset-4 hover:underline"
-              >
-                {profile.email}
-              </a>
-            }
-          />
+      <aside className="grid gap-6">
+        <div className="surface-card hero-side rounded-[32px] p-7 sm:p-8">
+          <div className="flex items-start justify-between gap-4">
+            <div className="avatar-mark">{profile.avatarInitials}</div>
+            <span className="hero-side-tag">Profile Node</span>
+          </div>
+          <div className="mt-8 space-y-5">
+            <MetaRow label="Current Focus" value={profile.currentFocus} />
+            <MetaRow label="Site Position" value={profile.sitePosition} />
+            <MetaRow label="Location" value={profile.location} />
+          </div>
+        </div>
+
+        <div className="surface-card terminal-card rounded-[32px] p-7 sm:p-8">
+          <div className="terminal-dots">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="mt-6 space-y-4 font-mono text-sm leading-7 text-[var(--text-muted)]">
+            <MetaRow
+              label="Domain"
+              value={
+                <a
+                  href="#home"
+                  className="text-[var(--text-main)] underline-offset-4 hover:underline"
+                >
+                  {profile.domain}
+                </a>
+              }
+            />
+            <MetaRow
+              label="Contact"
+              value={
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="text-[var(--text-main)] underline-offset-4 hover:underline"
+                >
+                  {profile.email}
+                </a>
+              }
+            />
+          </div>
         </div>
       </aside>
     </section>
+  );
+}
+
+function HeroMeter({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="hero-meter">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
   );
 }
 

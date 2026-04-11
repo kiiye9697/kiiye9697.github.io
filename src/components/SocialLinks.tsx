@@ -13,7 +13,7 @@ export default function SocialLinks({ links }: SocialLinksProps) {
           href={link.href}
           target={link.href.startsWith("http") ? "_blank" : undefined}
           rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-          className="surface-card group block rounded-[24px] p-5"
+          className="surface-card social-card group block rounded-[24px] p-5"
         >
           <div className="flex items-start justify-between gap-4">
             <div>
@@ -27,8 +27,8 @@ export default function SocialLinks({ links }: SocialLinksProps) {
                 {link.note}
               </p>
             </div>
-            <span className="text-lg text-[var(--brand-red)] transition-transform duration-200 group-hover:translate-x-1">
-              ↗
+            <span className="social-link-arrow text-lg text-[var(--brand-red)] transition-transform duration-200 group-hover:translate-x-1">
+              +
             </span>
           </div>
         </a>

@@ -9,8 +9,8 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
   const hasAssets = Boolean(item.previewPdf || item.pdf || item.slides);
 
   return (
-    <article className="surface-card overflow-hidden rounded-[28px]">
-      <div className="aspect-[16/10] border-b border-white/8 bg-[var(--panel-strong)]">
+    <article className="surface-card portfolio-card overflow-hidden rounded-[28px]">
+      <div className="portfolio-cover aspect-[16/10] border-b border-white/8 bg-[var(--panel-strong)]">
         <img
           src={item.cover}
           alt={item.title}
@@ -18,6 +18,7 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
         />
       </div>
       <div className="p-6">
+        <div className="card-index">Portfolio</div>
         <div className="flex flex-wrap gap-2">
           {item.tags.map((tag) => (
             <span key={tag} className="meta-pill">
