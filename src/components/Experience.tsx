@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { experiences } from "@/lib/resume";
 import FadeUp from "./FadeUp";
 
@@ -21,28 +22,53 @@ export default function Experience() {
                   marginBottom: 6,
                 }}
               >
-                <div>
-                <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-1)", marginBottom: 4 }}>
-                  {exp.role}
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                  <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text-3)" }}>
-                    {exp.company}
-                  </span>
-                    <span style={{ color: "var(--border)", fontSize: 10 }}>·</span>
-                    <span
-                    style={{
-                      fontFamily: "var(--mono)",
-                      fontSize: 12,
-                      color: "var(--accent)",
-                      background: "var(--accent-dim)",
-                      border: "1px solid rgba(96,165,250,0.2)",
-                      borderRadius: 4,
-                      padding: "2px 8px",
-                    }}
+                <div style={{ display: "flex", alignItems: "center", gap: 16, minWidth: 0 }}>
+                  {exp.icon && (
+                    <div
+                      style={{
+                        width: 92,
+                        minWidth: 92,
+                        height: 36,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
                     >
-                      {exp.department}
-                    </span>
+                      <Image
+                        src={exp.icon}
+                        alt={`${exp.company} logo`}
+                        width={exp.iconWidth}
+                        height={exp.iconHeight}
+                        style={{
+                          width: "auto",
+                          height: exp.iconDisplayHeight,
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-1)", marginBottom: 4 }}>
+                      {exp.role}
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text-3)" }}>
+                        {exp.company}
+                      </span>
+                      <span style={{ color: "var(--border)", fontSize: 10 }}>·</span>
+                      <span
+                        style={{
+                          fontFamily: "var(--mono)",
+                          fontSize: 12,
+                          color: "var(--accent)",
+                          background: "var(--accent-dim)",
+                          border: "1px solid rgba(96,165,250,0.2)",
+                          borderRadius: 4,
+                          padding: "2px 8px",
+                        }}
+                      >
+                        {exp.department}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <span

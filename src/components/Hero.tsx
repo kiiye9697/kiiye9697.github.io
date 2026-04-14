@@ -84,7 +84,7 @@ export default function Hero() {
             alignItems: "center",
             gap: 14,
             padding: "14px 20px",
-            marginBottom: 80,
+            marginBottom: 40,
           }}
         >
           <span style={{ fontSize: 22 }}>🎓</span>

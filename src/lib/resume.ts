@@ -20,22 +20,14 @@ export const education = [
 
 export const experiences = [
   {
-    company: "米哈游",
-    department: "Varsapura",
-    role: "在职",
-    period: "2026.04 — 至今",
-    highlights: [
-      {
-        title: "当前状态",
-        desc: "2026.04 起在米哈游 Varsapura 工作。",
-      },
-    ],
-  },
-  {
     company: "腾讯 IEG",
     department: "天美 G1 工作室",
     role: "游戏引擎图形开发实习生（GI / UE5）",
     period: "2025.05 — 2026.04",
+    icon: "/company-icons/tencent.png",
+    iconWidth: 420,
+    iconHeight: 208,
+    iconDisplayHeight: 34,
     highlights: [
       {
         title: "持续一年深度参与自研 GI 系统研发",
@@ -64,10 +56,30 @@ export const experiences = [
     ],
   },
   {
+    company: "米哈游",
+    department: "Varsapura",
+    role: "在职",
+    period: "2026.04 — 至今",
+    icon: "/company-icons/mhy-cutout.png",
+    iconWidth: 262,
+    iconHeight: 93,
+    iconDisplayHeight: 30,
+    highlights: [
+      {
+        title: "当前状态",
+        desc: "2026.04 起在米哈游 Varsapura 工作。",
+      },
+    ],
+  },
+  {
     company: "腾讯 IEG",
     department: "游戏前沿技术部",
     role: "腾讯引擎图形学远程人才培养计划",
     period: "2024 — 2025",
+    icon: null,
+    iconWidth: 0,
+    iconHeight: 0,
+    iconDisplayHeight: 0,
     highlights: [
       {
         title: "硬件光线追踪光照烘焙器开发",
