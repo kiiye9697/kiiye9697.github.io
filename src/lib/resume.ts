@@ -39,13 +39,15 @@ export type Project = {
   subtitle: string;
   summary: string;
   tags: string[];
-  href: string;
-  github: string;
+  href?: string;
+  github?: string;
 };
 
+// Site structure and hero buttons.
 export const siteConfig = {
   navSections: [
     { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
     { id: "portfolio", label: "Portfolio" },
     { id: "projects", label: "Projects" },
     { id: "posts", label: "Posts" },
@@ -53,170 +55,152 @@ export const siteConfig = {
   ] satisfies NavSection[],
   heroActions: [
     { label: "View Portfolio", href: "#portfolio" },
+    { label: "View Experience", href: "#experience" },
     { label: "View Projects", href: "#projects" },
     { label: "Read Posts", href: "#posts" },
   ] satisfies HeroAction[],
   postsLimit: 6,
 };
 
+// Core profile content shown in the hero and about sections.
 export const profile = {
-  name: "Land1ngW",
-  title: "Graphics / Engine / Systems Developer",
-  subtitle: "C++ | Vulkan | Unreal | Embedded | Vision",
+  name: "Kiiye9697",
+  title: "Rendering / PCG TA",
+  subtitle: "Graphic Lover | TA Engineer",
   summary:
-    "A long-term maintainable personal site template for portfolio work, projects, technical writing, and resume content. Replace this data file and the public asset folders to personalize the entire homepage.",
-  location: "Guangzhou, China",
+    "Technical artist focused on rendering, procedural content generation, and practical workflow support for real-time production.",
+  location: "Dalian, Liaoning, China",
   domain: "kiiye9697.github.io",
-  email: "1738832489@qq.com",
-  avatarInitials: "LW",
-  currentFocus: "Realtime graphics, tooling, embedded systems, and practical AI workflows.",
-  sitePosition: "Personal site / portfolio / writing archive",
-  availability: "Open to collaboration, engineering roles, and technical conversations.",
+  email: "1916954944@qq.com",
+  avatarInitials: "KY",
+  currentFocus: "Realtime rendering, PCG workflows, and TA-side production tooling.",
+  sitePosition: "Portfolio, writing archive, and selected work.",
+  availability: "Open to rendering and technical art opportunities.",
 };
 
+// Primary skills shown in the profile section.
 export const skills = [
-  "C / C++",
-  "Vulkan",
-  "ImGui",
-  "Unity",
+  "Rendering",
+  "PCG",
+  "Technical Art",
+  "Realtime Graphics",
   "Python",
-  "FPGA / Verilog",
-  "Embedded",
-  "YOLO / AI",
+  "Shader Debugging",
+  "LookDev",
+  "Pipeline Tools",
   "Git / GitHub",
 ];
 
+// Contact and social channels.
 export const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/LandingW",
-    value: "@LandingW",
+    href: "https://github.com/kiiye9697",
+    value: "@kiiye9697",
     note: "Code, experiments, and long-term archive.",
   },
   {
     label: "Email",
-    href: "mailto:1738832489@qq.com",
-    value: "1738832489@qq.com",
-    note: "Hiring, collaboration, and technical conversations.",
+    href: "mailto:1916954944@qq.com",
+    value: "1916954944@qq.com",
+    note: "For portfolio, collaboration, and technical conversations.",
   },
   {
     label: "Zhihu",
-    href: "https://www.zhihu.com/people/wrm-66-76",
-    value: "Zhihu Column",
-    note: "Synced technical posts and article archive.",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/replace-this-profile/",
-    value: "replace-this-profile",
-    note: "Replace with your actual professional profile link.",
-  },
-  {
-    label: "Other",
-    href: "https://x.com/replace-this-handle",
-    value: "custom channel",
-    note: "Reserve for blog, Bilibili, X, or another channel.",
+    href: "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying",
+    value: "he-xian-wen-lu-xian-ying",
+    note: "Technical posts and article archive.",
   },
 ];
 
+// Education, work, and long-term direction timeline.
 export const experiences = [
   {
-    kind: "Education",
-    title: "Software Engineering, B.Eng.",
-    org: "South China University of Technology",
-    period: "2024 - Present",
-    description:
-      "Use this entry for school, degree, academic focus, awards, and the strongest educational signal you want to show.",
-    details: [
-      "Replace with your school, major, honors, competitions, and GPA if needed.",
-      "Keep only the two or three strongest academic highlights instead of listing everything.",
-    ],
-  },
-  {
     kind: "Experience",
-    title: "Graphics / Engine Intern",
-    org: "Tencent IEG",
-    period: "2025 - Present",
+    title: "Technical Artist Intern",
+    org: "Tencent Technology, Photon Studio Group",
+    period: "2026.05 - 2026.08",
     description:
-      "Use this card for internship or full-time work. Focus on the technical scope, engineering depth, and the outcomes you actually shipped.",
+      "Internship focused on technical art practice across rendering and PCG-related workflows in a production environment.",
     details: [
-      "Replace with your real role name, team, and primary responsibilities.",
-      "Keep two to four concrete outcomes instead of a long task list.",
+      "Worked as a TA intern on rendering and content-side technical workflows.",
+      "This section can be expanded later with project details that are suitable for a public portfolio.",
     ],
   },
   {
     kind: "Direction",
-    title: "Projects Across Graphics, Hardware, and AI",
-    org: "Independent / Team Projects",
+    title: "Rendering / PCG / TA Practice",
+    org: "Personal Study and Portfolio Work",
     period: "Ongoing",
     description:
-      "Use this section for your current direction, research track, or cross-domain projects such as Vulkan tooling, embedded systems, CV workflows, or FPGA labs.",
+      "A personal track centered on rendering quality, procedural content generation, and technical art problem solving.",
     details: [
-      "You can also merge research, competitions, and open-source work into the same timeline.",
-      "Add more cards by extending this array. No component changes are required.",
+      "Continuing to build portfolio material around real-time graphics, procedural workflows, and TA-side tooling.",
+      "Additional school, competition, or studio experience can be added here later without changing the components.",
+    ],
+  },
+  {
+    kind: "Writing",
+    title: "Zhihu Technical Writing",
+    org: "Zhihu",
+    period: "Ongoing",
+    description:
+      "Writing notes and long-form posts around rendering, graphics learning, and technical problem solving.",
+    details: [
+      "Articles are synced to this site from the linked Zhihu profile.",
+      "Recent posts appear automatically after the scraper workflow runs.",
     ],
   },
 ];
 
+// Portfolio cards with optional PDF and slide assets.
 export const portfolios = [
   {
-    title: "Graphics Systems Portfolio",
+    title: "Selected Portfolio",
     summary:
-      "Use this card for rendering experiments, engine tooling, and portfolio notes. The component already supports cover art, PDF preview, and downloads.",
-    tags: ["Rendering", "Engine", "Slides"],
+      "Collected work focused on rendering, PCG, and technical art practice.",
+    tags: ["Portfolio", "Rendering", "PCG"],
     cover: "/images/portfolio/portfolio-graphics.svg",
-    previewPdf: "",
-    pdf: "",
+    previewPdf: "/pdfs/portfolio.pdf",
+    pdf: "/pdfs/portfolio.pdf",
     slides: "",
   },
   {
-    title: "Embedded / FPGA Showcase",
+    title: "Resume",
     summary:
-      "Use this card for embedded boards, timing logic, hardware bring-up, and system integration work.",
-    tags: ["Embedded", "FPGA", "Verilog"],
+      "Current resume for internship and full-time application contexts.",
+    tags: ["Resume", "Profile", "PDF"],
     cover: "/images/portfolio/portfolio-hardware.svg",
-    previewPdf: "",
-    pdf: "",
-    slides: "",
-  },
-  {
-    title: "AI Vision Deck",
-    summary:
-      "Use this card for detection, inference, deployment, and tooling decks. Swap the cover, PDF, and PPTX paths when you have real assets.",
-    tags: ["YOLO", "Inference", "Deployment"],
-    cover: "/images/portfolio/portfolio-vision.svg",
-    previewPdf: "",
-    pdf: "",
+    previewPdf: "/pdfs/resume.pdf",
+    pdf: "/pdfs/resume.pdf",
     slides: "",
   },
 ];
 
+// Project cards with live/demo and GitHub links.
 export const projects = [
   {
-    title: "Vulkan Debug Sandbox",
-    subtitle: "A compact renderer for learning, profiling, and tooling.",
+    title: "Rendering Research and Breakdown",
+    subtitle: "Rendering analysis, look development, and real-time visual problem solving.",
     summary:
-      "Replace this with your real graphics project. Describe the goal, the hard parts, the current state, and the part you personally owned.",
-    tags: ["Vulkan", "C++", "RenderDoc"],
-    href: "https://example.com/project/vulkan-sandbox",
-    github: "https://github.com/LandingW",
+      "A growing body of graphics-focused study and production-side analysis around rendering quality, visual debugging, and practical implementation details.",
+    tags: ["Rendering", "Shader", "TA"],
+    github: "https://github.com/kiiye9697",
   },
   {
-    title: "Embedded Control Stack",
-    subtitle: "Hardware bring-up, drivers, communication, and system integration.",
+    title: "PCG Workflow Experiments",
+    subtitle: "Procedural generation tests for content building and iteration.",
     summary:
-      "Use this slot for MCU, sensors, drivers, communication protocols, or control systems with clear engineering scope.",
-    tags: ["Embedded", "C", "UART", "RTOS"],
-    href: "https://example.com/project/embedded-stack",
-    github: "https://github.com/LandingW",
+      "Experiments around procedural workflows that support content creation, reusable setup, and faster iteration in production-like environments.",
+    tags: ["PCG", "Workflow", "Tools"],
+    github: "https://github.com/kiiye9697",
   },
   {
-    title: "Vision Pipeline Toolkit",
-    subtitle: "Training, evaluation, and deployment workflow for practical CV tasks.",
+    title: "TA Utility Scripts",
+    subtitle: "Small tools for pipeline support and day-to-day production work.",
     summary:
-      "Use this slot for YOLO, data pipelines, deployment scripts, or inference optimization with a clear experiment-to-production story.",
-    tags: ["Python", "YOLO", "OpenCV", "Automation"],
-    href: "https://example.com/project/vision-toolkit",
-    github: "https://github.com/LandingW",
+      "A place for Python and workflow utilities that improve asset handling, iteration speed, and communication between art and engineering.",
+    tags: ["Python", "Tools", "Pipeline"],
+    github: "https://github.com/kiiye9697",
   },
 ];

@@ -37,9 +37,9 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-meter-grid mt-10">
-          <HeroMeter label="Direction" value="Graphics / Embedded / AI" />
-          <HeroMeter label="Style" value="Dark, technical, long-term maintainable" />
-          <HeroMeter label="Stack" value="Static export + data-driven sections" />
+          <HeroMeter label="Focus" value="Rendering / PCG / TA" />
+          <HeroMeter label="Location" value={profile.location} />
+          <HeroMeter label="Contact" value={profile.email} />
         </div>
       </div>
 

@@ -5,6 +5,8 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const hasLinks = Boolean(project.href || project.github);
+
   return (
     <article className="surface-card project-card rounded-[28px] p-6">
       <div className="card-index">Project</div>
@@ -24,24 +26,30 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <p className="mt-4 text-sm leading-7 text-[var(--text-muted)] sm:text-base">
         {project.summary}
       </p>
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
-          className="action-button action-button-primary"
-        >
-          Project Details
-        </a>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          className="action-button action-button-secondary"
-        >
-          GitHub
-        </a>
-      </div>
+      {hasLinks ? (
+        <div className="mt-6 flex flex-wrap gap-3">
+          {project.href ? (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="action-button action-button-primary"
+            >
+              Project Details
+            </a>
+          ) : null}
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="action-button action-button-secondary"
+            >
+              GitHub
+            </a>
+          ) : null}
+        </div>
+      ) : null}
     </article>
   );
 }

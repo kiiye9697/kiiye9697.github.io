@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 
 import requests
 
-USER_URL_TOKEN = "wrm-66-76"
+USER_URL_TOKEN = "he-xian-wen-lu-xian-ying"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "articles.json")
 API_BASE = "https://www.zhihu.com/api/v4"
 LIMIT = 20
