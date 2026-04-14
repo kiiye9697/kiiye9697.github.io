@@ -1,0 +1,4 @@
+:HL["/_next/static/chunks/8b3b4195106706a4.css","style"]
+:HL["/images/portfolio/portfolio-graphics.svg","image"]
+:HL["/images/portfolio/portfolio-hardware.svg","image"]
+0:{"buildId":"CUEEpcyOURHyL8mlYGjm8","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
