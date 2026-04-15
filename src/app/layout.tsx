@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Land1ngW's Base",
+  title: "Kiiye9697 | Rendering / PCG TA",
   description:
-    "Land1ngW — 游戏引擎开发 / 图形渲染工程师，现于米哈游 Varsapura 工作，具备 1 年+ 自研 GI 系统研发经验，专注 UE5 全局光照、渲染管线、SparseRT 与光线追踪。",
-  keywords: ["游戏引擎", "图形程序", "米哈游", "Varsapura", "UE5", "GI", "全局光照", "SparseRT", "渲染管线", "光线追踪", "Land1ngW"],
+    "Kiiye9697 — Rendering / PCG TA focused on technical art practice, rendering workflows, and personal writing.",
+  keywords: ["Kiiye9697", "Rendering", "PCG", "Technical Art", "TA", "Zhihu", "Portfolio"],
 };
 
 export default function RootLayout({

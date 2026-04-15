@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import articlesData from "../../data/articles.json";
 import FadeUp from "./FadeUp";
 
@@ -19,6 +20,7 @@ interface ArticlesData {
 }
 
 const data = articlesData as unknown as ArticlesData;
+const ZHIHU_URL = "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying";
 
 function formatDate(ts: number): string {
   if (!ts) return "";
@@ -56,7 +58,7 @@ export default function Articles() {
           Writing
         </div>
         <a
-          href="https://www.zhihu.com/people/wrm-66-76"
+          href={ZHIHU_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="view-all-btn"
@@ -79,14 +81,14 @@ export default function Articles() {
       {updatedAt && (
         <div
           style={{
-          fontFamily: "var(--mono)",
-          fontSize: 12,
-          color: "var(--text-3)",
-          marginBottom: 24,
-          marginTop: -16,
+            fontFamily: "var(--mono)",
+            fontSize: 12,
+            color: "var(--text-3)",
+            marginBottom: 24,
+            marginTop: -16,
           }}
         >
-          // synced {updatedAt}
+          {"synced "} {updatedAt}
         </div>
       )}
 
@@ -132,7 +134,6 @@ function ArticleRow({
         textDecoration: "none",
       }}
     >
-      {/* Thumbnail */}
       <div
         className="article-thumb"
         style={{
@@ -144,7 +145,6 @@ function ArticleRow({
         }}
       >
         {hasThumbnail ? (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={article.thumbnail!}
             alt={article.title}
@@ -166,7 +166,6 @@ function ArticleRow({
         )}
       </div>
 
-      {/* Text */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div
           className="article-row-title"
@@ -242,18 +241,18 @@ function EmptyState() {
         lineHeight: 2,
       }}
     >
-      <div>// 首次运行 GitHub Actions 后文章将自动同步</div>
+      <div>{"首次运行 GitHub Actions 后文章将自动同步"}</div>
       <div>
-        // 前往{" "}
+        {"前往 "}
         <a
-          href="https://www.zhihu.com/people/wrm-66-76"
+          href={ZHIHU_URL}
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "var(--accent)", textDecoration: "none" }}
         >
           知乎主页
         </a>{" "}
-        查看原文
+        {"查看原文"}
       </div>
     </div>
   );

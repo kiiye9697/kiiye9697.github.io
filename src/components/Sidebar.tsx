@@ -25,22 +25,11 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      {/* Brand */}
       <a href="#home" className="sidebar-brand">
-        {profile.name.split("1").map((part, i, arr) =>
-          i < arr.length - 1 ? (
-            <span key={i}>
-              {part}
-              <span className="dot">1</span>
-            </span>
-          ) : (
-            <span key={i}>{part}</span>
-          )
-        )}
+        {profile.name}
       </a>
-      <div className="sidebar-tagline">Graphics / Engine Dev</div>
+      <div className="sidebar-tagline">Rendering / PCG TA</div>
 
-      {/* Nav */}
       <nav className="sidebar-nav">
         {navSections.map(({ id, label }) => (
           <a
@@ -63,7 +52,6 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
       <div className="sidebar-footer">
         <div>
           <a href={`mailto:${profile.email}`}>{profile.email}</a>

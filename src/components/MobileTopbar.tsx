@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { navSections, profile } from "@/lib/resume";
+import { navSections } from "@/lib/resume";
 
 export default function MobileTopbar() {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
       <div className="mobile-topbar">
@@ -19,7 +16,7 @@ export default function MobileTopbar() {
             textDecoration: "none",
           }}
         >
-          Land<span style={{ color: "var(--accent)" }}>1</span>ngW
+          Kiiye9697
         </a>
         <div style={{ display: "flex", gap: 20 }}>
           {navSections.slice(1).map(({ id, label }) => (
@@ -30,7 +27,6 @@ export default function MobileTopbar() {
         </div>
       </div>
 
-      {/* mobile padding top */}
       <div style={{ height: 52, display: "block" }} className="mobile-spacer" />
 
       <style>{`
@@ -39,6 +35,3 @@ export default function MobileTopbar() {
     </>
   );
 }
-
-// suppress unused import warning
-void profile;

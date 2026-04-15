@@ -2,27 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-const NAMES = ["Land1ngW", "王若淼", "Ruomiao Wang"];
+const NAMES = ["Kiiye9697", "Rendering / PCG TA", "TA Engineer"];
 const TYPE_MS = 110;
 const DELETE_MS = 65;
 const PAUSE_MS = 3500;
 const GLITCH_CHARS = "!<>-_\\/[]{}—=+*^?#$@%&";
 
 export default function TypewriterTitle() {
-  const [displayed, setDisplayed] = useState("Land1ngW");
+  const [displayed, setDisplayed] = useState("Kiiye9697");
   const [nameIdx, setNameIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [cursorOn, setCursorOn] = useState(true);
   const [glitching, setGlitching] = useState(false);
   const [glitchText, setGlitchText] = useState("");
 
-  // cursor blink
   useEffect(() => {
     const t = setInterval(() => setCursorOn((v) => !v), 520);
     return () => clearInterval(t);
   }, []);
 
-  // periodic glitch — triggers every ~9s, only when not typing/deleting
   useEffect(() => {
     const trigger = () => {
       if (isDeleting) return;
@@ -46,7 +44,6 @@ export default function TypewriterTitle() {
     return () => clearInterval(t);
   }, [displayed, isDeleting]);
 
-  // typing logic
   useEffect(() => {
     const target = NAMES[nameIdx];
 
@@ -71,7 +68,6 @@ export default function TypewriterTitle() {
   }, [displayed, isDeleting, nameIdx]);
 
   const renderText = glitching ? glitchText : displayed;
-  const isLand = displayed.startsWith("Land") && nameIdx === 0;
 
   return (
     <h1
@@ -87,9 +83,7 @@ export default function TypewriterTitle() {
       }}
     >
       {glitching ? (
-        /* glitch layers */
         <span style={{ position: "relative", display: "inline-block" }}>
-          {/* red channel shift */}
           <span
             aria-hidden
             style={{
@@ -102,7 +96,6 @@ export default function TypewriterTitle() {
           >
             {renderText}
           </span>
-          {/* cyan channel shift */}
           <span
             aria-hidden
             style={{
@@ -117,21 +110,6 @@ export default function TypewriterTitle() {
           </span>
           <span style={{ color: "var(--text-1)" }}>{renderText}</span>
         </span>
-      ) : isLand ? (
-        <>
-          {displayed.split("").map((ch, i) => (
-            <span
-              key={i}
-              style={{
-                color: ch === "1" ? "var(--accent)" : "inherit",
-                textShadow:
-                  ch === "1" ? "0 0 20px rgba(96,165,250,0.4)" : "none",
-              }}
-            >
-              {ch}
-            </span>
-          ))}
-        </>
       ) : (
         <span>{displayed}</span>
       )}

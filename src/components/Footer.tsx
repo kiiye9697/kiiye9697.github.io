@@ -17,10 +17,10 @@ export default function Footer() {
         }}
       >
         <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text-3)" }}>
-          Land1ngW · {new Date().getFullYear()}
+          Kiiye9697 · {new Date().getFullYear()}
         </span>
         <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text-3)" }}>
-          Built with Next.js · 知乎文章每日自动同步
+          Built with Next.js · Zhihu sync enabled
         </span>
       </div>
     </footer>

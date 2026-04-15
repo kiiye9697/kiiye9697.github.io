@@ -5,8 +5,6 @@ import FadeUp from "./FadeUp";
 export default function Hero() {
   return (
     <section id="home" className="section" style={{ paddingTop: 80, paddingBottom: 0 }}>
-
-      {/* ① Status badge — immediate, delay 0 */}
       <FadeUp immediate delay={0}>
         <div
           style={{
@@ -22,17 +20,15 @@ export default function Hero() {
         >
           <span className="status-dot" />
           <span style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--green)" }}>
-            图形程序 · 米哈游 Varsapura
+            Rendering / PCG / Technical Art
           </span>
         </div>
       </FadeUp>
 
-      {/* ② Typewriter title — immediate, delay 120 */}
       <FadeUp immediate delay={120}>
         <TypewriterTitle />
       </FadeUp>
 
-      {/* ③ Role / subtitle — immediate, delay 240 */}
       <FadeUp immediate delay={240}>
         <p
           style={{
@@ -42,7 +38,7 @@ export default function Hero() {
             lineHeight: 1.5,
           }}
         >
-          游戏引擎开发 · 图形渲染工程师 · 1 年+ GI 研发经验
+          Rendering / PCG TA · Technical Art Practice
         </p>
         <p
           style={{
@@ -53,11 +49,10 @@ export default function Hero() {
             letterSpacing: "0.04em",
           }}
         >
-          UE5 &nbsp;·&nbsp; Global Illumination &nbsp;·&nbsp; SparseRT &nbsp;·&nbsp; Ray Tracing
+          Rendering &nbsp;·&nbsp; PCG &nbsp;·&nbsp; TA Workflow &nbsp;·&nbsp; Writing
         </p>
       </FadeUp>
 
-      {/* ④ Contacts — immediate, delay 360 */}
       <FadeUp immediate delay={360}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginBottom: 44 }}>
           <a href={`mailto:${profile.email}`} className="contact-link">
@@ -75,51 +70,52 @@ export default function Hero() {
         </div>
       </FadeUp>
 
-      {/* ⑤ Education card — immediate, delay 480 */}
-      <FadeUp immediate delay={480}>
-        <div
-          className="glass-card"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 14,
-            padding: "14px 20px",
-            marginBottom: 40,
-          }}
-        >
-          <span style={{ fontSize: 22 }}>🎓</span>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: "var(--text-1)" }}>
-                {education[0].school}
-              </span>
-              <span
+      {education.length > 0 ? (
+        <FadeUp immediate delay={480}>
+          <div
+            className="glass-card"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 14,
+              padding: "14px 20px",
+              marginBottom: 40,
+            }}
+          >
+            <span style={{ fontSize: 22 }}>🎓</span>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 14, fontWeight: 600, color: "var(--text-1)" }}>
+                  {education[0].school}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: 11,
+                    color: "var(--accent)",
+                    background: "var(--accent-dim)",
+                    border: "1px solid rgba(96,165,250,0.2)",
+                    borderRadius: 4,
+                    padding: "2px 8px",
+                  }}
+                >
+                  {education[0].badge}
+                </span>
+              </div>
+              <div
                 style={{
                   fontFamily: "var(--mono)",
-                  fontSize: 11,
-                  color: "var(--accent)",
-                  background: "var(--accent-dim)",
-                  border: "1px solid rgba(96,165,250,0.2)",
-                  borderRadius: 4,
-                  padding: "2px 8px",
+                  fontSize: 12,
+                  color: "var(--text-3)",
+                  marginTop: 3,
                 }}
               >
-                {education[0].badge}
-              </span>
-            </div>
-            <div
-              style={{
-                fontFamily: "var(--mono)",
-                fontSize: 12,
-                color: "var(--text-3)",
-                marginTop: 3,
-              }}
-            >
-              {education[0].degree} &nbsp;·&nbsp; {education[0].period}
+                {education[0].degree} &nbsp;·&nbsp; {education[0].period}
+              </div>
             </div>
           </div>
-        </div>
-      </FadeUp>
+        </FadeUp>
+      ) : null}
     </section>
   );
 }
