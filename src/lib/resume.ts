@@ -1,10 +1,10 @@
 export const profile = {
   name: "Kiiye9697",
-  nameReal: "Kiiye",
+  nameReal: "孙浩然",
   title: "Rendering / PCG TA",
   subtitle: "Graphic Lover · TA Engineer",
   email: "1916954944@qq.com",
-  phone: "",
+  phone: "18640144621",
   zhihu: "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying",
   github: "https://github.com/kiiye9697",
 };
@@ -14,7 +14,14 @@ export const education: {
   badge: string;
   degree: string;
   period: string;
-}[] = [];
+}[] = [
+  {
+    school: "大连理工大学",
+    badge: "计算机方向",
+    degree: "本科 · 计算机科学与技术",
+    period: "",
+  },
+];
 
 export const experiences = [
   {
