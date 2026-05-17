@@ -78,7 +78,6 @@ export const projects: Project[] = [
     description: "计算机图形学系统学习，完成全部 16 讲笔记与作业",
     tags: ["CG Basics", "Notes", "Homework"],
     status: "completed",
-    link: "https://zhuanlan.zhihu.com/p/xxx",
   },
   {
     id: "games104",
