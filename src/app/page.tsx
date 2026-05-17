@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import MobileTopbar from "@/components/MobileTopbar";
 import MouseSpotlight from "@/components/MouseSpotlight";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Articles from "@/components/Articles";
@@ -16,6 +17,7 @@ export default function Home() {
       <main className="main-content">
         <div className="main-inner">
           <Hero />
+          <Projects />
           <Experience />
           <Skills />
           <Articles />

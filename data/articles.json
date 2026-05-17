@@ -1,4 +1,225 @@
 {
-  "updated_at": "",
-  "articles": []
+  "updated_at": "2026-05-17 07:22 UTC",
+  "articles": [
+    {
+      "id": "2032968961596376152",
+      "title": "GAMES202 Notes（7）-Lecture14 A Glimpse of Industrial Solution",
+      "url": "https://zhuanlan.zhihu.com/p/2032968961596376152",
+      "excerpt": "由于课程发布于2021年，所以大部分的解决方案可能随着行业发展成为经典而非一线的直接算法，特此注意。 Temporal Anti-Aliasing(TAA)出现走样原因:在光栅化的过程中没有足够多的采样量导致的，终极的处理方法是使用更多的采样补全信息。对于TAA里说，我们跨帧来使用更多的信息来优化锯齿；通过跨帧统筹来优化可使用的帧数目来提升采样量以提升效果。如果我们随机进行temporal采样，那",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1777477608,
+      "updated": 1777477608,
+      "thumbnail": "https://picx.zhimg.com/v2-197820aa5e618b48e92a8c9985aac217_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2032594158087562274",
+      "title": "GAMES202 Notes(6)-Lecture12、13、（14）RealTime Ray-Tracing",
+      "url": "https://zhuanlan.zhihu.com/p/2032594158087562274",
+      "excerpt": "RTRT(Real-Time RayTracing)2018提出了GeForce的RTX架构，之后不断发展What Actually Do？同时考虑阴影、AO、反射、GI——实际上来讲，这是一种优化用于在GPU计算的硬件方法用于加速光线追踪（加速求交的逻辑）最后的效果是我们可以允许每一个像素可以采样一个光路样本来获得最后的渲染效果表现。（1spp）为了得到全局光照我们考虑的就是一次直接光照+一次间",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1777388246,
+      "updated": 1777388246,
+      "thumbnail": "https://picx.zhimg.com/v2-900b6a618a0c4094cd51fe06cf38381e_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2031332842316224076",
+      "title": "GAMES202 Notes(5)-Lecture10、11 Realtime Physically-Based Materials",
+      "url": "https://zhuanlan.zhihu.com/p/2031332842316224076",
+      "excerpt": "PBR and PBR MaterialsPBR指的是基于物理的渲染，包括材质、相机、光线传播等部分组成，一般来说最具代表性的表现部分就是材质部分。 在实时渲染中，由于大部分的复杂度都远高于预期的效果，因此我们就会考虑忽略一些准确度来达到更快的效果表现。（保证效率前提下尽可能优化表现）；在当前的设计逻辑里我们常见的对表面的表现使用microfacet models进行表现或者是Disney pri",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1777087509,
+      "updated": 1777087565,
+      "thumbnail": "https://picx.zhimg.com/v2-6c96913e353fcbf551e8fd233127bdbb_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2029937911139939819",
+      "title": "GAMES202 Notes(4）Lecture 7、8、9 Real-Time Global Illumination",
+      "url": "https://zhuanlan.zhihu.com/p/2029937911139939819",
+      "excerpt": "Real-Time Global Illumination（实时全局光照）-3D Space GI is important but complex。 从之前的经验中，我们可以通过Split Sum等经验的积累，不困难的获得很好的直接光照表达方式；而在实时的光照领域，我们寻找单次间接光反射能够解决的快速反射方法。Recap GAMES101:对于非光源的表面点时，我们可以理解这一次的反射为这一表面",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1776755010,
+      "updated": 1776755010,
+      "thumbnail": "https://pic1.zhimg.com/v2-f08dc05712f8cae2e821be3c48eeb8d8_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2028626239171170693",
+      "title": "GAMES202 Notes(3)-Lecture5、6-RealTime Environment Mapping",
+      "url": "https://zhuanlan.zhihu.com/p/2028626239171170693",
+      "excerpt": "直播课设计原因 部分文章内容存在于lecture7，在此处做记录。 Distance Field Soft Shadows Distance Functions 定义空间中任意一个点到物体表面的最小距离-一个距离场，正负表示在物体的内外，简单记为SDF(Signed Distance Field)，是一种可以通过预计算混合来表示距离的预处理而不用考虑几何上的复杂关系： 和最优传输理论有关的一种技术",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1776442227,
+      "updated": 1776442227,
+      "thumbnail": "https://picx.zhimg.com/v2-0efaa0cc95d26b92c36202fed109379d_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2028625795061494475",
+      "title": "GAMES202 Notes(2)-Lecture3、4-RealTime Shadows",
+      "url": "https://zhuanlan.zhihu.com/p/2028625795061494475",
+      "excerpt": "本笔记的核心记录实现方式为基于专题进行分区和记录，可能会有不定期更新，请跟随更新。 硬阴影：shadow mapping 核心思路 从光源的视角先渲染一张“深度图”（shadow map）；【Pass1：记录被光线照亮的最末z值】然后从相机视角正常渲染，每个片元把自己投影到光源空间去查这张深度图；如果该片元的深度值 大于 shadow map 中记录的值，就说明它被别的物体挡住了 → 标记为阴影（",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1776442130,
+      "updated": 1776442131,
+      "thumbnail": "https://picx.zhimg.com/v2-5a0d9ef0e2d0bd552629ddaadf1846d8_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2027651125105423533",
+      "title": "GAMES202 Notes(1)-Lecture2-Recap Of CG Basis",
+      "url": "https://zhuanlan.zhihu.com/p/2027651125105423533",
+      "excerpt": "现代GPU图形学管线Graphics Pipeline顶点处理：Vertex Precessing：将所有顶点根据当前空间和给定参数进行MVP对应变换至一个归一化的立方体当中。面连接：Triaggle Processing：将上一步给定的顶点坐标根据原来的面片相关信息重新串联成形。光栅化：将三角形片元离散化为屏幕空间上的一系列像素（锯齿和走样问题一般的出现场景就在此处） （这个阶段包括片元剔除，遮",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1776209721,
+      "updated": 1776209762,
+      "thumbnail": "https://pic1.zhimg.com/v2-5c3c352b8b9d4b39b9c62258c3577fd3_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2027649504938041503",
+      "title": "TA Weekly01：OIT算法概述",
+      "url": "https://zhuanlan.zhihu.com/p/2027649504938041503",
+      "excerpt": "由于网站死了，打算把笔记发到知乎做，将一些平时实习中/聊天时想到的一些点总结起来分析存档，不过笔者能力有限，欢迎讨论，争取保持周更。引言Why OIT在一些流程中我们经常会遇到一些对半透明物体的排序需求，由于透明的物体不能直接使用深度测试剔除，引擎内在绘制场景的时候，会对整个场景的半透明物体从后到前排序渲染，这样可以保证混合公式按照预期的方式正确工作；这种对半透明物体的排序，都是以物体为单位进行的",
+      "voteup_count": 1,
+      "comment_count": 2,
+      "created": 1776209405,
+      "updated": 1776209517,
+      "thumbnail": "https://picx.zhimg.com/v2-2da179410aaa8dc80e225ad56af9e482_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2024262845823459839",
+      "title": "GAMES104 Note（3）Lecture4-游戏引擎中的渲染实践",
+      "url": "https://zhuanlan.zhihu.com/p/2024262845823459839",
+      "excerpt": "首发于http://kiiye9697.cn 感兴趣支持一下喵Warm Up：概念引入图形学角度观察渲染不注重硬件层级的实现，主要专注于表现以及数学方法上的正确性/无偏性对于实时渲染的理解能够达到30FPS即可，对于交互要求达到10FPS即可可以通过离线渲染的Out-Of-Core Rendering来暴力实现一些真实感的渲染效果 游戏渲染上的挑战 Everything in one contai",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1775401894,
+      "updated": 1775401895,
+      "thumbnail": "https://picx.zhimg.com/v2-2eeed6aec3282ab938ffbf14806c60cd_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2024262392528270345",
+      "title": "GAMES104 Note（2）Lecture3-如何构建游戏世界",
+      "url": "https://zhuanlan.zhihu.com/p/2024262392528270345",
+      "excerpt": "概论文章首发于http://kiiye9697.cn 感兴趣的朋友移步支持一下~方法论：将所有部分抽象成一个GameObject（GO）进行处理；用组件逻辑优秀于其相关的继承逻辑。游戏世界的组成可见部分可交互-动态游戏物体不可移动-静态游戏物体地形系统/环境：地形系统（Terrain）、植被系统（Vegetation）、天空系统（Sky）不可见部分空气墙Trigger box 触发区域Object",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1775401817,
+      "updated": 1775401818,
+      "thumbnail": "https://picx.zhimg.com/v2-21dcd5b8800c9d01fe96f15991690be0_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2024262087577224024",
+      "title": "GAMES104 Note（1）Lecture2-引擎架构分层",
+      "url": "https://zhuanlan.zhihu.com/p/2024262087577224024",
+      "excerpt": "概述Tool Layer：最表面用于制作者交互的为编辑层-&gt;在其之下的为功能层（Function Layor），负责各个模块的功能逻辑实现；Resource Layer：一个文件管理系统，来管理游戏数据中各类数据文件。Core Layer：提供实现各个资源模块所需要的基准功能，例如线性代数库、时间库等基础支持部分；Platform Layer：用于解决游戏上线后兼容到的设备，将不同设备的输入",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1775401721,
+      "updated": 1775401722,
+      "thumbnail": "https://picx.zhimg.com/v2-b1f9d0a859cce4bca398a179f8f40c48_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "2024260102421579646",
+      "title": "GAMES101(7)-Path-Tracing路径追踪",
+      "url": "https://zhuanlan.zhihu.com/p/2024260102421579646",
+      "excerpt": "本系列中最难的实现，也是很多算法的核心基础内容，完成这一部分才可以说是基础入门了计算机图形学的渲染方向。由于一些原因，本篇也会从框架角度力求更深入的分析，并且会试图基于 MitSuba2 进行这个渲染方法。作业要求在本次实验中，你只需要修改这一个函数: • castRay(const Ray ray, int depth)in Scene.cpp: 在其中实现 Path Tracing 算法可能用",
+      "voteup_count": 2,
+      "comment_count": 0,
+      "created": 1775401306,
+      "updated": 1775401307,
+      "thumbnail": "https://www.zhihu.com/equation?tex=+%5Cbegin%7Bequation%7D+L_o%28%5Cmathbf%7Bp%7D%2C%5Comega_o%29%3D+L_e%28%5Cmathbf%7Bp%7D%2C%5Comega_o%29+%2B+%5Cint_%7B%5COmega%5E%2B%7D+f_r%28%5Cmathbf%7Bp%7D%2C%5Comega_i%2C%5Comega_o%29%5C%2C+L_i%28%5Cmathbf%7Bp%7D%2C%5Comega_i%29%5C%2C+%28%5Comega_i%5Ccdot%5Cmathbf%7Bn%7D%29%5C%2C+%5Cmathrm%7Bd%7D%5Comega_i+%5Cend%7Bequation%7D+"
+    },
+    {
+      "id": "2024259575709189070",
+      "title": "GAMES101(6)-加速结构",
+      "url": "https://zhuanlan.zhihu.com/p/2024259575709189070",
+      "excerpt": "作业要求在之前的编程练习中，我们实现了基础的光线追踪算法，具体而言是光线传输、光线与三角形求交。我们采用了这样的方法寻找光线与场景的交点：遍历场景 中的所有物体，判断光线是否与它相交。在场景中的物体数量不大时，该做法可以 取得良好的结果，但当物体数量增多、模型变得更加复杂，该做法将会变得非常低 效。因此，我们需要加速结构来加速求交过程。在本次练习中，我们重点关注物体 划分算法Bounding Vo",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1775401120,
+      "updated": 1775401121,
+      "thumbnail": "https://pic1.zhimg.com/v2-45f365d419010be1f0d86853cda7a034_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "1988240536834942033",
+      "title": "GAMES101(5)-光线与三角形相交",
+      "url": "https://zhuanlan.zhihu.com/p/1988240536834942033",
+      "excerpt": "写在前面 来不及思考下周的复变函数和经济学原理考试了，现在向我走来的是计算机图形学的经典问题：Path tracing了。 作业要求 在这部分的课程中，我们将专注于使用光线追踪来渲染图像。在光线追踪中 最重要的操作之一就是找到光线与物体的交点。一旦找到光线与物体的交点，就 可以执行着色并返回像素颜色。在这次作业中，我们需要实现两个部分：光线的 生成和光线与三角的相交。本次代码框架的工作流程为： 从",
+      "voteup_count": 5,
+      "comment_count": 0,
+      "created": 1766813485,
+      "updated": 1766813486,
+      "thumbnail": "https://picx.zhimg.com/v2-c3400a8dc42c81f41a89cdb3260745db_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "1988240168214361923",
+      "title": "GAMES101(4)-Bézier 曲线",
+      "url": "https://zhuanlan.zhihu.com/p/1988240168214361923",
+      "excerpt": "写在前面 初始预期是在大一下学期完成所有的任务，但是现在看起来可能略显艰难。由于配置环境的设备在学校，而且目前正在努力完成一个游戏项目，所以这边暂缓了。最近过的有些挣扎，主要是比较孤单吧，一直忙而且付出和努力不太成正比，但是既然选择了那就继续实现Anyway. 作业要求 Bézier 曲线是一种用于计算机图形学的参数曲线。在本次作业中，你需要实 现de Casteljau 算法来绘制由 4 个控制",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1766813397,
+      "updated": 1766813398,
+      "thumbnail": "https://picx.zhimg.com/v2-7acc12cca602af1b3ac55943b5c43348_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "1988239407048836376",
+      "title": "积分变换与场论 公式回顾",
+      "url": "https://zhuanlan.zhihu.com/p/1988239407048836376",
+      "excerpt": "选用参考教材为大连理工大学自编 强烈不推荐用这个复习。 傅里叶变换 1.1 傅里叶正变换与逆变换（归一化标准形式） 核心定义（逆变换含 归一化系数） 设函数 在 上绝对可积且满足狄利克雷条件（分段单调、仅有有限个第一类间断点和极值点），则： 傅里叶正变换： 傅里叶逆变换： 补充：简化记法（正逆变换对）： 1.2 傅里叶变换的基本性质 1.2.1 线性性质 对任意常数 ，及可变换函数 ： 逆变换同理",
+      "voteup_count": 0,
+      "comment_count": 0,
+      "created": 1766813215,
+      "updated": 1766813215,
+      "thumbnail": "https://www.zhihu.com/equation?tex=1%2F%282%5Cpi%29"
+    },
+    {
+      "id": "81891600956",
+      "title": "GAMES101(3)-纹理映射及Bling-Phong光照模型的实现",
+      "url": "https://zhuanlan.zhihu.com/p/81891600956",
+      "excerpt": "写在前面 事实证明泥工的考试题主打一个随心所欲，今年直接和往年题不在一个难度，甚至会有意料外的问题。事已至此，先来进行紧张刺激的图形学study算球。Update：修改后的节约编译框架需要完全理解之后在进行对应部分修改，否则下文出可能出现不可预期的问题却看不出来。 作业要求 在这次编程任务中，我们会进一步模拟现代图形技术。我们在代码中添加了 Object Loader(用于加载三维模型), Ver",
+      "voteup_count": 12,
+      "comment_count": 1,
+      "created": 1761129881,
+      "updated": 1761129882,
+      "thumbnail": "https://www.zhihu.com/equation?tex=c_1+%3D+%5Cfrac%7Bx%28y_1+-+y_2%29+%2B+%28x_2+-+x_1%29y+%2B+x_1+y_2+-+x_2+y_1%7D%7Bx_0%28y_1+-+y_2%29+%2B+%28x_2+-+x_1%29y_0+%2B+x_1+y_2+-+x_2+y_1%7D%5C%5C"
+    },
+    {
+      "id": "81891397836",
+      "title": "GAMES101(2)-片元颜色填充以及抗锯齿",
+      "url": "https://zhuanlan.zhihu.com/p/81891397836",
+      "excerpt": "作业内容 目标：这一次我们继续推进一步——在屏幕上画出一个实心三角形， 换言之，栅格化一个三角形。上一次作业中，在视口变化之后，我们调用了函数 rasterize_wireframe(const Triangle&amp; t)。 这一次，你需要自己填写并调用函数rasterize_triangle(const Triangle&amp; t)。 该函数的内部工作流程如下： 创建三角形的2维bou",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1761129786,
+      "updated": 1761129787,
+      "thumbnail": "https://picx.zhimg.com/v2-b34f3cd6d6bbd9dfac3b3937f435d35c_720w.jpg?source=d16d100b"
+    },
+    {
+      "id": "1952046681089639361",
+      "title": "GAMES101(1)-旋转与投影",
+      "url": "https://zhuanlan.zhihu.com/p/1952046681089639361",
+      "excerpt": "写在前面 这个部分对于Eigen库的使用要求尽量熟练不然每次都要查英文文档，比较痛苦，一种相对可行一些的方案就是利用ai辅助实现相应的函数调用。 如果追求进行对Eigen API更详细的完善和修正，推荐一个中文版本的API查询文档：Eigen中文文档-CSDN。这个查询文档需要关注作者，但是考虑到文档的实用性，记得注册账号支持一下进行汉化工作的著作者。 作业内容 要求部分 本次作业的任务是填写一个",
+      "voteup_count": 2,
+      "comment_count": 0,
+      "created": 1758184358,
+      "updated": 1758184359,
+      "thumbnail": "https://www.zhihu.com/equation?tex=R_z%28%5Ctheta%29+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos%5Ctheta+%26+-%5Csin%5Ctheta+%26+0+%26+0+%5C%5C+%5Csin%5Ctheta+%26+%5Ccos%5Ctheta+%26+0+%26+0+%5C%5C+0+%26+0+%26+1+%26+0+%5C%5C+0+%26+0+%26+0+%26+1+%5Cend%7Bbmatrix%7D%5C%5C"
+    },
+    {
+      "id": "1952045862151787089",
+      "title": "GAMES101(0)-环境的测试与搭建",
+      "url": "https://zhuanlan.zhihu.com/p/1952045862151787089",
+      "excerpt": "环境搭建 由于作业的提交早已经不受支持，因为本项目存在的意义就是为对计算机图形学感兴趣的朋友做一个参考，来更深入的理解闫老师的课程内容精髓所在。本文以记录为由，也是运营一下个人知乎账号 恳请批评指正 推荐使用的地址： roeas/GAMES101-Premake: 一键配置 GAMES101 作业框架及运行环境（含答案）这是一个降低了图形学作业环境配置的，利用Windows系列系统进行学习的图形学",
+      "voteup_count": 1,
+      "comment_count": 0,
+      "created": 1758184110,
+      "updated": 1758184111,
+      "thumbnail": "https://www.zhihu.com/equation?tex=++++P_h+%3D+%5Cbegin%7Bpmatrix%7D+2+%5C%5C+1+%5C%5C+1+%5Cend%7Bpmatrix%7D%5C%5C"
+    }
+  ]
 }

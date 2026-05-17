@@ -83,6 +83,7 @@ export const skills = [
 
 export const navSections = [
   { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "articles", label: "Writing" },

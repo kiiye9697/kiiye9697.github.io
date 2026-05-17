@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b0f18;
-  --bg-raised: rgba(18, 24, 38, 0.85);
-  --bg-glass: rgba(13, 17, 28, 0.72);
-  --bg-subtle: rgba(30, 40, 60, 0.6);
-  --border: #2a3550;
-  --border-light: rgba(42, 53, 80, 0.6);
-  --accent: #60a5fa;
-  --accent-dim: rgba(96, 165, 250, 0.15);
-  --accent-glow: rgba(96, 165, 250, 0.08);
-  --green: #34d399;
+  --bg: #0a0e17;
+  --bg-raised: rgba(20, 26, 40, 0.88);
+  --bg-glass: rgba(15, 20, 35, 0.78);
+  --bg-subtle: rgba(40, 50, 70, 0.55);
+  --border: #3a1a2a;
+  --border-light: rgba(200, 16, 46, 0.18);
+  --accent: #C8102E;
+  --accent-dim: rgba(200, 16, 46, 0.18);
+  --accent-glow: rgba(200, 16, 46, 0.1);
+  --liverpool-yellow: #F6EB14;
+  --liverpool-white: #FFFFFF;
+  --liverpool-blue: #004170;
+  --green: #F6EB14;
   --purple: #a78bfa;
-  --text-1: #e8edf5;
-  --text-2: #8896aa;
-  --text-3: #4a5568;
+  --text-1: #f0f0f0;
+  --text-2: #b0b8c8;
+  --text-3: #6a7280;
   --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
   --sidebar-w: 220px;
 }
@@ -34,25 +37,27 @@ body {
   min-height: 100vh;
 }
 
-/* ── Background image (centered in right content area) ── */
+/* ── Background image with blur and stretch ── */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: var(--sidebar-w);
-  right: 0;
-  bottom: 0;
-  background: url("/back.jpg") center center / cover no-repeat;
-  opacity: 0.07;
+  top: 50%;
+  left: 50%;
+  width: 120vh;
+  height: 120vw;
+  background-color: #0a0e17; /* 填充黑色背景 */
+  background-image: url("/background.jpg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: blur(8px) brightness(0.7) saturate(1.2);
+  transform: translate(-50%, -50%) rotate(270deg);
+  transform-origin: center center;
   pointer-events: none;
   z-index: 0;
 }
 
-/* ── Animated dot grid ── */
-@keyframes grid-drift {
-  0%   { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
+/* ── Red overlay gradient (single definition) ── */
 body::after {
   content: "";
   position: fixed;
@@ -60,25 +65,29 @@ body::after {
   left: var(--sidebar-w);
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(circle, rgba(96,165,250,0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: grid-drift 12s linear infinite;
+  background:
+    linear-gradient(135deg, rgba(200,16,46,0.15) 0%, transparent 60%),
+    linear-gradient(225deg, rgba(246,235,20,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, transparent 40%, rgba(10,14,23,0.4) 100%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
-@media (max-width: 768px) {
-  body::after { left: 0; }
+
+/* ── Animated dot grid ── */
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
 }
 
 /* ── Layout shell ── */
 .shell {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   min-height: 100vh;
 }
 
-/* ── Sidebar ── */
+/* ── Sidebar with enhanced frosted glass ── */
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
@@ -89,10 +98,10 @@ body::after {
   display: flex;
   flex-direction: column;
   padding: 40px 0 40px 32px;
-  border-right: 1px solid var(--border-light);
-  background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(200,16,46,0.15);
+  background: rgba(10,14,23,0.65);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
   z-index: 50;
 }
 
@@ -177,6 +186,8 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .main-inner {
@@ -211,14 +222,14 @@ body::after {
   max-width: 160px;
 }
 
-/* ── Glass card with sweep on hover ── */
+/* ── Enhanced Glass card with frosted effect ── */
 .glass-card {
-  background: var(--bg-raised);
-  border: 1px solid var(--border-light);
+  background: rgba(15,20,35,0.55);
+  border: 1px solid rgba(200,16,46,0.15);
   border-radius: 12px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -232,16 +243,17 @@ body::after {
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(96,165,250,0.07) 50%,
+    rgba(200,16,46,0.06) 50%,
     transparent 60%
   );
-  transition: left 0.55s ease;
+  transition: left 0.6s ease;
   pointer-events: none;
 }
 .glass-card:hover::before { left: 160%; }
 .glass-card:hover {
-  border-color: rgba(96,165,250,0.3);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(96,165,250,0.08);
+  border-color: rgba(200,16,46,0.35);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(200,16,46,0.1);
+  transform: translateY(-2px);
 }
 
 /* ── Tag ── */
@@ -253,14 +265,27 @@ body::after {
   font-size: 13px;
   font-family: var(--mono);
   background: var(--accent-dim);
-  border: 1px solid rgba(96,165,250,0.18);
+  border: 1px solid rgba(200,16,46,0.18);
   color: var(--accent);
   white-space: nowrap;
   transition: background 0.15s, border-color 0.15s;
+  position: relative;
+  overflow: hidden;
 }
 .tag:hover {
-  background: rgba(96,165,250,0.22);
+  background: rgba(200,16,46,0.22);
   border-color: var(--accent);
+}
+.tag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(200,16,46,0.12) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+.tag:hover::after {
+  transform: translateX(100%);
 }
 
 /* ── Contact link ── */
@@ -317,22 +342,22 @@ body::after {
   margin: 0;
 }
 
-/* ── ① Green status dot pulse ── */
+/* ── Liverpool yellow status dot pulse ── */
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(52,211,153,0.5); }
-  70%  { box-shadow: 0 0 0 6px rgba(52,211,153,0); }
-  100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(246,235,20,0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(246,235,20,0); }
+  100% { box-shadow: 0 0 0 0 rgba(246,235,20,0); }
 }
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--liverpool-yellow, #F6EB14);
   display: inline-block;
   animation: pulse-ring 2.2s ease-out infinite;
 }
 
-/* ── ⑥ Article thumbnail hover zoom ── */
+/* ── Article thumbnail hover zoom ── */
 .article-thumb {
   overflow: hidden;
   border-radius: 6px;
@@ -349,23 +374,6 @@ body::after {
 }
 .article-row-link:hover .article-thumb img {
   transform: scale(1.06);
-}
-
-/* ── ⑦ Skill tag glow on hover ── */
-.tag {
-  position: relative;
-  overflow: hidden;
-}
-.tag::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(96,165,250,0.12) 50%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
-}
-.tag:hover::after {
-  transform: translateX(100%);
 }
 
 /* ── Sidebar active bar smooth slide ── */
@@ -386,7 +394,8 @@ body::after {
   .mobile-topbar { display: flex !important; }
   .main-content { margin-left: 0; }
   .main-inner { padding: 0 20px; }
-  body::before { left: 0; }
+  body::before { left: -20px; }
+  body::after { left: 0; }
 }
 
 .mobile-topbar {
