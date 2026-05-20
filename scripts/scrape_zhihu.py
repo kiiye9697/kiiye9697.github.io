@@ -23,7 +23,7 @@ LIMIT = 20
 
 
 def get_headers() -> dict:
-    cookie = os.environ.get("ZHIHU_COOKIE", "")
+    cookie = os.environ.get("ZHIHU_COOKIE", "").strip()
     if not cookie:
         print("警告: 未设置 ZHIHU_COOKIE 环境变量，请求可能被拒绝。", file=sys.stderr)
     return {
