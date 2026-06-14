@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import {
+  education,
+  experiences,
+  profile,
+  resumeSkills,
+  resumeSummary,
+} from "../lib/resume";
+---
+
+<BaseLayout title={`简历 | ${profile.name}`} description="孙浩然 2028 届技术美术实习简历">
+  <div class="page-shell narrow">
+    <SectionHeader
+      eyebrow="Resume"
+      title={`${profile.nameReal} · ${profile.title}`}
+      description="计算机科学与技术本科在读，关注 PCG、实时渲染与技术美术工作流。"
+    />
+
+    <section class="resume-hero panel reveal">
+      <div>
+        <span class="card-label">2028 Intern</span>
+        <h1>{profile.nameReal}</h1>
+        <p>{profile.birthday} · {profile.location}</p>
+        <p>{profile.email} · {profile.phone}</p>
+      </div>
+      <div class="hero-actions compact">
+        <a class="button gold" href={profile.resumePdf} target="_blank" rel="noreferrer">打开 PDF 简历</a>
+        <a class="button ghost" href={`mailto:${profile.email}`}>邮件联系</a>
+      </div>
+    </section>
+
+    <section class="panel detail-panel reveal">
+      <h2>个人简介</h2>
+      {resumeSummary.map((item) => <p>{item}</p>)}
+    </section>
+
+    <section class="detail-grid">
+      <article class="panel reveal">
+        <span class="card-label">Education</span>
+        {education.map((item) => (
+          <div class="timeline-item">
+            <h3>{item.school}</h3>
+            <p>{item.degree}</p>
+            <p class="muted">{item.badge} · {item.period}</p>
+          </div>
+        ))}
+      </article>
+
+      <article class="panel reveal delay-1">
+        <span class="card-label">Profile Links</span>
+        <div class="timeline-item">
+          <h3>个人主页</h3>
+          <p><a href={profile.homepage} target="_blank" rel="noreferrer">{profile.homepage}</a></p>
+        </div>
+        <div class="timeline-item">
+          <h3>公开输出</h3>
+          <p><a href={profile.zhihu} target="_blank" rel="noreferrer">知乎技术帖</a> · <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></p>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel detail-panel reveal">
+      <h2>职业技能</h2>
+      {resumeSkills.map((group) => (
+        <article class="timeline-item">
+          <span class="card-label">{group.category}</span>
+          <ul>
+            {group.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section class="panel detail-panel reveal">
+      <h2>经历</h2>
+      {experiences.map((exp) => (
+        <article class="timeline-item">
+          <span class="card-label">{exp.period}</span>
+          <h3>{exp.role}</h3>
+          <p>{exp.company} · {exp.department}</p>
+          <ul>
+            {exp.highlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section class="panel detail-panel md-note reveal">
+      <span class="card-label">Markdown Ready</span>
+      <h2>简历内容维护</h2>
+      <p>简历内容已同步保留 Markdown 草稿，后续可以继续扩展项目经历、论文工作与技能条目。</p>
+    </section>
+  </div>
+</BaseLayout>

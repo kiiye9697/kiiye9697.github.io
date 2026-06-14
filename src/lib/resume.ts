@@ -1,206 +1,90 @@
-export type NavSection = {
-  id: string;
-  label: string;
-};
-
-export type HeroAction = {
-  label: string;
-  href: string;
-};
-
-export type SocialLink = {
-  label: string;
-  href: string;
-  value: string;
-  note: string;
-};
-
-export type Experience = {
-  kind: string;
-  title: string;
-  org: string;
-  period: string;
-  description: string;
-  details: string[];
-};
-
-export type PortfolioItem = {
-  title: string;
-  summary: string;
-  tags: string[];
-  cover: string;
-  previewPdf: string;
-  pdf: string;
-  slides: string;
-};
-
-export type Project = {
-  title: string;
-  subtitle: string;
-  summary: string;
-  tags: string[];
-  href?: string;
-  github?: string;
-};
-
-// Site structure and hero buttons.
-export const siteConfig = {
-  navSections: [
-    { id: "about", label: "About" },
-    { id: "experience", label: "Experience" },
-    { id: "portfolio", label: "Portfolio" },
-    { id: "projects", label: "Projects" },
-    { id: "posts", label: "Posts" },
-    { id: "links", label: "Links" },
-  ] satisfies NavSection[],
-  heroActions: [
-    { label: "View Portfolio", href: "#portfolio" },
-    { label: "View Experience", href: "#experience" },
-    { label: "View Projects", href: "#projects" },
-    { label: "Read Posts", href: "#posts" },
-  ] satisfies HeroAction[],
-  postsLimit: 6,
-};
-
-// Core profile content shown in the hero and about sections.
 export const profile = {
   name: "Kiiye9697",
+  nameReal: "孙浩然",
   title: "Rendering / PCG TA",
-  subtitle: "Graphic Lover | TA Engineer",
-  summary:
-    "Technical artist focused on rendering, procedural content generation, and practical workflow support for real-time production.",
-  location: "Dalian, Liaoning, China",
-  domain: "kiiye9697.github.io",
+  subtitle: "Graphic Lover · TA Engineer",
   email: "1916954944@qq.com",
-  avatarInitials: "KY",
-  currentFocus: "Realtime rendering, PCG workflows, and TA-side production tooling.",
-  sitePosition: "Portfolio, writing archive, and selected work.",
-  availability: "Open to rendering and technical art opportunities.",
+  phone: "18640144621",
+  zhihu: "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying",
+  github: "https://github.com/kiiye9697",
 };
 
-// Primary skills shown in the profile section.
-export const skills = [
-  "Rendering",
-  "PCG",
-  "Technical Art",
-  "Realtime Graphics",
-  "Python",
-  "Shader Debugging",
-  "LookDev",
-  "Pipeline Tools",
-  "Git / GitHub",
-];
-
-// Contact and social channels.
-export const socialLinks = [
+export const education: {
+  school: string;
+  badge: string;
+  degree: string;
+  period: string;
+}[] = [
   {
-    label: "GitHub",
-    href: "https://github.com/kiiye9697",
-    value: "@kiiye9697",
-    note: "Code, experiments, and long-term archive.",
-  },
-  {
-    label: "Email",
-    href: "mailto:1916954944@qq.com",
-    value: "1916954944@qq.com",
-    note: "For portfolio, collaboration, and technical conversations.",
-  },
-  {
-    label: "Zhihu",
-    href: "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying",
-    value: "he-xian-wen-lu-xian-ying",
-    note: "Technical posts and article archive.",
+    school: "大连理工大学",
+    badge: "计算机方向",
+    degree: "本科 · 计算机科学与技术",
+    period: "",
   },
 ];
 
-// Education, work, and long-term direction timeline.
 export const experiences = [
   {
-    kind: "Experience",
-    title: "Technical Artist Intern",
-    org: "Tencent Technology, Photon Studio Group",
-    period: "2026.05 - 2026.08",
-    description:
-      "Internship focused on technical art practice across rendering and PCG-related workflows in a production environment.",
-    details: [
-      "Worked as a TA intern on rendering and content-side technical workflows.",
-      "This section can be expanded later with project details that are suitable for a public portfolio.",
+    company: "腾讯科技",
+    department: "光子工作室",
+    role: "技术美术实习生",
+    period: "2026.05 — 2026.08",
+    icon: "/company-icons/tencent.png",
+    iconWidth: 420,
+    iconHeight: 208,
+    iconDisplayHeight: 34,
+    highlights: [
+      {
+        title: "技术美术方向实习",
+        desc: "参与 Rendering、PCG 与技术美术相关内容，围绕实际生产需求推进学习与实践。",
+      },
+      {
+        title: "作品与能力持续整理中",
+        desc: "当前主页用于集中整理个人作品集、简历、知乎文章与后续项目沉淀。",
+      },
     ],
   },
   {
-    kind: "Direction",
-    title: "Rendering / PCG / TA Practice",
-    org: "Personal Study and Portfolio Work",
-    period: "Ongoing",
-    description:
-      "A personal track centered on rendering quality, procedural content generation, and technical art problem solving.",
-    details: [
-      "Continuing to build portfolio material around real-time graphics, procedural workflows, and TA-side tooling.",
-      "Additional school, competition, or studio experience can be added here later without changing the components.",
-    ],
-  },
-  {
-    kind: "Writing",
-    title: "Zhihu Technical Writing",
-    org: "Zhihu",
-    period: "Ongoing",
-    description:
-      "Writing notes and long-form posts around rendering, graphics learning, and technical problem solving.",
-    details: [
-      "Articles are synced to this site from the linked Zhihu profile.",
-      "Recent posts appear automatically after the scraper workflow runs.",
+    company: "个人方向",
+    department: "Rendering / PCG / TA",
+    role: "图形与技术美术实践",
+    period: "持续进行中",
+    icon: null,
+    iconWidth: 0,
+    iconHeight: 0,
+    iconDisplayHeight: 0,
+    highlights: [
+      {
+        title: "关注方向",
+        desc: "重点关注实时渲染、程序化内容生成、技术美术工作流与实用型工具支持。",
+      },
+      {
+        title: "公开输出",
+        desc: "通过知乎文章和个人主页持续整理学习笔记、技术理解与项目材料。",
+      },
     ],
   },
 ];
 
-// Portfolio cards with optional PDF and slide assets.
-export const portfolios = [
+export const skills = [
   {
-    title: "Selected Portfolio",
-    summary:
-      "Collected work focused on rendering, PCG, and technical art practice.",
-    tags: ["Portfolio", "Rendering", "PCG"],
-    cover: "/images/portfolio/portfolio-graphics.svg",
-    previewPdf: "/pdfs/portfolio.pdf",
-    pdf: "/pdfs/portfolio.pdf",
-    slides: "",
+    category: "Core Focus",
+    items: ["Rendering", "PCG", "Technical Art", "Realtime Workflow"],
   },
   {
-    title: "Resume",
-    summary:
-      "Current resume for internship and full-time application contexts.",
-    tags: ["Resume", "Profile", "PDF"],
-    cover: "/images/portfolio/portfolio-hardware.svg",
-    previewPdf: "/pdfs/resume.pdf",
-    pdf: "/pdfs/resume.pdf",
-    slides: "",
+    category: "Tools",
+    items: ["Python", "Git / GitHub", "Pipeline Support", "Debug Practice"],
+  },
+  {
+    category: "Interests",
+    items: ["LookDev", "Shader Analysis", "Procedural Workflow", "Content Production"],
   },
 ];
 
-// Project cards with live/demo and GitHub links.
-export const projects = [
-  {
-    title: "Rendering Research and Breakdown",
-    subtitle: "Rendering analysis, look development, and real-time visual problem solving.",
-    summary:
-      "A growing body of graphics-focused study and production-side analysis around rendering quality, visual debugging, and practical implementation details.",
-    tags: ["Rendering", "Shader", "TA"],
-    github: "https://github.com/kiiye9697",
-  },
-  {
-    title: "PCG Workflow Experiments",
-    subtitle: "Procedural generation tests for content building and iteration.",
-    summary:
-      "Experiments around procedural workflows that support content creation, reusable setup, and faster iteration in production-like environments.",
-    tags: ["PCG", "Workflow", "Tools"],
-    github: "https://github.com/kiiye9697",
-  },
-  {
-    title: "TA Utility Scripts",
-    subtitle: "Small tools for pipeline support and day-to-day production work.",
-    summary:
-      "A place for Python and workflow utilities that improve asset handling, iteration speed, and communication between art and engineering.",
-    tags: ["Python", "Tools", "Pipeline"],
-    github: "https://github.com/kiiye9697",
-  },
+export const navSections = [
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "articles", label: "Writing" },
 ];

@@ -1,0 +1,25 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { writingLinks } from "../lib/resume";
+---
+
+<section class="page-section">
+  <SectionHeader
+    eyebrow="Writing"
+    title="技术帖"
+    description="知乎入口与站内课程笔记并行保留，GAMES 系列 Markdown 已接入 Astro 内容集合。"
+  />
+
+  <div class="list-stack">
+    {writingLinks.map((item) => (
+      <a class="list-row reveal" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>
+        <div>
+          <span class="card-label">{item.meta}</span>
+          <h3>{item.title}</h3>
+          <p>{item.excerpt}</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</section>

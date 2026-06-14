@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume";
+---
+
+<BaseLayout title={`作品集 | ${profile.name}`} description="孙浩然的技术美术作品集入口">
+  <div class="page-shell">
+    <SectionHeader
+      eyebrow="Portfolio"
+      title="作品集"
+      description="完整 PDF 作为主入口，场景展示区保留三个 Set 空位，用于承载后续封面、视频和制作拆解。"
+    />
+
+    <section class="portfolio-hero reveal">
+      <div>
+        <span class="card-label">PDF Portfolio</span>
+        <h1>PDF 版本作品集</h1>
+        <p>集中整理当前技术美术、图形学和项目实践材料，适合作为投递与交流时的完整版本入口。</p>
+        <div class="hero-actions compact">
+          <a class="button gold" href={profile.portfolioPdf} target="_blank" rel="noreferrer">打开作品集 PDF</a>
+          <a class="button ghost" href="/projects/">进入项目分类</a>
+        </div>
+      </div>
+      <div class="poster-stack" aria-hidden="true">
+        <span>PORTFOLIO</span>
+        <strong>TA</strong>
+        <small>PCG / Rendering / AIGC</small>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <SectionHeader
+        eyebrow="Selected"
+        title="Scene Sets"
+        description="三个场景展示位先保持留白，可分别承载环境、Lookdev 或完整场景拆解。"
+      />
+      <div class="project-grid">
+        {portfolioSceneSets.map((set) => (
+          <article class="project-card scene-set-card reveal">
+            <div>
+              <span>{set.meta}</span>
+              <h3>{set.title}</h3>
+              <p>{set.description}</p>
+              <div class="tag-row">
+                <span>Reserved</span>
+                <span>Portfolio Set</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="list-stack">
+        {portfolioHighlights.map((item) => (
+          <a class="list-row reveal" href={item.href}>
+            <div>
+              <span class="card-label">Portfolio</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
