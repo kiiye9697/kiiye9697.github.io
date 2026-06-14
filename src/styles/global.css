@@ -231,6 +231,13 @@ code {
   border-radius: 6px;
   font-weight: 950;
   box-shadow: 0 0 26px rgba(255, 222, 89, 0.42);
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand strong,
@@ -337,7 +344,8 @@ code {
 }
 
 .wallpaper-backdrop,
-.wallpaper-glow {
+.wallpaper-glow,
+.wallpaper-crest-badge {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -361,6 +369,20 @@ code {
     linear-gradient(115deg, transparent 0 42%, rgba(255, 222, 89, 0.16) 42% 43%, transparent 43% 100%);
   mix-blend-mode: screen;
   animation: flare-sweep 8s ease-in-out infinite alternate;
+}
+
+.wallpaper-crest-badge {
+  inset: auto clamp(20px, 5vw, 42px) clamp(28px, 6vw, 42px) auto;
+  z-index: 1;
+  width: clamp(118px, 16vw, 188px);
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.44));
+}
+
+.wallpaper-crest-badge img {
+  width: 100%;
+  height: auto;
 }
 
 .wallpaper-hero::before {
@@ -428,6 +450,13 @@ code {
   color: var(--muted);
   font-size: 18px;
   font-weight: 800;
+}
+
+.wallpaper-note {
+  max-width: 560px;
+  margin: -8px 0 26px;
+  color: rgba(255, 244, 214, 0.82);
+  font-size: 15px;
 }
 
 .wallpaper-actions {
@@ -813,6 +842,17 @@ h2 {
   font-family: var(--font-display);
   font-weight: 950;
   line-height: 0.85;
+}
+
+.placeholder-hint {
+  margin-top: 14px;
+  color: rgba(255, 244, 214, 0.68);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.project-callout {
+  margin-top: 18px;
 }
 
 .scene-set-card h3 {
@@ -1264,6 +1304,12 @@ li {
   .wallpaper-footer {
     flex-direction: column;
     gap: 6px;
+  }
+
+  .wallpaper-crest-badge {
+    width: 108px;
+    right: 18px;
+    bottom: 16px;
   }
 
   .portfolio-band,
