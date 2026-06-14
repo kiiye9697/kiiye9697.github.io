@@ -1,0 +1,32 @@
+<div class="splash-intro" data-splash>
+  <div class="splash-image" aria-hidden="true"></div>
+  <button class="splash-skip" type="button" data-splash-close>Enter</button>
+  <div class="splash-copy">
+    <p>ANFIELD OPENS</p>
+    <h2>You'll Never<br />Walk Alone</h2>
+    <strong>Kiiye9697's blog</strong>
+  </div>
+</div>
+
+<script>
+  const splash = document.querySelector("[data-splash]");
+  const close = document.querySelector("[data-splash-close]");
+  const dismiss = () => {
+    if (!splash) return;
+    splash.classList.add("is-leaving");
+    sessionStorage.setItem("kiiye-splash-seen", "1");
+    window.setTimeout(() => splash.remove(), 900);
+  };
+
+  if (splash) {
+    if (sessionStorage.getItem("kiiye-splash-seen") === "1") {
+      splash.remove();
+    } else {
+      close?.addEventListener("click", dismiss);
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === "Escape") dismiss();
+      });
+      window.setTimeout(dismiss, 3200);
+    }
+  }
+</script>

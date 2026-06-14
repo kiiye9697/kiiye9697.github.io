@@ -1,0 +1,50 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume";
+---
+
+<section class="page-section">
+  <SectionHeader
+    eyebrow="Portfolio"
+    title="作品集"
+    description="PDF 作品集保留完整入口，场景展示区域先保留三个 Set 空位。"
+  />
+
+  <div class="portfolio-band reveal">
+    <div>
+      <span class="card-label">PDF Portfolio</span>
+      <h3>PDF 版本作品集</h3>
+      <p>完整图文版本，集中展示当前技术美术与图形方向材料。</p>
+    </div>
+    <a class="button gold" href={profile.portfolioPdf} target="_blank" rel="noreferrer">查看 PDF</a>
+  </div>
+
+  <div class="project-grid compact-grid">
+    {portfolioSceneSets.map((set) => (
+      <article class="project-card scene-set-card reveal">
+        <div>
+          <span>{set.meta}</span>
+          <h3>{set.title}</h3>
+          <p>{set.description}</p>
+          <div class="tag-row">
+            <span>Reserved</span>
+            <span>Coming later</span>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="list-stack">
+    {portfolioHighlights.map((item) => (
+      <a class="list-row reveal" href={item.href}>
+        <div>
+          <span class="card-label">Portfolio Link</span>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</section>

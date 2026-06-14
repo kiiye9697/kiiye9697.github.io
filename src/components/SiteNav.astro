@@ -1,0 +1,35 @@
+---
+import { navSections, profile } from "../lib/resume";
+
+const pathname = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+
+const isActive = (href: string) => {
+  const normalized = href.endsWith("/") ? href : `${href}/`;
+  return normalized === "/" ? pathname === "/" : pathname.startsWith(normalized);
+};
+---
+
+<nav class="site-nav">
+  <a class="brand" href="/" aria-label="回到个人主页">
+    <span class="brand-mark">YN</span>
+    <span>
+      <strong>{profile.name}</strong>
+      <small>{profile.title}</small>
+    </span>
+  </a>
+
+  <div class="nav-links" aria-label="主导航">
+    {navSections.map((item) => (
+      <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+        {item.label}
+      </a>
+    ))}
+  </div>
+
+  <div class="nav-actions">
+    <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+    <a class="nav-cta" href={profile.resumePdf} target="_blank" rel="noreferrer">PDF 简历</a>
+  </div>
+</nav>
