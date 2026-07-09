@@ -1,13 +1,18 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
-const writing = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    course: z.string(),
-    source: z.string().optional(),
-    order: z.number().default(0),
-  }),
-});
-
-export const collections = { writing };
+export const collections = {
+	work: defineCollection({
+		// Load Markdown files in the src/content/work directory.
+		loader: glob({ base: './src/content/work', pattern: '**/*.md' }),
+		schema: z.object({
+			title: z.string(),
+			description: z.string(),
+			publishDate: z.coerce.date(),
+			tags: z.array(z.string()),
+			img: z.string(),
+			img_alt: z.string().optional(),
+		}),
+	}),
+};
