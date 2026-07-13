@@ -180,6 +180,9 @@ export const activeProjects = [
       { label: "GTAO 技术贴", href: "/writing/24-gtao-implementation/" },
       { label: "返回项目列表", href: "/projects/#portfolio" },
     ],
+    techPosts: [
+      { title: "Unity URP：GTAO实现（Plus：Multi-Bounce&SSDO）", href: "/writing/24-gtao-implementation/" },
+    ],
   },
   {
     slug: "sdf-baker",

@@ -34,7 +34,18 @@ const category = projectCategories.find((item) => item.id === project.category);
 
       <section>
         <h2>技术拆解</h2>
-        <p class="muted">算法原理与实现细节整理中。</p>
+        {project.techPosts && project.techPosts.length > 0 ? (
+          <div class="tech-post-list">
+            {project.techPosts.map((post) => (
+              <a class="tech-post-row" href={post.href}>
+                <span>{post.title}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="muted">算法原理与实现细节整理中。</p>
+        )}
       </section>
 
       <div class="hero-actions compact">
@@ -48,3 +59,30 @@ const category = projectCategories.find((item) => item.id === project.category);
     </article>
   </div>
 </BaseLayout>
+
+<style>
+  .tech-post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .tech-post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--gray-700, #333);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--gray-200, #ccc);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tech-post-row:hover {
+    border-color: var(--gray-500, #666);
+    color: var(--gray-0, #fff);
+  }
+  .tech-post-row span:last-child {
+    opacity: 0.5;
+  }
+</style>
