@@ -166,7 +166,7 @@ export const activeProjects = [
     status: "Completed",
     title: "Classic Sponza URP 渲染管线扩展",
     summary: "基于 Unity URP，在 Classic Sponza 场景中从零实现 GTAO、SSR、TAA、体积光、Bloom、高度雾 6 个高级渲染特性。",
-    cover: "/images/projects/sponza-showcase.png",
+    cover: "https://kiiyeblog.oss-cn-beijing.aliyuncs.com/SponzaShowcase.png",
     tags: ["Unity URP", "C#", "HLSL", "Compute Shader"],
     highlights: [
       "GTAO：Compute Shader 实现地面真值环境光遮蔽，GBuffer 后延迟光前运行，支持多反弹 SSDO 合成与调试视图。",
