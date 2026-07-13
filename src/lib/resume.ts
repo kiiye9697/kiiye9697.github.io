@@ -177,6 +177,7 @@ export const activeProjects = [
       "高度雾：后处理高度雾 + 方向光散射 + 天空盒地平线过渡 + 近距离淡出。",
     ],
     links: [
+      { label: "GTAO 技术贴", href: "/writing/24-gtao-implementation/" },
       { label: "返回项目列表", href: "/projects/#portfolio" },
     ],
   },
