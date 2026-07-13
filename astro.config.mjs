@@ -1,7 +1,12 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://www.kiiye9697.cn',
+  output: "static",
+  site: "https://kiiye9697.github.io",
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
 });

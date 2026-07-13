@@ -1,0 +1,104 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profile } from "../../lib/resume";
+import { getWritingSlug } from "../../lib/slugs";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("writing");
+  return notes.map((entry) => ({
+    params: { slug: getWritingSlug(entry.id) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+<BaseLayout title={`${entry.data.title} | ${profile.name}`} description={`${entry.data.course} 技术笔记`}>
+  <article class="page-shell article-shell">
+    <header class="article-hero">
+      <a class="text-link" href="/writing/">← 返回技术帖</a>
+      <span class="card-label">{entry.data.course}</span>
+      <h1>{entry.data.title}</h1>
+      {entry.data.source && <p>Source: {entry.data.source}</p>}
+    </header>
+
+    <div class="article-body">
+      <div class="article-content">
+        <Content />
+      </div>
+      {tocHeadings.length > 0 && (
+        <aside class="article-toc">
+          <details open>
+            <summary>目录</summary>
+            <ul>
+              {tocHeadings.map((h) => (
+                <li class={`toc-depth-${h.depth}`}>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </aside>
+      )}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-body {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .article-toc {
+    position: sticky;
+    top: 5rem;
+    flex-shrink: 0;
+    width: 220px;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    font-size: 0.85rem;
+  }
+  .article-toc summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .article-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .article-toc li {
+    margin: 0.2rem 0;
+  }
+  .toc-depth-3 {
+    padding-left: 1rem;
+  }
+  .article-toc a {
+    color: var(--gray-400, #aaa);
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .article-toc a:hover {
+    color: var(--gray-0, #fff);
+  }
+  @media (max-width: 768px) {
+    .article-body {
+      flex-direction: column;
+    }
+    .article-toc {
+      position: relative;
+      width: 100%;
+      top: 0;
+      max-height: none;
+    }
+  }
+</style>

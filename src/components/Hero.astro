@@ -1,54 +1,38 @@
 ---
-interface Props {
-	title: string;
-	tagline?: string;
-	align?: 'start' | 'center';
-}
-
-const { align = 'center', tagline, title } = Astro.props;
+import { profile } from "../lib/resume";
 ---
 
-<div class:list={['hero stack gap-4', align]}>
-	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
-		{tagline && <p class="tagline">{tagline}</p>}
-	</div>
-	<slot />
+<section class="wallpaper-hero" aria-label="Kiiye9697 blog wallpaper opening">
+  <div class="wallpaper-backdrop" aria-hidden="true"></div>
+  <div class="wallpaper-glow" aria-hidden="true"></div>
+
+  <div class="wallpaper-content reveal">
+    <p class="wallpaper-kicker">ANFIELD MODE / TECHNICAL ART</p>
+    <h1>You'll Never Walk Alone</h1>
+    <p class="blog-mark">Kiiye9697's blog</p>
+    <p class="wallpaper-subtitle">{profile.title}</p>
+    <div class="hero-actions wallpaper-actions">
+      <a class="button gold" href="/portfolio/">作品集</a>
+      <a class="button primary" href="/projects/">项目</a>
+      <a class="button ghost" href="/writing/">技术帖</a>
+    </div>
+  </div>
+
+  <div class="wallpaper-footer reveal delay-1">
+    <span>{profile.nameReal}</span>
+    <span>{profile.email}</span>
+    <a href="/resume/">Resume 2028</a>
+  </div>
+</section>
+
+<div class="signal-strip" aria-hidden="true">
+  <span>ANFIELD ENERGY</span>
+  <span>UNITY URP</span>
+  <span>RENDERFEATURE</span>
+  <span>NPR SHADER</span>
+  <span>PCG</span>
+  <span>AIGC PIPELINE</span>
+  <span>RAYTRACING</span>
+  <span>LOOKDEV</span>
+  <span>PORTFOLIO IN PROGRESS</span>
 </div>
-
-<style>
-	.hero {
-		font-size: var(--text-lg);
-		text-align: center;
-	}
-
-	.title,
-	.tagline {
-		max-width: 37ch;
-		margin-inline: auto;
-	}
-
-	.title {
-		font-size: var(--text-3xl);
-		color: var(--gray-0);
-	}
-
-	@media (min-width: 50em) {
-		.hero {
-			font-size: var(--text-xl);
-		}
-
-		.start {
-			text-align: start;
-		}
-
-		.start .title,
-		.start .tagline {
-			margin-inline: unset;
-		}
-
-		.title {
-			font-size: var(--text-5xl);
-		}
-	}
-</style>
