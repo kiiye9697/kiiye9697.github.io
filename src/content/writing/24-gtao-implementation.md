@@ -40,6 +40,7 @@ Unity URP 12渲染管线内的sponzashowcase实现中的ao等部分的实现；
 | **Variance Clipping**                | 时域累积中把历史 clamp 进当前帧邻域方差框  | `TemporalFilterMain` 防鬼影/拖影                                 |
 | **Multi-Bounce (MB)**                | 用 albedo 多项式拟合多重反弹颜色恢复    | `GTAOComposite.shader` 中 `colorRecovery = mb(ao,albedo)/ao` |
 | **SSDO**                             | 屏幕空间漫反射反弹：环采场景颜色加回主色      | `GTAOCompositePass` + `GTAO_ComputeSSDO`                    |
+|                                      |                           |                                                             |
 
 ## 3. Technical Breakdown
 
@@ -49,11 +50,15 @@ Unity URP 12渲染管线内的sponzashowcase实现中的ao等部分的实现；
 
 GTAO 不依赖 GBuffer 法线，而是从 `_CameraDepthTexture` 重建视空间法线。空间变换：屏幕 UV + 深度 → 视空间位置：
 
-$$P_{vs} = \mathtt{mul}(M_P^{-1},\;(uv\cdot 2-1,\ d,\ 1))^{xyz} \big/ w$$
+$$
+P_{vs} = \mathtt{mul}(M_P^{-1},\;(uv\cdot 2-1,\ d,\ 1))^{xyz} \big/ w
+$$
 
 在不支持 `UNITY_MATRIX_I_P` 时退化为线性深度法：
 
-$$P_{vs} = \begin{pmatrix} uv_{ndc}\cdot L_{eye}\cdot \mathrm{rcp}(P_{00},\,P_{11}) \\ -L_{eye} \end{pmatrix},\qquad L_{eye}=\mathtt{LinearEyeDepth}(d)$$
+$$
+P_{vs} = \begin{pmatrix} uv_{ndc}\cdot L_{eye}\cdot \mathrm{rcp}(P_{00},\,P_{11}) \\ -L_{eye} \end{pmatrix},\qquad L_{eye}=\mathtt{LinearEyeDepth}(d)
+$$
 
 法线重建在 `NORMAL_FROM_DEPTH_PIXEL_RANGE=2` 的 5×5 邻域内做**边缘感知（edge-aware）**差分——比较近距离梯度与远距离梯度的二阶误差，选误差较小者（即更可信的切向）：
 
@@ -73,32 +78,46 @@ GTAO 把 AO 拆成数个绕视线 $\vec v = \mathrm{normalize}(-P_{vs})$ 旋转�
 
 **像素↔世界尺度换算**（关键——解决了 §1.1 中传统 SSAO 尺度崩坏问题）：
 
-$$L_{2px} = \frac{H_{pix} \cdot (P_{00}^{-1})}{2\cdot L_{eye}} = \frac{H_{pix} \cdot (-\mathtt{P.\_m11})}{2\cdot L_{eye}}$$
+$$
+L_{2px} = \frac{H_{pix} \cdot (P_{00}^{-1})}{2\cdot L_{eye}} = \frac{H_{pix} \cdot (-\mathtt{P.\_m11})}{2\cdot L_{eye}}
+$$
 
 这里 $P_{00}^{-1} = 1/\tan(fovy/2) = -\mathtt{P.\_m11}$。世界空间 `effectRadius` 映射为 `screenSpaceRadius = R·L_{2px}`，采样半径随深度自然缩放：远平面收缩、近平面扩张。
 
 **切片初始化**：对每个切片 $\phi = (s+\xi_{slice})\cdot\pi/N_s$：
 
-$$\omega = (\cos\phi,\ \sin\phi),\qquad
-\vec o = (\cos\phi,\ \sin\phi,\ 0) - ((\cos\phi,\ \sin\phi,\ 0)\cdot\vec v)\,\vec v$$
+$$
+\omega = (\cos\phi,\ \sin\phi),\qquad
+\vec o = (\cos\phi,\ \sin\phi,\ 0) - ((\cos\phi,\ \sin\phi,\ 0)\cdot\vec v)\,\vec v
+$$
 
-$$\vec a = \mathrm{normalize}(\vec o \times \vec v),\qquad
-\vec n_\perp = \vec n - \vec a(\vec n\cdot\vec a)$$
+$$
+\vec a = \mathrm{normalize}(\vec o \times \vec v),\qquad
+\vec n_\perp = \vec n - \vec a(\vec n\cdot\vec a)
+$$
 
 法线在切片平面内投影后，其有符号角度 $n$ 和初始地平线角 $h_{\cos 0}^{low}$：
 
-$$\cos n = \mathrm{saturate}\!\left(\frac{\vec n_\perp\cdot\vec v}{\lVert\vec n_\perp\rVert}\right),\qquad
-n = \mathrm{sign}(\vec o\cdot\vec n_\perp)\cdot\arccos(\cos n)$$
+$$
+\cos n = \mathrm{saturate}\!\left(\frac{\vec n_\perp\cdot\vec v}{\lVert\vec n_\perp\rVert}\right),\qquad
+n = \mathrm{sign}(\vec o\cdot\vec n_\perp)\cdot\arccos(\cos n)
+$$
 
-$$h_{\cos 0}^{low} = \cos(n+\tfrac{\pi}{2}),\qquad h_{\cos 1}^{low} = \cos(n-\tfrac{\pi}{2})$$
+$$
+h_{\cos 0}^{low} = \cos(n+\tfrac{\pi}{2}),\qquad h_{\cos 1}^{low} = \cos(n-\tfrac{\pi}{2})
+$$
 
 **步长采样**：沿 $\omega\cdot \text{screenSpaceRadius}$ 方向，`STEPS_PER_SLICE=3` 步（含抖动保证采样随机性），$s = \mathrm{pow}((step+\xi_{step})/N_{step},\ power)+minS$（`minS = pixelTooCloseThreshold / screenSpaceRadius` 排斥着色点附近采样防自遮挡）。深度采样 → 还原视空间位置 → 得样本地平线向量 $\hat h$，与视线的点积：
 
-$$\mathrm{shc} = \hat h\cdot\vec v = \frac{P_{k} - P_c}{\lVert P_k - P_c\rVert}\cdot\vec v$$
+$$
+\mathrm{shc} = \hat h\cdot\vec v = \frac{P_{k} - P_c}{\lVert P_k - P_c\rVert}\cdot\vec v
+$$
 
 **Faloff 权重**：随着采样距离增大，样本从全权重降到零，过渡区间为 $[R-fR,\ R]$：
 
-$$w = \mathrm{saturate}\!\left(\frac{R - \|P_k - P_c\|}{f\cdot R}\right)$$
+$$
+w = \mathrm{saturate}\!\left(\frac{R - \|P_k - P_c\|}{f\cdot R}\right)
+$$
 
 其中 $R$ = `_SampleRadius`，$f$ = `_FalloffRange`。权重对 `shc` 和低地平线角做 lerp 即可拾升地平线：
 
@@ -116,7 +135,9 @@ horizonCos1 = max(horizonCos1, cos(n - HALF_PI + _HorizonBias));
 
 **Horizon 角 clamp + 解析积分**：$h_0 = n + \mathrm{clamp}(h_0-n,\ -\pi/2,\ \pi/2)$（同理 $h_1$），然后套用闭式余弦积分公式——GTAO 论文 interior cosine integral：
 
-$$V_{slice} = \lVert\vec n_\perp\rVert\cdot\frac{\cos n + 2h\sin n - \cos(2h - n)}{4}\Big|_{h=h_0,h_1}$$
+$$
+V_{slice} = \lVert\vec n_\perp\rVert\cdot\frac{\cos n + 2h\sin n - \cos(2h - n)}{4}\Big|_{h=h_0,h_1}
+$$
 
 最终可见度对切片取均值并 clamp：
 ```hlsl
@@ -145,9 +166,11 @@ GTAO 输出的 `visibility` 是单次遮蔽率。当 visibility = 1，完全未�
 
 **McGuire 等人的多项式拟合**（"A Panorama of Ambient Occlusion"）给出了从单次 AO + albedo 近似多重反弹的闭式：已知可见度 $x$ 和表面反照率 $\rho$，多重反弹后的可见度 $f(x,\rho)$ 可通过三阶有理多项式拟合为 $f(x) = \max(x,\ ((x\cdot\vec a + \vec b)\cdot x + \vec c)\cdot x)$，其中系数 $(\vec a,\vec b,\vec c)$ 由 albedo 线性回归得出：
 
-$$\vec a = 2.0404\,\rho - 0.3324,\qquad
+$$
+\vec a = 2.0404\,\rho - 0.3324,\qquad
 \vec b = -4.7951\,\rho + 0.6417,\qquad
-\vec c = 2.7552\,\rho + 0.6903$$
+\vec c = 2.7552\,\rho + 0.6903
+$$
 
 这个多项式 $f(x)$ 的含义是"考虑了多次反弹后被观测到的可见度"。它在 $x$ 较小时明显抬升，把 $f(x)$ 除以原始 $x$（即 `mbAO / max(ao, 0.08)`），得到的就是颜色恢复系数（≥1，遮蔽越深恢复越强）。
 
@@ -185,7 +208,7 @@ Multi-Bounce 在 `GTAOCompositePass` 的 `Frag` 中位于 SSDO bounce **之后**
 DO的逻辑更接近Path Tracing，从出发点开始迭代。模拟光线从附近表面反弹后的**颜色溢出**（Color Bleeding），不仅变暗，还能看到颜色。 
 - 从这种逻辑上讲：AO的间接光照来源于远处(环境光)，DO的间接光照来源于近处的反射;我们更关注间接反射部分光照的亮度，将其被遮挡部分面对应ShadingPoint的贡献积分加和
 ![](https://oss.kiiye9697.cn/20260420164830248.webp)
->**SSDO效果常被集成优化**。虽然直接提及"SSDO"的情况变少
+>**SSDO效果常被集成优化**。虽然直接提及“SSDO”的情况变少
 >但它的核心思想——在屏幕空间内模拟间接光（颜色溢出）
 >已经被集成到更高级的全局光照解决方案中。许多游戏和引擎的综合光照系统，就包含了类似SSDO的优化，本showcase中为了将加法补偿ao区域的颜色值回复，在对应的cutain前布置对应颜色的点光源做lighting来进行对应的效果反馈。
 
@@ -654,3 +677,4 @@ float weight      = depthWeight * normalWeight * sampleOccl;
 2. **Intel, Anton Sochenov et al.** "XeGTAO — Ground Truth Ambient Occlusion." *Intel Game Tech*. — 工业级开源参考（Hilbert+R2、Horizon Bias）。 [GitHub](https://github.com/GameTechDev/XeGTAO)
 3. **Morgan McGuire et al.** "A Panorama of Ambient Occlusion / Polynomial Multi-Bounce Approximation." — §3.2 Multi-Bounce 多项式拟合来源。
 4. **Unity Technologies.** "URP Scriptable Renderer Features & Screen Space Ambient Occlusion." *Unity Manual*. — `_ScreenSpaceOcclusionTexture`、`AfterRenderingGbuffer` 集成依据。
+
