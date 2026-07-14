@@ -1,6 +1,6 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
-import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume";
+import { portfolioHighlights, profile } from "../lib/resume";
 ---
 
 <section class="page-section">
@@ -14,26 +14,8 @@ import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume"
     <div>
       <span class="card-label">PDF Portfolio</span>
       <h3>PDF 版本作品集</h3>
-      <p>完整图文版本，集中展示当前技术美术与图形方向材料。</p>
     </div>
     <a class="button gold" href={profile.portfolioPdf} target="_blank" rel="noreferrer">查看 PDF</a>
-  </div>
-
-  <div class="project-grid compact-grid">
-    {portfolioSceneSets.map((set) => (
-      <article class="project-card scene-set-card reveal">
-        <div>
-          <span>{set.meta}</span>
-          <h3>{set.title}</h3>
-          <p>{set.description}</p>
-          <div class="tag-row">
-            <span>Reserved</span>
-            <span>Coming later</span>
-          </div>
-          <p class="placeholder-hint">建议补充：封面图 / 过程图 / 一句话亮点 / 视频链接</p>
-        </div>
-      </article>
-    ))}
   </div>
 
   <div class="list-stack">
