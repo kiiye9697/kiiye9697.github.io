@@ -18,6 +18,16 @@ import { portfolioHighlights, profile } from "../lib/resume";
     <a class="button gold" href={profile.portfolioPdf} target="_blank" rel="noreferrer">查看 PDF</a>
   </div>
 
+  <a class="portfolio-showcase reveal" href="/projects/classic-sponza-urp/">
+    <img src="https://kiiyeblog.oss-cn-beijing.aliyuncs.com/SponzaShowcase.png" alt="Classic Sponza URP" loading="lazy" />
+    <div>
+      <span class="card-label">Scene Set 01</span>
+      <h3>Classic Sponza URP 渲染管线扩展</h3>
+      <p>GTAO、SSR、TAA、体积光、Bloom、高度雾 6 个渲染特性。</p>
+    </div>
+    <span aria-hidden="true">↗</span>
+  </a>
+
   <div class="list-stack">
     {portfolioHighlights.map((item) => (
       <a class="list-row reveal" href={item.href}>
