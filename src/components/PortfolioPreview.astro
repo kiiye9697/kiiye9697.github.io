@@ -1,13 +1,13 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
-import { portfolioHighlights, profile } from "../lib/resume";
+import { profile } from "../lib/resume";
 ---
 
 <section class="page-section">
   <SectionHeader
     eyebrow="Portfolio"
     title="作品集"
-    description="作品集 PDF 与项目入口。"
+    description=""
   />
 
   <div class="portfolio-band reveal">
@@ -28,16 +28,12 @@ import { portfolioHighlights, profile } from "../lib/resume";
     <span aria-hidden="true">↗</span>
   </a>
 
-  <div class="list-stack">
-    {portfolioHighlights.map((item) => (
-      <a class="list-row reveal" href={item.href}>
-        <div>
-          <span class="card-label">Portfolio Link</span>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </div>
-        <span aria-hidden="true">↗</span>
-      </a>
-    ))}
-  </div>
+  <a class="portfolio-showcase reveal" href="/projects/">
+    <div>
+      <span class="card-label">Scene Set 02</span>
+      <h3>Unity NPR 项目</h3>
+      <p>非真实感渲染 showcase，待补充。</p>
+    </div>
+    <span aria-hidden="true">↗</span>
+  </a>
 </section>

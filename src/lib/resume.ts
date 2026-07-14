@@ -223,6 +223,60 @@ export const activeProjects = [
       { label: "返回项目列表", href: "/projects/#research" },
     ],
   },
+  {
+    slug: "deepshield",
+    category: "research",
+    eyebrow: "AI",
+    status: "Completed",
+    title: "DeepShield — 深度伪造检测平台",
+    summary: "基于深度学习的图像/视频伪造检测可视化平台。",
+    cover: "/images/portfolio/portfolio-vision.svg",
+    tags: ["AI", "Detection", "Deep Learning", "HuggingFace"],
+    highlights: [
+      "基于深度学习的伪造检测模型。",
+      "HuggingFace Spaces 在线演示平台。",
+    ],
+    links: [
+      { label: "在线演示", href: "https://huggingface.co/spaces/kiiye/deepshield" },
+      { label: "返回项目列表", href: "/projects/#research" },
+    ],
+  },
+  {
+    slug: "huaqi",
+    category: "research",
+    eyebrow: "Visualization",
+    status: "Completed",
+    title: "HuaQi — 波动率可视化与风险预测系统",
+    summary: "金融波动率可视化与风险预测的交互式平台。",
+    cover: "/images/portfolio/portfolio-vision.svg",
+    tags: ["Visualization", "Finance", "HuggingFace"],
+    highlights: [
+      "波动率可视化与风险预测。",
+      "HuggingFace Spaces 在线演示平台。",
+    ],
+    links: [
+      { label: "在线演示", href: "https://huggingface.co/spaces/kiiye/HuaQi" },
+      { label: "返回项目列表", href: "/projects/#research" },
+    ],
+  },
+  {
+    slug: "liner-backwards",
+    category: "research",
+    eyebrow: "Visualization",
+    status: "Completed",
+    title: "LinerBackwards — 线性模型反向传播可视化",
+    summary: "线性模型反向传播过程的交互式可视化工具。",
+    cover: "/images/portfolio/portfolio-vision.svg",
+    tags: ["Visualization", "Education", "HuggingFace"],
+    highlights: [
+      "线性模型反向传播过程可视化。",
+      "HuggingFace Spaces 在线演示平台。",
+    ],
+    links: [
+      { label: "在线演示", href: "https://huggingface.co/spaces/kiiye/LinerBackwards" },
+      { label: "返回项目列表", href: "/projects/#research" },
+    ],
+  },
 ];
 
 export const siteConfig = {
