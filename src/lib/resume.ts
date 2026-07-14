@@ -182,6 +182,7 @@ export const activeProjects = [
     ],
     techPosts: [
       { title: "Unity URP：GTAO实现（Plus：Multi-Bounce&SSDO）", href: "/writing/24-gtao-implementation/" },
+      { title: "Unity URP：SSR 实现", href: "/writing/25-ssr-implementation/" },
     ],
   },
   {
