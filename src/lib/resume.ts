@@ -184,6 +184,9 @@ export const activeProjects = [
       { title: "Unity URP：GTAO实现（Plus：Multi-Bounce&SSDO）", href: "/writing/24-gtao-implementation/" },
       { title: "Unity URP：SSR 实现", href: "/writing/25-ssr-implementation/" },
       { title: "Unity URP：高度雾实现", href: "/writing/26-height-fog-implementation/" },
+      { title: "Unity URP：体积光实现", href: "/writing/27-volumetric-light-implementation/" },
+      { title: "Unity URP：Bloom实现", href: "/writing/28-bloom-implementation/" },
+      { title: "Unity URP：TAA实现", href: "/writing/29-taa-implementation/" },
     ],
   },
   {
