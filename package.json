@@ -4,17 +4,35 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "note:publish": "node --env-file-if-exists=.env.local scripts/publish-note.mjs",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:site": "playwright test"
   },
   "dependencies": {
+    "@fontsource-variable/noto-sans-sc": "^5.3.0",
+    "@fontsource/barlow": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@lucide/astro": "^1.46.0",
+    "ali-oss": "^6.23.0",
     "astro": "^5.0.0",
+    "dompurify": "^3.4.15",
+    "fflate": "^0.8.3",
+    "js-yaml": "^5.4.2",
     "katex": "^0.17.0",
+    "marked": "^18.0.13",
     "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0"
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "simplex-noise": "^4.0.3",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "typescript": "^5"
   }
 }

@@ -18,7 +18,7 @@ import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume"
         <h1>PDF 版本作品集</h1>
         <p>集中整理当前技术美术、图形学和项目实践材料，适合作为投递与交流时的完整版本入口。</p>
         <div class="hero-actions compact">
-          <a class="button gold" href={profile.portfolioPdf} target="_blank" rel="noreferrer">打开作品集 PDF</a>
+          <a class="button gold" href={profile.portfolioPdf} download="Sun-Haoran-Portfolio.pdf">下载作品集 PDF</a>
           <a class="button ghost" href="/projects/">进入项目分类</a>
         </div>
       </div>
@@ -56,7 +56,7 @@ import { portfolioHighlights, portfolioSceneSets, profile } from "../lib/resume"
     <section class="page-section">
       <div class="list-stack">
         {portfolioHighlights.map((item) => (
-          <a class="list-row reveal" href={item.href}>
+          <a class="list-row reveal" href={item.href} download={item.href.endsWith('.pdf') ? 'Sun-Haoran-Portfolio.pdf' : undefined}>
             <div>
               <span class="card-label">Portfolio</span>
               <h3>{item.title}</h3>

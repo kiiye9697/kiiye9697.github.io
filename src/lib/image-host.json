@@ -1,0 +1,6 @@
+{
+  "remoteBase": "https://kiiyeblog.oss-cn-beijing.aliyuncs.com/notes/",
+  "localBase": "/notes/",
+  "bucket": "kiiyeblog",
+  "region": "oss-cn-beijing"
+}

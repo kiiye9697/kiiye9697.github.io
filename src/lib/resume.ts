@@ -17,7 +17,7 @@ export const profile = {
   homepage: "https://kiiye9697.github.io",
   zhihu: "https://www.zhihu.com/people/he-xian-wen-lu-xian-ying",
   github: "https://github.com/kiiye9697",
-  resumePdf: "/resume/",
+  resumePdf: "/pdfs/resume.pdf",
   resumePdfDirect: "/pdfs/resume.pdf",
   portfolioPdf: "/pdfs/portfolio.pdf",
 };
@@ -28,6 +28,7 @@ export const navSections = [
   { id: "resume", label: "Resume", href: "/resume/" },
   { id: "portfolio", label: "Portfolio", href: "/portfolio/" },
   { id: "articles", label: "Writing", href: "/writing/" },
+  { id: "editor", label: "Notes", href: "/editor/" },
 ];
 
 export const education: {

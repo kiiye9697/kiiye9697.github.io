@@ -1,10 +1,19 @@
 ---
 import "../styles/global.css";
+import "../styles/matchday.css";
+import "../styles/orbital.css";
+import '@fontsource/barlow/latin-400.css';
+import '@fontsource/barlow/latin-500.css';
+import '@fontsource/barlow/latin-600.css';
+import '@fontsource-variable/noto-sans-sc';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import PageTransition from '../components/PageTransition.astro';
+import Atmosphere from '../components/Atmosphere.astro';
 import "katex/dist/katex.min.css";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import SplashIntro from "../components/SplashIntro.astro";
 import { profile } from "../lib/resume";
+import imageFallbackConfig from '../lib/image-host.json';
 
 interface Props {
   title?: string;
@@ -15,6 +24,7 @@ const {
   title = `${profile.name} | ${profile.title}`,
   description = profile.subtitle,
 } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -25,14 +35,42 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/window.svg" />
     <title>{title}</title>
+    <Atmosphere />
+    <PageTransition />
   </head>
-  <body>
+  <body class:list={{ 'home-page': Astro.url.pathname === '/' }}>
     <div class="site-bg" aria-hidden="true"></div>
-    <SplashIntro />
+    <div class="reading-progress" aria-hidden="true"></div>
     <SiteNav />
     <main>
       <slot />
     </main>
     <SiteFooter />
+    <script>
+      import '../scripts/motion';
+    </script>
+    <script define:vars={{ imageFallbackConfig }}>
+      const fallbackImages = () => {
+        const { remoteBase, localBase } = imageFallbackConfig;
+        if (!remoteBase || !localBase) return;
+
+        document.querySelectorAll("img").forEach((image) => {
+          if (!(image instanceof HTMLImageElement) || image.dataset.fallbackReady) return;
+          image.dataset.fallbackReady = "true";
+          const fallback = () => {
+            if (image.dataset.fallbackTried) return;
+            const source = image.currentSrc || image.src;
+            if (!source.startsWith(remoteBase)) return;
+            image.dataset.fallbackTried = "true";
+            image.src = `${localBase}${source.slice(remoteBase.length)}`;
+          };
+          image.addEventListener("error", fallback);
+          if (image.complete && image.naturalWidth === 0) fallback();
+        });
+      };
+
+      fallbackImages();
+      document.addEventListener("astro:page-load", fallbackImages);
+    </script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-import { profile, writingLinks } from "../lib/resume";
+import { profile } from "../lib/resume";
 import { getWritingSlug } from "../lib/slugs";
 
 const notes = (await getCollection("writing")).sort(
@@ -30,20 +30,15 @@ const courseGroups = notesWithCover.reduce<Record<string, typeof notesWithCover>
       description=""
     />
 
-    <section class="page-section">
-      <div class="writing-overview">
-        {writingLinks.map((item) => (
-          <a class="panel writing-link-card" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>
-            <span class="card-label">{item.meta}</span>
-            <h3>{item.title}</h3>
-            <p>{item.excerpt}</p>
-          </a>
-        ))}
-      </div>
-    </section>
+    <div class="writing-filters">
+      <input type="search" aria-label="搜索笔记" placeholder="搜索笔记" data-note-search />
+      <select aria-label="笔记分类" data-note-category><option value="">全部分类</option>{Object.keys(courseGroups).map(course => <option>{course}</option>)}</select>
+      <a href="/editor/">写笔记</a>
+    </div>
+    <p data-no-results hidden>没有匹配的笔记。</p>
 
     {Object.entries(courseGroups).map(([course, items]) => (
-      <section class="page-section writing-course-section">
+      <section class="page-section writing-course-section" data-note-group={course}>
         <SectionHeader
           eyebrow="Course Notes"
           title={course}
@@ -51,7 +46,7 @@ const courseGroups = notesWithCover.reduce<Record<string, typeof notesWithCover>
         />
         <div class="article-grid">
           {items.map(({ note, cover }) => (
-            <a class="article-card reveal" href={`/writing/${getWritingSlug(note.id)}/`}>
+            <a class="article-card reveal" data-note-title={note.data.title} href={`/writing/${getWritingSlug(note.id)}/`}>
               {cover && <img src={cover} alt="" loading="lazy" />}
               <span class="card-label">{note.data.course}</span>
               <h3>{note.data.title}</h3>
@@ -62,3 +57,20 @@ const courseGroups = notesWithCover.reduce<Record<string, typeof notesWithCover>
     ))}
   </div>
 </BaseLayout>
+<script>
+  const search = document.querySelector<HTMLInputElement>('[data-note-search]')!;
+  const category = document.querySelector<HTMLSelectElement>('[data-note-category]')!;
+  function filter() {
+    let total = 0;
+    document.querySelectorAll<HTMLElement>('[data-note-group]').forEach(group => {
+      let count = 0;
+      group.querySelectorAll<HTMLElement>('[data-note-title]').forEach(note => {
+        note.hidden = Boolean((category.value && category.value !== group.dataset.noteGroup) || !note.dataset.noteTitle!.toLowerCase().includes(search.value.trim().toLowerCase()));
+        if (!note.hidden) count++;
+      });
+      group.hidden = count === 0; total += count;
+    });
+    document.querySelector<HTMLElement>('[data-no-results]')!.hidden = total !== 0;
+  }
+  search.addEventListener('input',filter); category.addEventListener('change',filter);
+</script>

@@ -1,0 +1,292 @@
+:root {
+  --glass-blur: 14px;
+  --glass-alpha: 0.72;
+  --glass-rgb: 17 34 37;
+  --glass-edge: 0.2;
+  --scene-light: 0.92;
+  --ink: #eaf0ed;
+  --muted: #a5b3b0;
+  --line: #33413f;
+  --gold: #9cc9bd;
+  --gold-strong: #b0d8cb;
+  --font-body: "Barlow", "Noto Sans SC Variable", "Microsoft YaHei", sans-serif;
+  --font-display: "Barlow", "Noto Sans SC Variable", sans-serif;
+}
+body {
+  background: #111819;
+}
+::selection {
+  background: #3b736a;
+  color: #fff;
+}
+.site-nav {
+  padding-block: 18px;
+  background: rgb(var(--glass-rgb) / var(--glass-alpha));
+  border-bottom: 1px solid rgb(231 249 243 / var(--glass-edge));
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.12);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.12);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.12);
+}
+.home-page main {
+  margin-top: -79px;
+}
+.brand strong {
+  font-weight: 500;
+}
+.brand small {
+  color: #c2ceca;
+}
+.nav-links a {
+  padding: 8px 12px;
+  color: #cad5d1;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+.nav-links a:hover {
+  color: #fff;
+  background: rgb(228 245 237 / 0.06);
+}
+.nav-links a[aria-current="page"] {
+  color: #fff;
+  box-shadow: inset 0 -1px #c3e5d7;
+}
+.nav-cta {
+  background: rgb(223 242 232 / 0.09);
+  border: 1px solid rgb(222 247 234 / 0.36);
+  font-weight: 500;
+}
+.reading-progress {
+  height: 1px;
+  background: #b6dace;
+}
+.matchday-hero {
+  height: min(800px, calc(100svh - 96px));
+  min-height: 510px;
+  padding: 120px 6% 44px;
+  background: #264445;
+}
+.matchday-photo {
+  inset: 0;
+  height: 100%;
+  object-position: var(--scene-position, 65%) 48%;
+  filter: brightness(var(--scene-light)) saturate(var(--scene-saturation, 1));
+}
+.matchday-hero::after {
+  inset: 62% 0 0;
+  background: linear-gradient(transparent, rgb(8 24 27 / 0.64));
+}
+.matchday-title h1 {
+  font-family: var(--font-display);
+  font-size: 78px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 23px;
+}
+.matchday-bottom {
+  border-top: 1px solid rgb(229 248 241 / 0.32);
+  padding-top: 20px;
+}
+.matchday-bottom p {
+  font-weight: 400;
+}
+.hero-link {
+  border: 1px solid rgb(228 245 239 / 0.32);
+  border-radius: 50%;
+  background: rgb(var(--glass-rgb) / 0.32);
+  backdrop-filter: blur(var(--glass-blur));
+}
+.editorial-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+.editorial-heading h2,
+.notebook-intro h2,
+.about-line h2 {
+  font-size: 28px;
+  font-weight: 400;
+}
+.project-image {
+  aspect-ratio: 1.9;
+}
+.project-caption h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+}
+.project-index > a {
+  border-color: #344240;
+  transition: color 180ms ease;
+}
+.project-index > a:hover {
+  color: #c3e4d9;
+}
+.notebook-band {
+  background: #e4ebe7;
+  color: #243d38;
+}
+.note-index > a {
+  border-color: #becdc5;
+}
+.note-index > a:last-child {
+  border-color: #becdc5;
+}
+.note-index > a:hover {
+  color: #306b5d;
+}
+.note-index h3 {
+  font-weight: 400;
+}
+.notebook-band .edition {
+  color: #60766d;
+}
+.article-toc {
+  background: rgb(var(--glass-rgb) / var(--glass-alpha));
+  border: 1px solid rgb(231 249 243 / var(--glass-edge));
+  backdrop-filter: blur(var(--glass-blur));
+}
+.article-content :is(h1, h2, h3, h4) {
+  color: #dce9e2;
+}
+.article-content img {
+  box-shadow: none;
+  border-color: var(--line);
+  border-radius: 2px;
+}
+.article-content :is(pre, blockquote) {
+  border-color: var(--line);
+  background: #172321;
+}
+.article-content :is(h2, td, th) {
+  border-color: var(--line);
+}
+.editor-preview :is(h1, h2, h3, h4) {
+  color: #24372b;
+}
+.editor-preview pre {
+  background: #e3e7e2;
+}
+.button.gold,
+.button.primary {
+  background: #b4d7c8;
+  border-color: #b4d7c8;
+  color: #152b23;
+}
+.editor-pane textarea:focus {
+  border-color: #9fcbbc;
+  box-shadow: 0 0 0 2px rgb(159 203 188 / 0.12);
+}
+.will-enter {
+  transition-duration: 450ms;
+}
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  z-index: 2;
+  animation: 650ms linear both snapshot-hold;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+::view-transition-new(root) {
+  z-index: 1;
+  animation: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  height: 100%;
+  object-fit: none;
+  object-position: top left;
+}
+::view-transition-group(root) { animation: none; }
+::view-transition { pointer-events: none; }
+@keyframes snapshot-hold { from, to { opacity: 1; } }
+pre, code, kbd, .editor-pane textarea {
+  font-family: "IBM Plex Mono", "Noto Sans SC Variable", monospace;
+}
+.photo-credit { font-size: 11px; line-height: 1.8; }
+.photo-credit a { text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .site-nav,
+  .article-toc {
+    background: #1b292a;
+  }
+}
+@media (min-width: 1600px) {
+  .matchday-title h1 {
+    font-size: 92px;
+  }
+}
+@media (max-width: 1050px) {
+  .home-page main {
+    margin-top: -72px;
+  }
+  .matchday-title h1 {
+    font-size: 68px;
+  }
+}
+@media (max-width: 650px) {
+  .home-page main {
+    margin-top: -104px;
+  }
+  .site-nav {
+    padding-block: 12px;
+  }
+  .nav-links a {
+    padding: 7px 5px;
+  }
+  .matchday-hero {
+    height: calc(100svh - 96px);
+    min-height: 480px;
+    padding: 125px 6% 30px;
+  }
+  .matchday-photo {
+    height: 100%;
+    top: 0;
+    object-position: var(--scene-position, 65%) center;
+  }
+  .matchday-title h1 {
+    font-size: 46px;
+    margin-bottom: 22px;
+  }
+  .matchday-bottom {
+    padding-top: 16px;
+  }
+  .hero-link {
+    width: 40px;
+    height: 40px;
+  }
+  .editorial-section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  .editorial-heading h2,
+  .notebook-intro h2,
+  .about-line h2 {
+    font-size: 25px;
+  }
+  .project-caption h3 {
+    font-size: 26px;
+  }
+  .project-image {
+    aspect-ratio: 1.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-nav,
+  .article-toc,
+  .hero-link {
+    background: #1b292a;
+    backdrop-filter: none;
+  }
+}

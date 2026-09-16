@@ -1,18 +1,30 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import ResumePreview from "../components/ResumePreview.astro";
-import WritingPreview from "../components/WritingPreview.astro";
-import ProjectsPreview from "../components/ProjectsPreview.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
+import { getCollection } from 'astro:content';
+import { getWritingSlug } from '../lib/slugs';
+import { activeProjects, profile } from '../lib/resume';
+import { ArrowUpRight } from '@lucide/astro';
+const project = activeProjects[0];
+const notes = (await getCollection('writing')).sort((a,b) => b.data.order-a.data.order).slice(0,5);
 ---
-
 <BaseLayout>
-  <div class="page-shell">
+  <div class="matchday-home">
     <Hero />
-    <ResumePreview />
-    <WritingPreview />
-    <PortfolioPreview />
-    <ProjectsPreview />
+    <section class="editorial-section selected-work" id="selected">
+      <div class="editorial-heading" data-enter><h2>作品</h2><a href="/projects/">全部项目 <ArrowUpRight size={18}/></a></div>
+      <a class="featured-project" href={`/projects/${project.slug}/`} data-enter>
+        <div class="project-image"><img src={project.cover} alt="Classic Sponza URP 渲染结果" loading="lazy" /></div>
+        <div class="project-caption"><h3>Classic Sponza</h3><p>Unity URP · 渲染管线扩展</p><ArrowUpRight size={22}/></div>
+      </a>
+      <div class="project-index">{activeProjects.slice(1,4).map(p => <a href={`/projects/${p.slug}/`} data-enter><span class="edition">{p.eyebrow}</span><h3>{p.title}</h3><ArrowUpRight size={20}/></a>)}</div>
+    </section>
+    <section class="notebook-band">
+      <div class="editorial-section notebook-layout">
+        <div class="notebook-intro" data-enter><h2>笔记</h2><a href="/writing/">全部文章 <ArrowUpRight size={18}/></a></div>
+        <div class="note-index">{notes.map(n => <a href={`/writing/${getWritingSlug(n.id)}/`} data-enter><div><span class="edition">{n.data.course}</span><h3>{n.data.title}</h3></div><ArrowUpRight size={20}/></a>)}</div>
+      </div>
+    </section>
+    <section class="editorial-section about-line" data-enter><h2>孙浩然</h2><div><p>{profile.summary}</p><p>大连理工大学 · 计算机科学与技术</p><a href="/resume/">简历 <ArrowUpRight size={18}/></a></div></section>
   </div>
 </BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Upload, ImagePlus, Download, Copy, FilePlus2, Package } from '@lucide/astro';
+import { getCollection } from 'astro:content';
+const categories = [...new Set(['Rendering Notes', 'Project Log', 'Research', ...(await getCollection('writing')).map(note => note.data.course)])];
+---
+<BaseLayout title="笔记工作台 | Kiiye9697">
+  <div class="page-shell editor-shell">
+    <header class="section-header"><span class="edition">NOTEBOOK / WORKSPACE</span><h1>笔记工作台</h1></header>
+    <section class="editor-workbench" data-editor>
+      <div class="editor-toolbar" aria-label="编辑器工具栏">
+        <label class="button ghost image-import"><Upload size={17}/> 导入文章<input data-md-input type="file" accept=".md,.markdown,.zip" /></label>
+        <label class="button ghost image-import"><ImagePlus size={17}/> 添加图片<input data-image-input type="file" accept="image/*" multiple /></label>
+        <button class="button ghost" data-new title="新建笔记" aria-label="新建笔记"><FilePlus2 size={18}/></button>
+        <button class="button ghost" data-copy title="复制 Markdown" aria-label="复制 Markdown"><Copy size={18}/></button>
+        <button class="button ghost" data-download title="下载 Markdown" aria-label="下载 Markdown"><Download size={18}/></button>
+        <button class="button primary" data-export><Package size={17}/> 导出发布包</button>
+      </div>
+      <div class="editor-meta">
+        <label><span>标题</span><input data-title value="新笔记" /></label>
+        <label><span>分类</span><input data-course list="note-categories" value="Rendering Notes" /><datalist id="note-categories">{categories.map(category => <option>{category}</option>)}</datalist></label>
+        <label><span>来源</span><input data-source placeholder="课程、论文或项目" /></label>
+      </div>
+      <p class="editor-status" data-status role="status">正在恢复草稿…</p>
+      <div class="editor-grid">
+        <label class="editor-pane"><span class="card-label">MARKDOWN</span><textarea data-markdown spellcheck="false" aria-label="Markdown 正文"># 新笔记
+</textarea></label>
+        <section class="editor-preview-pane"><span class="card-label">PREVIEW</span><div class="article-content editor-preview" data-preview></div></section>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+<script>
+  import '../scripts/editor';
+</script>
