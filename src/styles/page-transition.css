@@ -1,0 +1,13 @@
+/* Higher specificity also replaces the legacy 650 ms snapshot hold. */
+html::view-transition-old(root) {
+  animation: 720ms linear both film-snapshot-hold;
+  transform-origin: center;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  backface-visibility: hidden;
+}
+html::view-transition-new(root) { animation: none; }
+@keyframes film-snapshot-hold { from, to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  html::view-transition-old(root), html::view-transition-new(root) { animation: none; }
+}

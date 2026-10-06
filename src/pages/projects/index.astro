@@ -1,63 +1,33 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
-import { activeProjects, profile, projectCategories } from "../../lib/resume";
+import GalleryCollection from "../../components/GalleryCollection.astro";
+import { profile } from "../../lib/resume";
 ---
 
-<BaseLayout title={`项目 | ${profile.name}`} description="按开发项目、学校作业课设、AI work 和论文工作分类的项目库">
-  <div class="page-shell">
-    <SectionHeader
-      eyebrow="Projects"
-      title="项目"
-      description="游戏项目、作品集用、论文以及探索/研究项目。"
-    />
-
-    <div class="category-grid">
-      {projectCategories.map((category) => (
-        <a class="category-card reveal" href={`#${category.id}`}>
-          <span class="card-label">{category.kicker}</span>
-          <h3>{category.label}</h3>
-          <p>{category.description}</p>
+<BaseLayout
+  gallery
+  title={`项目 | ${profile.name}`}
+  description="渲染作品、研究与交互系统的完整项目目录"
+>
+  <div class="gallery-shell">
+    <header class="gallery-page-heading">
+      <span class="gallery-micro">PROJECT INDEX / 项目目录</span>
+      <h1>
+        Ideas into
+        <br />
+        <i>existence.</i>
+      </h1>
+      <div>
+        <p>
+          从渲染管线到交互系统，
+          <br />
+          记录想法被实现的过程。
+        </p>
+        <a class="gallery-text-link" href="#research">
+          研究与系统 ↓
         </a>
-      ))}
-    </div>
-
-    {projectCategories.map((category) => {
-      const group = activeProjects.filter((project) => project.category === category.id);
-      return (
-        <section class="page-section project-category-section" id={category.id}>
-          <SectionHeader
-            eyebrow={category.kicker}
-            title={category.label}
-            description={category.description}
-          />
-          <div class="project-grid">
-            {group.length > 0 ? (
-              group.map((project) => (
-                <a class="project-card reveal" href={`/projects/${project.slug}/`}>
-                  <img src={project.cover} alt="" loading="lazy" />
-                  <div>
-                    <span>{project.eyebrow} · {project.status}</span>
-                    <h3>{project.title}</h3>
-                    <p>{project.summary}</p>
-                    <div class="tag-row">
-                      {project.tags.map((tag) => <span>{tag}</span>)}
-                    </div>
-                  </div>
-                </a>
-              ))
-            ) : (
-              <article class="project-card scene-set-card reveal">
-                <div>
-                  <span>{category.kicker}</span>
-                  <h3>内容整理中</h3>
-                  <p>这一栏先保留结构，等项目材料、截图和说明确认后再放入公开展示。</p>
-                </div>
-              </article>
-            )}
-          </div>
-        </section>
-      );
-    })}
+      </div>
+    </header>
+    <GalleryCollection />
   </div>
 </BaseLayout>

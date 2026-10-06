@@ -1,0 +1,90 @@
+---
+const { label = "LIGHT / FORM / POSSIBILITY" } = Astro.props;
+---
+
+<div
+  class="prism-exhibit"
+  data-prism
+  data-ambient
+  aria-label="抽象金属折带装置：光与形的研究"
+>
+  <div class="exhibit-register" aria-hidden="true">
+    <span>FIG. / S</span>
+    <span>FORM STUDY</span>
+  </div>
+  <div class="prism-stage" aria-hidden="true">
+    <svg class="foil-sculpture" viewBox="0 0 600 620" fill="none">
+      <defs>
+        <linearGradient
+          id="foil-front"
+          x1="120"
+          y1="70"
+          x2="485"
+          y2="520"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#111311" />
+          <stop offset=".12" stop-color="#fafbf3" />
+          <stop offset=".2" stop-color="#6d716e" />
+          <stop offset=".25" stop-color="#faffff" />
+          <stop offset=".38" stop-color="#202521" />
+          <stop offset=".46" stop-color="#a2a8a3" />
+          <stop offset=".49" stop-color="#fff" />
+          <stop offset=".56" stop-color="#343b35" />
+          <stop offset=".71" stop-color="#f5f7ef" />
+          <stop offset=".76" stop-color="#737c70" />
+          <stop offset=".84" stop-color="#171b17" />
+          <stop offset=".93" stop-color="#ecefe4" />
+          <stop offset="1" stop-color="#6c7169" />
+        </linearGradient>
+        <linearGradient
+          id="foil-back"
+          x1="200"
+          y1="180"
+          x2="410"
+          y2="490"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#121411" />
+          <stop offset=".45" stop-color="#777e73" />
+          <stop offset=".5" stop-color="#ecf4d6" />
+          <stop offset=".54" stop-color="#232a1b" />
+          <stop offset="1" stop-color="#b1b7a8" />
+        </linearGradient>
+      </defs>
+      <g class="foil-ribbon">
+        <path
+          d="M418 58C230 24 88 118 105 234C121 335 416 292 448 401C477 499 341 581 154 556L165 460C284 477 374 447 358 410C335 358 78 379 43 255C-2 95 194-18 418 58Z"
+          fill="url(#foil-back)"
+        />
+        <path
+          d="M418 58L459 144C307 91 169 139 179 200C190 266 438 239 489 367C548 516 350 632 154 556L165 460C286 510 437 448 396 389C349 321 111 360 81 245C45 108 243 12 418 58Z"
+          fill="url(#foil-front)"
+          stroke="#f7f8ee"
+          stroke-width="1.3"
+        />
+        <path
+          d="M459 144C307 91 169 139 179 200C190 266 438 239 489 367"
+          stroke="#fff"
+          stroke-opacity=".72"
+          stroke-width="2"
+        />
+        <path
+          d="M165 460C286 510 437 448 396 389"
+          stroke="#fff"
+          stroke-opacity=".8"
+          stroke-width="2"
+        />
+      </g>
+    </svg>
+  </div>
+  <div class="prism-caption">
+    <span>{label}</span>
+    <span>光的形状 ↗</span>
+  </div>
+</div>
+<script>
+  import "../scripts/gallery-motion";
+</script>
+
+

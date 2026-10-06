@@ -16,43 +16,38 @@ test("homepage desktop/mobile, motion and navigation", async ({ page }) => {
   ] as const) {
     await page.setViewportSize({ width, height });
     await page.goto("/");
-    await expect(page.locator(".matchday-photo")).toHaveJSProperty(
-      "naturalWidth",
-      2912,
-    );
-    await expect(page.locator("main h1")).toBeVisible();
-    await expect(page.locator('.anthem-track')).toHaveCount(0);
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
-    await page.locator(".featured-project").scrollIntoViewIfNeeded();
-    await expect(page.locator(".featured-project img")).toHaveJSProperty(
-      "complete",
-      true,
-    );
-    expect(
-      await page
-        .locator(".featured-project img")
-        .evaluate((e: HTMLImageElement) => e.naturalWidth),
-    ).toBeGreaterThan(0);
-    await page.locator(".about-line").scrollIntoViewIfNeeded();
+    await expect(page.locator(".home-intro h1")).toContainText("孙浩然");
+    await expect(page.locator(".home-intro")).toContainText("技术美术");
+    await expect(page.locator(".home-intro")).not.toContainText("SDF Baker");
+    await expect(page.locator(".anthem-track")).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const sections = await page.locator(".home-editorial > section").evaluateAll(elements =>
+      elements.map(element => element.id || element.className));
+    expect(sections).toEqual(["home-intro", "experience", "gallery", "articles"]);
+    const poster = page.locator(".home-intro .vortex-slot.is-active .vortex-poster");
+    await expect(poster).toHaveAttribute("src", /\/media\/experiment-.+-poster\.png$/);
+    expect(await poster.evaluate(async (element: HTMLImageElement) => {
+      await element.decode();
+      return element.naturalWidth;
+    })).toBeGreaterThan(0);
+    await expect(page.locator("[data-experiment-title]")).toHaveText(/^(TURBULENT PLUME|VORTEX COLLISION|VORTEX LEAPFROGGING)$/);
+    await expect(page.locator("[data-experiment-roll]")).toBeVisible();
+    await page.locator(".home-closing").scrollIntoViewIfNeeded();
     await page.evaluate(() => scrollTo(0, 0));
     await page.waitForTimeout(1100);
     await fs.mkdir(output, { recursive: true });
     await page.screenshot({
-      path: path.join(output, `home-${name}.png`),
+      path: path.join(output, `gallery-${name}.png`),
       fullPage: true,
     });
   }
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(page.locator(".matchday-title")).toHaveCSS(
+  await expect(page.locator(".home-intro h1")).toHaveCSS(
     "animation-name",
     "none",
   );
-  await page.locator(".featured-project").click();
-  await expect(page).toHaveURL(/projects\/classic-sponza-urp/);
+  await page.locator('.home-intro-links a[href="/writing/"]').click();
+  await expect(page).toHaveURL(/\/writing\/$/);
   expect(errors).toEqual([]);
 });
 
@@ -117,7 +112,11 @@ test("editor image persistence, safe Markdown and portable publish package", asy
   await page.locator("[data-markdown]").fill(current + "\n\n$E = mc^2$\n");
   await expect(page.locator("[data-preview] .katex")).toBeVisible();
   await page.setViewportSize({ width: 1440, height: 1000 });
-  const bounds = await page.evaluate(() => ({preview:document.querySelector('[data-preview]')!.getBoundingClientRect().bottom,footer:document.querySelector('.site-footer')!.getBoundingClientRect().top}));
+  const bounds = await page.evaluate(() => ({
+    preview: document.querySelector("[data-preview]")!.getBoundingClientRect()
+      .bottom,
+    footer: document.querySelector(".site-footer")!.getBoundingClientRect().top,
+  }));
   expect(bounds.preview).toBeLessThan(bounds.footer);
   await page.screenshot({
     path: path.join(output, "editor-desktop.png"),
@@ -139,7 +138,9 @@ test("notes search and categories", async ({ page }) => {
   await page.goto("/writing/");
   await page.locator("[data-note-search]").fill("GTAO");
   await expect(page.locator("[data-note-title]:visible")).toHaveCount(1);
-  await page.locator("[data-note-category]").selectOption("GAMES101 现代计算机图形学入门作业");
+  await page
+    .locator("[data-note-category]")
+    .selectOption("GAMES101 现代计算机图形学入门作业");
   await expect(page.locator("[data-no-results]")).toBeVisible();
   await page.locator("[data-note-search]").fill("");
   await expect(page.locator("[data-note-group]:visible")).toHaveCount(1);
@@ -167,7 +168,7 @@ test("remote image failure uses site-local backup", async ({ page }) => {
     await r.fulfill({
       response,
       body: (await response.text()).replace(
-        '</main>',
+        "</main>",
         '<img id="fallback-probe" src="https://kiiyeblog.oss-cn-beijing.aliyuncs.com/notes/check.jpg" alt="test" /></main>',
       ),
     });

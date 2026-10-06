@@ -1,0 +1,50 @@
+---
+import "../styles/glass-showcase.css";
+const exhibits = [
+  { title: "安菲尔德体育场", tag: "预留展位", mark: "PLACE / 001" },
+  { title: "上古卷轴：天际", tag: "预留展位", mark: "WORLD / 002" },
+  { title: "无尽空间2", tag: "预留展位", mark: "ORBIT / 003" },
+];
+---
+<div class="glass-showcase" data-glass-showcase>
+  <div class="glass-stage">
+    <div class="glass-cabinet">
+      {exhibits.map((item, i) => <article class="glass-panel" id={"glass-panel-" + i} style={"--panel-index:" + i} aria-labelledby={"glass-title-" + i}>
+        <button class="glass-open" type="button" data-index={i} aria-label={"展开" + item.title}>
+          <span class="glass-number">{item.mark}</span>
+          <span class="glass-art" aria-hidden="true">
+            {
+              <svg viewBox="0 0 300 300" fill="none">
+                {i === 0 ? <g><ellipse cx="150" cy="158" rx="108" ry="66" /><ellipse cx="150" cy="152" rx="86" ry="46" /><path d="M42 158v32q108 91 216 0v-32M64 181v34m24-23v34m31-29v35m32-33v35m32-37v33m30-45v31m23-46v30M100 147l51-20 49 24-49 24z" /></g> :
+                i === 1 ? <g><path d="m32 220 77-134 47 75 30-101 81 160H32Zm39 0 44-73 26 35 40-66 47 104M109 86l-7 56 19-5 35 24M186 60l-5 56 27-4" /><circle cx="91" cy="67" r="19" /></g> :
+                <g><circle cx="150" cy="150" r="59" /><ellipse cx="150" cy="150" rx="122" ry="35" transform="rotate(-32 150 150)" /><circle cx="248" cy="87" r="9" /><circle cx="51" cy="209" r="5" /><path d="M150 44v30m0 153v29M44 150h30m153 0h29" /></g>}
+              </svg>}
+          </span>
+          <span class="glass-caption"><strong id={"glass-title-" + i}>{item.title}</strong><span>{item.tag}</span></span>
+          <span class="glass-expand">查看展品 <span aria-hidden="true">↗</span></span>
+        </button>
+      </article>)}
+    </div>
+    <div class="glass-floor" aria-hidden="true"></div>
+  </div>
+  <div class="glass-controls" hidden>
+    <button type="button" class="glass-prev" aria-label="上一件展品">←</button>
+    <div class="glass-tabs" role="tablist" aria-label="选择展品">
+      {exhibits.map((item, i) => <button type="button" role="tab" aria-label={item.title} id={"glass-tab-" + i} aria-controls={"glass-panel-" + i} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1} data-index={i}>{String(i + 1).padStart(2, "0")}<span>{item.title}</span></button>)}
+    </div>
+    <button type="button" class="glass-next" aria-label="下一件展品">→</button>
+  </div>
+  <div class="glass-footnote"><span>GLASS / 点击当前展品展开</span><a href="/gallery/">地点与游戏画廊 ↗</a></div>
+  <dialog class="glass-dialog" aria-labelledby="glass-dialog-title">
+    <button class="glass-close" type="button" aria-label="关闭展品">关闭 <span aria-hidden="true">×</span></button>
+    <div class="glass-dialog-art"></div>
+    <div class="glass-dialog-copy"><span class="glass-dialog-tag"></span><h3 id="glass-dialog-title"></h3><p class="glass-dialog-description"></p></div>
+  </dialog>
+</div>
+<script>
+  import "../scripts/glass-showcase";
+</script>
+
+
+
+

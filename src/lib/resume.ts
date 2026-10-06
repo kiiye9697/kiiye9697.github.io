@@ -23,12 +23,11 @@ export const profile = {
 };
 
 export const navSections = [
-  { id: "home", label: "Home", href: "/" },
-  { id: "projects", label: "Projects", href: "/projects/" },
-  { id: "resume", label: "Resume", href: "/resume/" },
-  { id: "portfolio", label: "Portfolio", href: "/portfolio/" },
-  { id: "articles", label: "Writing", href: "/writing/" },
-  { id: "editor", label: "Notes", href: "/editor/" },
+  { id: "home", label: "首页", href: "/" },
+  { id: "portfolio", label: "作品", href: "/portfolio/" },
+  { id: "articles", label: "技术帖", href: "/writing/" },
+  { id: "gallery", label: "画廊", href: "/gallery/" },
+  { id: "echoes", label: "碎碎念", href: "/echoes/" },
 ];
 
 export const education: {

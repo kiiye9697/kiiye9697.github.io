@@ -29,7 +29,7 @@ Astro 会生成静态站点到 `dist/`，GitHub Pages workflow 会上传该目�
 - `projectCategories`：项目分类，目前分为开发项目、学校作业课设、AI work、论文工作。
 - `projects`：项目列表和项目详情页数据，新增项目时添加一条带 `slug` 的数据即可生成 `/projects/[slug]/`。
 
-简历后续 Markdown 化的草稿放在 `src/content/resume.md`。
+简历后续 Markdown 化的草稿放在 `docs/resume-draft.md`。
 
 ## 目录结构
 

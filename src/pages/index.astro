@@ -1,30 +1,118 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import { getCollection } from 'astro:content';
-import { getWritingSlug } from '../lib/slugs';
-import { activeProjects, profile } from '../lib/resume';
-import { ArrowUpRight } from '@lucide/astro';
-const project = activeProjects[0];
-const notes = (await getCollection('writing')).sort((a,b) => b.data.order-a.data.order).slice(0,5);
+import VortexShowcase from "../components/VortexShowcase.astro";
+import GlassShowcase from "../components/GlassShowcase.astro";
+import { getCollection } from "astro:content";
+import { getWritingSlug } from "../lib/slugs";
+import { education, experiences, profile, resumeSkills } from "../lib/resume";
+import "../styles/home-editorial.css";
+
+const notes = (await getCollection("writing"))
+  .sort((a, b) => b.data.order - a.data.order)
+  .slice(0, 3);
 ---
-<BaseLayout>
-  <div class="matchday-home">
-    <Hero />
-    <section class="editorial-section selected-work" id="selected">
-      <div class="editorial-heading" data-enter><h2>作品</h2><a href="/projects/">全部项目 <ArrowUpRight size={18}/></a></div>
-      <a class="featured-project" href={`/projects/${project.slug}/`} data-enter>
-        <div class="project-image"><img src={project.cover} alt="Classic Sponza URP 渲染结果" loading="lazy" /></div>
-        <div class="project-caption"><h3>Classic Sponza</h3><p>Unity URP · 渲染管线扩展</p><ArrowUpRight size={22}/></div>
-      </a>
-      <div class="project-index">{activeProjects.slice(1,4).map(p => <a href={`/projects/${p.slug}/`} data-enter><span class="edition">{p.eyebrow}</span><h3>{p.title}</h3><ArrowUpRight size={20}/></a>)}</div>
-    </section>
-    <section class="notebook-band">
-      <div class="editorial-section notebook-layout">
-        <div class="notebook-intro" data-enter><h2>笔记</h2><a href="/writing/">全部文章 <ArrowUpRight size={18}/></a></div>
-        <div class="note-index">{notes.map(n => <a href={`/writing/${getWritingSlug(n.id)}/`} data-enter><div><span class="edition">{n.data.course}</span><h3>{n.data.title}</h3></div><ArrowUpRight size={20}/></a>)}</div>
+
+<BaseLayout
+  gallery
+  title="孙浩然 / Kiiye9697 — 技术美术与渲染开发"
+  description={profile.summary}
+>
+  <div class="home-editorial">
+    <section class="home-intro" aria-labelledby="home-name">
+      <div class="home-intro-top">
+        <span>个人主页 / Kiiye9697</span>
+        <span>TECHNICAL ART &amp; RENDERING</span>
+      </div>
+      <div class="home-intro-grid">
+        <div class="home-intro-copy">
+          <div>
+            <p class="home-handle">{profile.name}</p>
+            <h1 id="home-name">孙浩然<span aria-hidden="true">.</span></h1>
+            <p class="home-role">技术美术 <span>/</span> 渲染开发</p>
+          </div>
+          <div class="home-intro-facts">
+            <p>聚焦引擎渲染开发与程序化内容生成。</p>
+            <p>大连理工大学 · 计算机科学与技术<br />本科在读，2028 届。</p>
+            <div class="home-intro-links">
+              <a href="#experience">经历 <span aria-hidden="true">↓</span></a>
+              <a href="#gallery">画廊 <span aria-hidden="true">↓</span></a>
+              <a href="/writing/">技术帖 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="home-intro-visual">
+          <VortexShowcase />
+        </div>
+      </div>
+      <div class="home-intro-bottom">
+        <span>Unity / Unreal / Houdini</span>
+        <a href="/resume/">查看完整简历 <span aria-hidden="true">↗</span></a>
       </div>
     </section>
-    <section class="editorial-section about-line" data-enter><h2>孙浩然</h2><div><p>{profile.summary}</p><p>大连理工大学 · 计算机科学与技术</p><a href="/resume/">简历 <ArrowUpRight size={18}/></a></div></section>
+
+    <section class="home-experience" id="experience" aria-labelledby="experience-title">
+      <header class="home-section-heading">
+        <div><p class="home-eyebrow">01 / EXPERIENCE</p><h2 id="experience-title">经历<span aria-hidden="true">.</span></h2></div>
+        <a href={profile.resumePdf} download="Sun-Haoran-Resume.pdf">下载简历 <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="home-timeline">
+        {experiences.map((experience) => (
+          <article class="home-timeline-row">
+            <div class="home-timeline-meta"><span>{experience.period}</span><span>实习经历</span></div>
+            <div class="home-timeline-body">
+              <div class="home-timeline-title"><h3>{experience.company}</h3><span>{experience.department}</span></div>
+              <p class="home-timeline-role">{experience.role}</p>
+              <ul>{experience.highlights.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+        {education.map((item) => (
+          <article class="home-timeline-row home-education-row">
+            <div class="home-timeline-meta"><span>{item.period}</span><span>教育经历</span></div>
+            <div class="home-timeline-body"><h3>{item.school}</h3><p class="home-timeline-role">{item.degree}</p></div>
+          </article>
+        ))}
+      </div>
+      <div class="home-skills" aria-label="技术栈">
+        {resumeSkills.map((skill) => (
+          <div><h3>{skill.category}</h3><ul>{skill.items.map((item) => <li>{item}</li>)}</ul></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="home-gallery" id="gallery" aria-labelledby="home-gallery-title">
+      <header class="home-section-heading">
+        <div><p class="home-eyebrow">02 / GALLERY</p><h2 id="home-gallery-title">画廊<span aria-hidden="true">.</span></h2></div>
+        <a href="/gallery/">全部画廊 <span aria-hidden="true">↗</span></a>
+      </header>
+      <GlassShowcase />
+    </section>
+
+    <section class="home-notes" id="articles" aria-labelledby="home-notes-title">
+      <header class="home-section-heading">
+        <div><p class="home-eyebrow">03 / WRITING</p><h2 id="home-notes-title">技术帖<span aria-hidden="true">.</span></h2></div>
+        <a href="/writing/">全部技术帖 <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="home-note-layout">
+        <div class="home-note-context">
+          <p>Unity URP 渲染实现<br />GAMES 系列课程笔记<br />图形学研究记录</p>
+          <a href="/editor/">本机编辑器 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="home-note-list">
+          {notes.map((note, index) => (
+            <a href={`/writing/${getWritingSlug(note.id)}/`}>
+              <span class="home-note-number">{String(index + 1).padStart(2, "0")}</span>
+              <div><p>{note.data.course}</p><h3>{note.data.title}</h3></div>
+              <span class="home-note-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="home-closing">
+      <span>{profile.name} / 孙浩然</span>
+      <div><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href="/echoes/">碎碎念 ↗</a></div>
+    </div>
   </div>
 </BaseLayout>

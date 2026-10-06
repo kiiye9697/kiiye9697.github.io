@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { reservedPlaces } from "../lib/places";
+import PlaceReservations from "../components/PlaceReservations.astro";
+import { getCollection } from "astro:content";
+const entries = (await getCollection("places", ({data}) => !data.draft)).sort((a,b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+---
+<BaseLayout gallery title="画廊 | ECHO" description="现实地点与游戏世界的个人画廊。">
+  <div class="gallery-shell">
+    <header class="echo-page-heading">
+      <span class="gallery-micro">03 / PERSONAL GALLERY</span>
+      <h1>Elsewhere<span>.</span>
+      </h1>
+      <div>
+        <h2>画廊</h2>
+        <p>收集现实与游戏世界里，值得停留的画面。<br />关于地点、氛围，以及观看的记忆。</p>
+    </div>
+  </header>
+  <div class="place-filters" role="group" aria-label="画廊分类">
+    <button type="button" data-filter="all" aria-pressed="true">全部</button>
+    <button type="button" data-filter="travel" aria-pressed="false">现实地点</button>
+    <button type="button" data-filter="game" aria-pressed="false">游戏世界</button>
+    <span>已发布 {entries.length} · 预留展位 {reservedPlaces.length}</span>
+  </div>
+  {entries.length > 0 && <div class="place-published">{entries.map(entry => <a href={`/gallery/${entry.slug}/`} data-place-category={entry.data.category}>
+      <img src={entry.data.cover} alt={entry.data.alt} />
+    <h3>{entry.data.title}</h3>
+  </a>)}</div>}
+{reservedPlaces.length > 0 && <div class="echo-gallery-note">
+  <span class="echo-small-dot">
+  </span>
+  <p>以下预留展位仅为计划主题，不代表到访记录。</p>
+</div>}
+<PlaceReservations />
+<p class="echo-endnote" aria-live="polite" data-filter-status>显示全部主题 · {entries.length} 个已发布 · {reservedPlaces.length} 个预留展位</p>
+</div>
+<noscript>
+  <style>.place-filters button{display:none}</style>
+</noscript>
+</BaseLayout>
+<script>
+const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+buttons.forEach(button => button.addEventListener('click', () => {
+buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+const filter = button.dataset.filter;
+const items = document.querySelectorAll<HTMLElement>('[data-place-category]');
+items.forEach(item => item.hidden = filter !== 'all' && item.dataset.placeCategory !== filter);
+const count = [...document.querySelectorAll<HTMLElement>('.place-reservation')].filter(item => !item.hidden).length;
+const publishedCount = [...document.querySelectorAll<HTMLElement>(".place-published > a")].filter(item => !item.hidden).length;
+const status = document.querySelector('[data-filter-status]');
+if (status) status.textContent = `显示${button.textContent}主题 · ${publishedCount} 个已发布 · ${count} 个预留展位`;
+}));
+</script>

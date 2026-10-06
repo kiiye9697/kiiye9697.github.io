@@ -1,88 +1,88 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { activeProjects, profile, projectCategories } from "../../lib/resume";
-
+import { galleryProjects } from "../../lib/gallery";
 export function getStaticPaths() {
   return activeProjects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
   }));
 }
-
 const { project } = Astro.props;
 const category = projectCategories.find((item) => item.id === project.category);
+const display = galleryProjects.find((item) => item.slug === project.slug);
 ---
 
-<BaseLayout title={`${project.title} | ${profile.name}`} description={project.summary}>
-  <div class="page-shell narrow">
-    <article class="project-detail reveal">
-      <img src={project.cover} alt="" loading="eager" />
-      <span class="card-label">{category?.label ?? "Project"} · {project.status}</span>
+<BaseLayout
+  gallery
+  title={`${project.title} | ${profile.name}`}
+  description={project.summary}
+>
+  <article class="gallery-shell gallery-detail">
+    <a class="gallery-detail-back" href="/projects/">
+      ← 项目目录 / PROJECT INDEX
+    </a>
+    <header class="gallery-detail-header">
+      <span class="gallery-micro">
+        {category?.label} / {project.status}
+      </span>
       <h1>{project.title}</h1>
       <p>{project.summary}</p>
-
-      <div class="tag-row">
-        {project.tags.map((tag) => <span>{tag}</span>)}
+      <div class="gallery-detail-tags">
+        {project.tags.map((tag) => (
+          <span>{tag}</span>
+        ))}
       </div>
-
-      <section>
-        <h2>项目要点</h2>
-        <ul>
-          {project.highlights.map((item) => <li>{item}</li>)}
-        </ul>
+    </header>
+    {display?.displayMode === "featured" && (
+      <figure class="gallery-detail-image">
+        <img
+          src={project.cover}
+          alt={`${project.title} 渲染效果`}
+          fetchpriority="high"
+        />
+        <figcaption>
+          {project.title} / {project.tags[0]}
+        </figcaption>
+      </figure>
+    )}
+    <section class="gallery-detail-section">
+      <h2>01 / 项目要点</h2>
+      <ul>
+        {project.highlights.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </section>
+    {project.techPosts && project.techPosts.length > 0 && (
+      <section class="gallery-detail-section">
+        <h2>02 / 技术拆解</h2>
+        <div class="gallery-detail-posts">
+          {project.techPosts.map((post) => (
+            <a href={post.href}>
+              <span>{post.title}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
       </section>
-
-      <section>
-        <h2>技术拆解</h2>
-        {project.techPosts && project.techPosts.length > 0 ? (
-          <div class="tech-post-list">
-            {project.techPosts.map((post) => (
-              <a class="tech-post-row" href={post.href}>
-                <span>{post.title}</span>
-                <span aria-hidden="true">→</span>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p class="muted">算法原理与实现细节整理中。</p>
-        )}
-      </section>
-
-      <div class="hero-actions compact">
-        {project.links.map((link) => (
-          <a class="button" href={link.href} target={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "_blank" : undefined} rel={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "noreferrer" : undefined}>
-            {link.label}
+    )}
+    <div class="gallery-detail-links">
+      {project.links
+        .filter((link) => !link.label.startsWith("返回"))
+        .map((link) => (
+          <a
+            class="gallery-text-link"
+            href={link.href}
+            target={link.href.startsWith("http") ? "_blank" : undefined}
+            rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+          >
+            {link.label} ↗
           </a>
         ))}
-        <a class="button ghost" href={`/projects/#${project.category}`}>返回分类</a>
-      </div>
-    </article>
-  </div>
+      <a class="gallery-text-link" href={`/projects/#${project.category}`}>
+        返回目录 ↑
+      </a>
+    </div>
+  </article>
 </BaseLayout>
-
-<style>
-  .tech-post-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  .tech-post-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--gray-700, #333);
-    border-radius: 0.5rem;
-    text-decoration: none;
-    color: var(--gray-200, #ccc);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .tech-post-row:hover {
-    border-color: var(--gray-500, #666);
-    color: var(--gray-0, #fff);
-  }
-  .tech-post-row span:last-child {
-    opacity: 0.5;
-  }
-</style>

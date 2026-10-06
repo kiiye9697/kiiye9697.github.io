@@ -1,0 +1,119 @@
+---
+import { galleryProjects, upcomingEntries } from "../lib/gallery";
+const { compact = false } = Astro.props;
+const featured = galleryProjects.filter((p) => p.displayMode === "featured");
+const studies = galleryProjects.filter((p) => p.displayMode === "study");
+---
+
+<section class="gallery-selection" id="selected">
+  <div class="gallery-section-label">
+    <span>01 / SELECTED WORK</span>
+    <span>图像与实现</span>
+  </div>
+  {featured.map((project, index) => (
+    <article
+      class="gallery-feature"
+      id={index === 0 ? "portfolio" : project.slug}
+    >
+      <div class="gallery-feature-heading" data-enter>
+        <span class="gallery-number">{String(index + 1).padStart(2, "0")}</span>
+        <h2>
+          {project.displayLines ? (
+            <>
+              {project.displayLines[0]}
+              <br />
+              <i>{project.displayLines[1]}</i>
+            </>
+          ) : (
+            project.title
+          )}
+        </h2>
+        <p>
+          {project.eyebrow.toUpperCase()}
+          <br />
+          SELECTED WORK
+        </p>
+      </div>
+      <a
+        class="gallery-artwork"
+        data-glass
+        href={`/projects/${project.slug}/`}
+        aria-label={`查看 ${project.title}`}
+      >
+        <img
+          src={project.cover}
+          alt={`${project.title} 作品展示`}
+          fetchpriority="high"
+        />
+        <span class="gallery-glass-edge" aria-hidden="true"></span>
+        <span class="gallery-image-link">
+          探索作品 <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <div class="gallery-art-caption">
+        <span class="gallery-micro">
+          {project.tags.slice(0, 3).join(" / ")}
+        </span>
+        <div>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+        </div>
+        <span class="gallery-micro">{project.status}</span>
+      </div>
+    </article>
+  ))}
+  <div class="gallery-studies" id="research">
+    <div class="gallery-studies-intro" data-enter>
+      <span class="gallery-micro">02 / STUDIES &amp; SYSTEMS</span>
+      <h2>
+        另一种
+        <br />
+        <i>观看方式。</i>
+      </h2>
+      <p>
+        研究、工具与实验。
+        <br />
+        从原理出发，让想法成为可运行的系统。
+      </p>
+      {compact && (
+        <a class="gallery-text-link" href="/projects/">
+          完整项目目录 ↗
+        </a>
+      )}
+    </div>
+    <div class="gallery-catalogue">
+      {(compact ? studies.slice(0, 3) : studies).map((project, index) => (
+        <a href={`/projects/${project.slug}/`} class="gallery-study" data-enter>
+          <span class="gallery-micro">
+            {String(featured.length + index + 1).padStart(2, "0")} /{" "}
+            {project.eyebrow}
+          </span>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+          <div>
+            <span>{project.tags.slice(0, 3).join(" / ")}</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+  {upcomingEntries.map((entry) => (
+    <div class="gallery-upcoming" data-enter>
+      <span class="gallery-micro">AN OPEN-ENDED COLLECTION</span>
+      <div>
+        <h2>{entry.label}</h2>
+        <p>
+          <span class="gallery-status-dot"></span>
+          {entry.note}
+        </p>
+      </div>
+      <span class="gallery-upcoming-mark" aria-hidden="true">
+        +
+      </span>
+    </div>
+  ))}
+</section>
+<script>
+  import "../scripts/gallery-motion";
+</script>

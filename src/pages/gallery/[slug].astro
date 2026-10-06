@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+export async function getStaticPaths() {
+ return (await getCollection("places", ({data}) => !data.draft)).map(entry => ({params:{slug:entry.slug},props:{entry}}));
+}
+const {entry} = Astro.props;
+const {Content} = await entry.render();
+---
+<BaseLayout gallery title={`${entry.data.title} | ECHO`}>
+  <article class="gallery-shell gallery-detail">
+    <a class="gallery-detail-back" href="/gallery/">← 回到画廊</a>
+    <header class="gallery-detail-header">
+      <span class="gallery-micro">{entry.data.category === 'travel' ? '现实地点' : '游戏世界'}</span>
+      <h1>{entry.data.title}</h1>
+    </header>
+    <figure class="gallery-detail-image">
+      <img src={entry.data.cover} alt={entry.data.alt} />
+    <figcaption>{entry.data.credit} · 来源：{entry.data.source}</figcaption>
+  </figure>
+  <div class="echo-prose">
+    <Content />
+  </div>
+</article>
+</BaseLayout>

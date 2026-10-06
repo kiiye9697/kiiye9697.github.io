@@ -1,0 +1,22 @@
+---
+import { reservedPlaces } from "../lib/places";
+---
+<div class="place-reservations">
+  {reservedPlaces.map((place, i) => <article class={`place-reservation motif-${place.motif}`} data-place-category={place.category}>
+    <div class="place-motif" aria-hidden="true">
+      <span>
+      </span>
+      <span>
+      </span>
+      <span>
+      </span>
+      <b>0{i + 1}</b>
+    </div>
+    <div class="place-label">
+      <span>{place.kind}</span>
+      <span>预留展位</span>
+    </div>
+    <h3>{place.title}</h3>
+    <p>{place.subtitle}</p>
+  </article>)}
+</div>

@@ -7,19 +7,14 @@ const pathname = Astro.url.pathname.endsWith("/")
 
 const isActive = (href: string) => {
   const normalized = href.endsWith("/") ? href : `${href}/`;
+  if (normalized === "/portfolio/" && pathname.startsWith("/projects/")) return true;
   return normalized === "/" ? pathname === "/" : pathname.startsWith(normalized);
 };
 ---
 
 <nav class="site-nav">
   <a class="brand" href="/" aria-label="回到个人主页">
-    <span class="brand-mark">
-      <img src="/images/icon.jpg" alt="" />
-    </span>
-    <span>
-      <strong>{profile.name}</strong>
-      <small>{profile.title}</small>
-    </span>
+    <span><strong>ECHO<span class="echo-brand-dot">°</span></strong><small>{profile.name}</small></span>
   </a>
 
   <div class="nav-links" aria-label="主导航">
@@ -31,7 +26,7 @@ const isActive = (href: string) => {
   </div>
 
   <div class="nav-actions">
-    <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+    <a href="/resume/">关于</a>
     <a class="nav-cta" href={profile.resumePdf} download="Sun-Haoran-Resume.pdf">下载简历</a>
   </div>
 </nav>

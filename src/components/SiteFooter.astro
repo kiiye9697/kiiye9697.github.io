@@ -1,8 +1,24 @@
 ---
 import { profile } from "../lib/resume";
+const { gallery = false } = Astro.props;
 ---
 
 <footer class="site-footer">
-  <span>{profile.name} · {new Date().getFullYear()}</span>
-  <span class="photo-credit">Anfield · <a href="https://commons.wikimedia.org/wiki/File:Anfield_stadium_(Liverpool)_panorama_view_from_main_stand.jpg">Yurificacion</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · 裁切显示</span>
+  <span>
+    {profile.name} · {new Date().getFullYear()}
+  </span>
+  {gallery ? (
+    <span>TECHNICAL ART / AN OPEN-ENDED PRACTICE</span>
+  ) : (
+    <span class="photo-credit">
+      Anfield ·{" "}
+      <a href="https://commons.wikimedia.org/wiki/File:Anfield_stadium_(Liverpool)_panorama_view_from_main_stand.jpg">
+        Yurificacion
+      </a>{" "}
+      ·{" "}
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>{" "}
+      · 裁切显示
+    </span>
+  )}
+<span class="echo-footer-links"><a href="/resume/">关于与简历</a><a href="/editor/">本机编辑器</a></span>
 </footer>

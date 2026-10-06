@@ -1,0 +1,805 @@
+/* ECHO: black ink, phosphor, and space for actual images. */
+:root  {
+  --echo-green:#b5f36a;
+  --ink:#e4ebe0;
+  --muted:#a0ac9b;
+  --line:#354030;
+  --gold:#b5f36a;
+  --gold-strong:#c2ff81;
+  --glass-rgb:13 19 14;
+}
+body  {
+  background:#0b100d;
+}
+.site-nav  {
+  background:#0b100df2;
+  border-color:#354030;
+}
+.brand strong  {
+  font:600 24px/1 'Barlow',sans-serif;
+  letter-spacing:.08em;
+}
+.brand .echo-brand-dot  {
+  color:var(--echo-green);
+}
+.brand small  {
+  font:9px/1.8 'IBM Plex Mono',monospace;
+  letter-spacing:.05em;
+}
+.nav-links a[aria-current='page']  {
+  color:var(--echo-green);
+  box-shadow:inset 0 -1px var(--echo-green);
+}
+.nav-cta  {
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+.gallery-page  {
+  --ink:#e4ebe0;
+  --muted:#a0ac9b;
+  --line:#354030;
+  --acid:var(--echo-green);
+  background:#0b100d;
+}
+.gallery-page .site-nav  {
+  padding-block:24px;
+  border-color:var(--line);
+}
+.gallery-page .brand small  {
+  display:block;
+}
+.gallery-page .brand strong  {
+  font-size:25px;
+}
+.gallery-page .nav-links a  {
+  color:var(--muted);
+}
+.gallery-page .nav-links a[aria-current='page'], .gallery-page .nav-links a:hover  {
+  color:var(--acid);
+  box-shadow:inset 0 -1px var(--acid);
+}
+.gallery-page .nav-cta, .gallery-page .site-footer  {
+  border-color:var(--line);
+}
+.gallery-page .nav-cta:hover  {
+  background:var(--acid);
+  color:#0b100d!important;
+}
+.gallery-page a:focus-visible  {
+  outline:2px solid var(--acid);
+  outline-offset:5px;
+}
+.gallery-page .reading-progress  {
+  background:var(--acid);
+}
+.gallery-section-label  {
+  border-color:var(--line);
+  color:var(--muted);
+}
+.gallery-section-label a, .gallery-text-link  {
+  color:var(--ink);
+}
+.gallery-page .gallery-text-link:hover, .gallery-notes>a:hover h3, .gallery-study:hover h3  {
+  color:var(--acid);
+}
+.gallery-feature  {
+  background:#111912;
+  --ink:#e4ebe0;
+  --muted:#a0ac9b;
+  --line:#354030;
+}
+.gallery-artwork  {
+  border-color:#465440;
+  background:#080c09;
+}
+.gallery-feature-heading h2  {
+  font-size:clamp(58px,7vw,108px);
+}
+.gallery-feature-heading h2 i  {
+  font-family:var(--font-display);
+  font-style:normal;
+}
+.gallery-image-link  {
+  background:var(--acid);
+}
+.gallery-study  {
+  border-color:var(--line);
+}
+.gallery-study:hover,.gallery-notes>a:hover  {
+  background:#b5f36a08;
+}
+.gallery-studies-intro h2 i,.gallery-writing-heading h2 i  {
+  text-decoration:none;
+  color:var(--acid);
+}
+.gallery-upcoming  {
+  background:#141e14;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+.gallery-upcoming .gallery-micro,.gallery-upcoming p  {
+  color:var(--muted);
+}
+.gallery-upcoming-mark  {
+  color:#293e24;
+}
+.gallery-status-dot  {
+  background:var(--acid);
+}
+.gallery-notes,.gallery-notes>a,.gallery-about  {
+  border-color:var(--line);
+}
+.gallery-portfolio-heading h1 i  {
+  color:var(--acid);
+  background:none;
+  transform:none;
+  padding:0;
+}
+.gallery-page-heading .gallery-hero-composition  {
+  min-height:400px;
+}
+.gallery-portfolio-heading .echo-signal  {
+  height:400px;
+  position:relative;
+}
+.gallery-portfolio-heading>div:last-child  {
+  border-color:var(--line);
+}
+.echo-hero  {
+  padding-top:28px;
+  padding-bottom:80px;
+}
+.echo-register  {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  font:10px/1.7 'IBM Plex Mono',monospace;
+  color:var(--muted);
+  letter-spacing:.12em;
+}
+.echo-hero-field  {
+  height:clamp(330px,36vw,570px);
+  position:relative;
+  display:flex;
+  align-items:center;
+  isolation:isolate;
+}
+.gallery-page .echo-hero h1  {
+  position:relative;
+  z-index:1;
+  font:500 clamp(110px,23.5vw,370px)/.8 'Barlow',sans-serif;
+  letter-spacing:-.075em;
+  color:var(--acid);
+  margin-left:-.02em;
+}
+.echo-title-period  {
+  color:var(--ink);
+}
+.echo-hero-side  {
+  position:absolute;
+  right:0;
+  bottom:28px;
+  writing-mode:vertical-rl;
+  font:9px 'IBM Plex Mono',monospace;
+  letter-spacing:.15em;
+  color:var(--muted);
+}
+.echo-signal  {
+  position:absolute;
+  inset:0 0 0 38%;
+  overflow:hidden;
+  pointer-events:none;
+  contain:paint;
+}
+.echo-orbits  {
+  position:absolute;
+  width:90%;
+  aspect-ratio:1;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-26deg);
+}
+.echo-orbits span  {
+  position:absolute;
+  inset:calc(var(--ring)*4.3%);
+  border:1px solid #b5f36a32;
+  border-radius:50%;
+  transform:scaleX(.68);
+  animation:echo-breathe 11s ease-in-out infinite;
+  animation-delay:calc(var(--ring)*-.55s);
+  animation-play-state:paused;
+}
+.echo-orbits span:nth-child(3n)  {
+  border-color:#b5f36a70;
+}
+.signal-awake .echo-orbits span  {
+  animation-play-state:running;
+}
+.echo-signal::after  {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 5px,#0b100d33 5px 6px);
+  mask-image:linear-gradient(90deg,transparent,black);
+}
+.echo-signal-cross  {
+  position:absolute;
+  right:12%;
+  top:17%;
+  color:var(--acid);
+  font:24px monospace;
+}
+.echo-signal-label  {
+  position:absolute;
+  bottom:10%;
+  right:12%;
+  font:8px 'IBM Plex Mono',monospace;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+@keyframes echo-breathe  {
+  0%,100% {
+    transform:scaleX(.68) rotate(-6deg);
+    opacity:.65}
+    50% {
+      transform:scaleX(.8) rotate(6deg);
+      opacity:1}
+    }
+    .echo-hero-bottom  {
+      border-top:1px solid var(--line);
+      padding-top:25px;
+      display:grid;
+      grid-template-columns:1.25fr 1fr 50px;
+      align-items:center;
+      gap:24px;
+    }
+    .echo-hero-bottom>p  {
+      font-size:clamp(16px,1.6vw,24px);
+      line-height:1.7;
+    }
+    .echo-hero-bottom>span  {
+      font-size:12px;
+      line-height:1.9;
+      color:var(--muted);
+    }
+    .echo-down.hero-link  {
+      position:static;
+      transform:none;
+      display:grid;
+      place-items:center;
+      width:48px;
+      height:48px;
+      border:1px solid var(--acid);
+      border-radius:50%;
+      background:transparent;
+      color:var(--acid);
+      font:25px 'Barlow';
+    }
+    .echo-down:hover  {
+      background:var(--acid);
+      color:#0b100d;
+    }
+    .echo-index  {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:25px;
+      margin-top:55px;
+    }
+    .echo-index a  {
+      border-bottom:1px solid var(--line);
+      padding:14px 0;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:13px;
+    }
+    .echo-index a:hover  {
+      border-color:var(--acid);
+      color:var(--acid);
+    }
+    .echo-index span  {
+      font:9px 'IBM Plex Mono',monospace;
+      color:var(--muted);
+    }
+    .echo-index i  {
+      margin-left:auto;
+      font:9px 'IBM Plex Mono',monospace;
+      color:var(--muted);
+    }
+    .echo-section-heading  {
+      display:flex;
+      justify-content:space-between;
+      gap:35px;
+      align-items:end;
+      margin:35px 0 40px;
+    }
+    .echo-section-heading h2  {
+      font:400 clamp(30px,4vw,58px)/1.3 var(--font-display);
+    }
+    .echo-section-heading p  {
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.9;
+    }
+    .echo-places  {
+      padding-bottom:110px;
+    }
+    .place-reservations  {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:28px;
+    }
+    .place-reservation  {
+      min-width:0;
+    }
+    .place-motif  {
+      height:240px;
+      position:relative;
+      overflow:hidden;
+      background:#101810;
+      border:1px solid var(--line);
+    }
+    .place-motif b  {
+      position:absolute;
+      left:20px;
+      top:16px;
+      font:10px 'IBM Plex Mono',monospace;
+      color:#899580;
+      font-weight:400;
+    }
+    .place-motif span  {
+      position:absolute;
+      border:1px solid #73896355;
+    }
+    .motif-stadium .place-motif span  {
+      border-radius:50%;
+      width:72%;
+      height:40%;
+      left:14%;
+      top:30%;
+      transform:rotate(-20deg);
+    }
+    .motif-stadium .place-motif span:nth-child(2)  {
+      width:58%;
+      height:30%;
+      left:21%;
+      top:35%;
+    }
+    .motif-stadium .place-motif span:nth-child(3)  {
+      width:42%;
+      height:20%;
+      left:29%;
+      top:40%;
+      border-radius:0;
+    }
+    .motif-mountain .place-motif span  {
+      width:150px;
+      height:150px;
+      left:calc(50% - 65px);
+      top:105px;
+      transform:rotate(45deg);
+    }
+    .motif-mountain .place-motif span:nth-child(2)  {
+      left:calc(50% - 135px);
+      top:135px;
+    }
+    .motif-mountain .place-motif span:nth-child(3)  {
+      left:calc(50% + 12px);
+      top:150px;
+    }
+    .motif-orbit .place-motif span  {
+      width:150px;
+      height:150px;
+      left:calc(50% - 75px);
+      top:45px;
+      border-radius:50%;
+    }
+    .motif-orbit .place-motif span:nth-child(2)  {
+      width:240px;
+      height:75px;
+      left:calc(50% - 120px);
+      top:80px;
+      transform:rotate(-30deg);
+    }
+    .motif-orbit .place-motif span:nth-child(3)  {
+      width:7px;
+      height:7px;
+      left:72%;
+      top:65px;
+      background:var(--acid);
+    }
+    .place-label  {
+      display:flex;
+      justify-content:space-between;
+      margin-top:19px;
+      color:var(--muted);
+      font:10px 'IBM Plex Mono',monospace;
+    }
+    .place-label span:last-child  {
+      color:var(--acid);
+    }
+    .place-reservation h3  {
+      font-size:20px;
+      font-weight:400;
+      margin:13px 0 6px;
+    }
+    .place-reservation p  {
+      font:9px/1.8 'IBM Plex Mono',monospace;
+      color:var(--muted);
+    }
+    .echo-short  {
+      position:relative;
+      overflow:hidden;
+      border-top:1px solid var(--line);
+      padding:25px 0 95px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+    .echo-short>.gallery-micro  {
+      grid-column:1/-1;
+    }
+    .echo-short h2  {
+      font:400 clamp(32px,4vw,58px)/1.45 var(--font-display);
+      z-index:1;
+    }
+    .echo-short>div  {
+      align-self:end;
+      z-index:1;
+    }
+    .echo-short p  {
+      font-size:13px;
+      color:var(--muted);
+      line-height:2;
+    }
+    .echo-short .gallery-text-link  {
+      margin-top:15px;
+    }
+    .echo-short-mark  {
+      position:absolute;
+      right:10%;
+      top:-55px;
+      color:#1c2b1b;
+      font:360px/1 Georgia;
+    }
+    .echo-colophon  {
+      border-top:1px solid var(--line);
+      padding:30px 0 70px;
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      font-size:11px;
+      color:var(--muted);
+    }
+    .echo-colophon>span  {
+      font-family:'IBM Plex Mono',monospace;
+      color:var(--acid);
+    }
+    .echo-page-heading  {
+      padding:65px 0 60px;
+    }
+    .echo-page-heading h1  {
+      font:400 clamp(54px,10vw,160px)/1.1 var(--font-display);
+      letter-spacing:-.055em;
+      margin:22px 0 40px;
+      overflow-wrap:anywhere;
+    }
+    .echo-page-heading h1>span  {
+      color:var(--acid);
+    }
+    .echo-page-heading>div  {
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:end;
+    }
+    .echo-page-heading h2  {
+      font-size:24px;
+      font-weight:400;
+    }
+    .echo-page-heading p  {
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.9;
+    }
+    .place-filters  {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border-top:1px solid var(--line);
+      padding:20px 0;
+      flex-wrap:wrap;
+    }
+    .place-filters button  {
+      font:12px var(--font-body);
+      border:1px solid var(--line);
+      border-radius:0;
+      background:transparent;
+      color:var(--muted);
+      padding:10px 18px;
+      cursor:pointer;
+    }
+    .place-filters button[aria-pressed='true']  {
+      background:var(--acid);
+      border-color:var(--acid);
+      color:#0b100d;
+    }
+    .place-filters button:focus-visible  {
+      outline:2px solid var(--acid);
+      outline-offset:3px;
+    }
+    .place-filters>span  {
+      margin-left:auto;
+      font:10px 'IBM Plex Mono',monospace;
+      color:var(--muted);
+    }
+    .echo-gallery-note  {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 0 30px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .echo-small-dot  {
+      width:5px;
+      height:5px;
+      background:var(--acid);
+      border-radius:50%;
+      flex-shrink:0;
+    }
+    .echo-endnote  {
+      padding:45px 0 80px;
+      font-size:11px;
+      color:var(--muted);
+    }
+    .echo-empty  {
+      display:grid;
+      grid-template-columns:35% 1fr;
+      min-height:390px;
+      border-block:1px solid var(--line);
+      padding:55px 8%;
+      background:linear-gradient(115deg,#152014,transparent);
+    }
+    .echo-empty>span  {
+      font:240px/.85 Georgia;
+      color:var(--acid);
+    }
+    .echo-empty h2  {
+      font-size:clamp(25px,3vw,44px);
+      line-height:1.5;
+      font-weight:400;
+      margin:22px 0;
+    }
+    .echo-empty p:not(.gallery-micro)  {
+      font-size:13px;
+      color:var(--muted);
+    }
+    .echo-empty a  {
+      margin-top:25px;
+    }
+    .echo-feed  {
+      max-width:800px;
+      margin-left:auto;
+    }
+    .echo-feed article  {
+      border-top:1px solid var(--line);
+      padding:30px 0 50px;
+    }
+    .echo-feed time  {
+      font:11px 'IBM Plex Mono',monospace;
+      color:var(--acid);
+    }
+    .echo-feed h2  {
+      font-size:22px;
+      margin:20px 0;
+    }
+    .echo-feed p,.echo-prose p  {
+      margin:20px 0;
+      line-height:1.9;
+    }
+    .place-published  {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:25px;
+      margin:20px 0 40px;
+    }
+    .place-published img  {
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+    }
+    [hidden]  {
+      display:none!important;
+    }
+    @media(max-width:1000px) {
+      .echo-index i {
+        display:none}
+        .echo-hero-field {
+          height:360px}
+          .echo-signal {
+            inset:0 0 0 25%}
+            .place-motif {
+              height:190px}
+              .echo-colophon {
+                flex-wrap:wrap}
+                .echo-hero h1 {
+                  font-size:24vw}
+                  .gallery-portfolio-heading .echo-signal {
+                    height:350px}
+                  }
+                  @media(max-width:640px) {
+                    .gallery-page .site-nav {
+                      padding-block:18px}
+                      .gallery-page .brand {
+                        width:auto}
+                        .gallery-page .brand small {
+                          display:inline;
+                          margin-left:14px}
+                          .gallery-page .nav-links a {
+                            font-size:12px;
+                            padding:8px 0}
+                            .gallery-page .brand strong {
+                              font-size:25px}
+                              .echo-hero {
+                                padding-top:24px;
+                                padding-bottom:48px}
+                                .echo-register {
+                                  font-size:8px}
+                                  .echo-register>span:last-child {
+                                    max-width:135px;
+                                    text-align:right}
+                                    .echo-hero-field {
+                                      height:290px}
+                                      .gallery-page .echo-hero h1 {
+                                        font-size:24vw}
+                                        .echo-signal {
+                                          inset:-10% -15% -10% 15%}
+                                          .echo-signal-label {
+                                            font-size:6px;
+                                            bottom:18%;
+                                            right:15%}
+                                            .echo-hero-side {
+                                              font-size:7px;
+                                              bottom:18px;
+                                              right:0}
+                                              .echo-hero-bottom {
+                                                grid-template-columns:1fr 44px;
+                                                gap:16px;
+                                                padding-top:20px}
+                                                .echo-hero-bottom>span {
+                                                  display:none}
+                                                  .echo-down.hero-link {
+                                                    width:42px;
+                                                    height:42px}
+                                                    .echo-index {
+                                                      grid-template-columns:repeat(2,1fr);
+                                                      gap:6px 25px;
+                                                      margin-top:25px}
+                                                      .echo-index i {
+                                                        display:inline;
+                                                        font-size:8px}
+                                                        .echo-index a {
+                                                          font-size:12px}
+                                                          .gallery-feature-heading h2 {
+                                                            font-size:15vw}
+                                                            .gallery-page-heading .gallery-hero-composition {
+                                                              min-height:0}
+                                                              .gallery-portfolio-heading .echo-signal {
+                                                                height:220px;
+                                                                margin:0;
+                                                                inset:auto}
+                                                                .gallery-page-heading.gallery-portfolio-heading {
+                                                                  padding-bottom:40px}
+                                                                  .gallery-portfolio-heading h1 {
+                                                                    font-size:17vw}
+                                                                    .gallery-writing-heading {
+                                                                      align-items:start;
+                                                                      flex-direction:column;
+                                                                      gap:18px}
+                                                                      .gallery-writing-heading h2 {
+                                                                        font-size:30px}
+                                                                        .gallery-writing-heading>p {
+                                                                          font-size:12px}
+                                                                          .echo-section-heading {
+                                                                            display:block;
+                                                                            margin:24px 0}
+                                                                            .echo-section-heading h2 {
+                                                                              font-size:30px}
+                                                                              .echo-section-heading p {
+                                                                                margin-top:20px;
+                                                                                font-size:12px}
+                                                                                .echo-places {
+                                                                                  padding-bottom:65px}
+                                                                                  .place-reservations {
+                                                                                    grid-template-columns:1fr;
+                                                                                    gap:32px}
+                                                                                    .place-motif {
+                                                                                      height:210px}
+                                                                                      .place-reservation h3 {
+                                                                                        font-size:20px}
+                                                                                        .place-label {
+                                                                                          margin-top:14px}
+                                                                                          .echo-short {
+                                                                                            grid-template-columns:1fr;
+                                                                                            gap:22px;
+                                                                                            padding-bottom:60px}
+                                                                                            .echo-short h2 {
+                                                                                              font-size:32px}
+                                                                                              .echo-short-mark {
+                                                                                                right:0;
+                                                                                                top:10px;
+                                                                                                font-size:280px}
+                                                                                                .echo-colophon {
+                                                                                                  display:block;
+                                                                                                  padding-bottom:45px}
+                                                                                                  .echo-colophon p {
+                                                                                                    margin:18px 0}
+                                                                                                    .echo-page-heading {
+                                                                                                      padding:40px 0}
+                                                                                                      .echo-page-heading h1 {
+                                                                                                        font-size:13vw;
+                                                                                                        margin:25px 0 30px}
+                                                                                                        .echo-page-heading>div {
+                                                                                                          display:block}
+                                                                                                          .echo-page-heading h2 {
+                                                                                                            font-size:23px;
+                                                                                                            margin-bottom:20px}
+                                                                                                            .echo-page-heading p {
+                                                                                                              font-size:12px}
+                                                                                                              .place-filters {
+                                                                                                                gap:8px}
+                                                                                                                .place-filters button {
+                                                                                                                  padding:8px 12px}
+                                                                                                                  .place-filters>span {
+                                                                                                                    margin:8px 0 0;
+                                                                                                                    flex-basis:100%}
+                                                                                                                    .echo-gallery-note {
+                                                                                                                      font-size:11px;
+                                                                                                                      align-items:baseline}
+                                                                                                                      .echo-endnote {
+                                                                                                                        padding:35px 0 55px}
+                                                                                                                        .echo-empty {
+                                                                                                                          grid-template-columns:1fr;
+                                                                                                                          padding:35px 25px}
+                                                                                                                          .echo-empty>span {
+                                                                                                                            font-size:120px;
+                                                                                                                            height:75px}
+                                                                                                                            .echo-empty h2 {
+                                                                                                                              font-size:27px}
+                                                                                                                              .place-published {
+                                                                                                                                grid-template-columns:1fr}
+                                                                                                                              }
+                                                                                                                              @media(prefers-reduced-motion:reduce) {
+                                                                                                                                .echo-orbits span {
+                                                                                                                                  animation:none!important}
+                                                                                                                                  .echo-signal * {
+                                                                                                                                    transition:none!important}
+                                                                                                                                  }
+                                                                                                                                  .echo-footer-links  {
+                                                                                                                                    display:flex;
+                                                                                                                                    gap:22px;
+                                                                                                                                  }
+                                                                                                                                  .echo-home-feed a  {
+                                                                                                                                    display:block;
+                                                                                                                                    padding:12px 0;
+                                                                                                                                    border-bottom:1px solid var(--line);
+                                                                                                                                  }
+                                                                                                                                  .echo-home-feed time  {
+                                                                                                                                    font:10px 'IBM Plex Mono',monospace;
+                                                                                                                                    color:var(--acid);
+                                                                                                                                  }
+                                                                                                                                  .echo-home-feed p  {
+                                                                                                                                    margin-top:8px;
+                                                                                                                                  }
+.echo-down.hero-link {
+  padding: 0;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  line-height: 1;
+}
+@media (max-width: 640px) {
+  .echo-signal-label { display: none; }
+}

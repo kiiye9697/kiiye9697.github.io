@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const entries = (await getCollection("echoes", ({data}) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+const rendered = await Promise.all(entries.map(async entry => ({entry, ...await entry.render()})));
+---
+<BaseLayout gallery title="碎碎念 | ECHO" description="日常片段与偶尔的念头。">
+  <div class="gallery-shell">
+    <header class="echo-page-heading">
+      <span class="gallery-micro">04 / ECHOES</span>
+      <h1>Afterthoughts<span>.</span>
+      </h1>
+      <div>
+        <h2>碎碎念</h2>
+        <p>随手记下的日常、片段与念头。<br />不急着成为一篇完整的文章。</p>
+    </div>
+  </header>
+  {rendered.length ? <div class="echo-feed">{rendered.map(({entry,Content}) => <article id={entry.slug}>
+      <time datetime={entry.data.date.toISOString()}>{entry.data.date.toISOString().slice(0,10)}</time>{entry.data.title && <h2>{entry.data.title}</h2>}<Content />
+    </article>)}</div> : <section class="echo-empty">
+    <span aria-hidden="true">“</span>
+    <div>
+      <p class="gallery-micro">NO ENTRIES YET</p>
+      <h2>留一点空白，<br />等下一次回响。</h2>
+    <p>暂时还没有发布碎碎念。</p>
+    <a href="/writing/" class="gallery-text-link">先去读读技术帖 ↗</a>
+  </div>
+</section>}
+<p class="echo-endnote">短的、散的、还没有结论的，都可以留在这里。</p>
+</div>
+</BaseLayout>

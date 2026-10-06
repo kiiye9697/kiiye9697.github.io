@@ -1,0 +1,20 @@
+---
+const { label = "A PLACE FOR THINGS THAT RESONATE" } = Astro.props;
+---
+<div class="echo-signal" data-echo-signal aria-hidden="true">
+  <div class="echo-orbits">{Array.from({length: 9}, (_, i) => <span style={`--ring:${i}`} />)}</div>
+  <span class="echo-signal-cross">+</span>
+  <span class="echo-signal-label">{label}</span>
+</div>
+<script>
+const initialize = () => {
+const scenes = document.querySelectorAll<HTMLElement>('[data-echo-signal]');
+const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('signal-awake', entry.isIntersecting && !document.hidden)));
+scenes.forEach(scene => observer.observe(scene));
+const visibility = () => scenes.forEach(scene => scene.classList.toggle('signal-awake', !document.hidden && scene.getBoundingClientRect().bottom > 0 && scene.getBoundingClientRect().top < innerHeight));
+document.addEventListener('visibilitychange', visibility);
+document.addEventListener('astro:before-swap', () => { observer.disconnect(); document.removeEventListener('visibilitychange', visibility); }, {once: true});
+};
+initialize();
+document.addEventListener('astro:page-load', initialize);
+</script>
