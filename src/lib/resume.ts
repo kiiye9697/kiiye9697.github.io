@@ -160,6 +160,29 @@ export const projectCategories = [
 
 export const activeProjects = [
   {
+    slug: "renderformer-study",
+    category: "research",
+    eyebrow: "Neural Rendering",
+    status: "Ongoing",
+    title: "RenderFormer：Transformer 神经渲染学习与复现",
+    summary: "从三角网格输入到 HDR 图像输出，结合论文精读、八组真实渲染对照和受控材质实验，理解两阶段 Transformer 的能力与适用边界。",
+    cover: "https://www.kiiye9697.cn/renderformer-study/assets/metal-040/B_prediction.png",
+    tags: ["Transformer", "Neural Rendering", "PyTorch", "Blender"],
+    highlights: [
+      "固定代码与权重版本，对齐 Cycles 参考和 RenderFormer 预测的几何、相机与显示变换。",
+      "保留金属高光的 HDR 局部误差与 Sponza 建筑失败案例，不只展示成功结果。",
+      "整理实际输入输出形状、论文精读和教学微调协议；训练收敛须以正式日志及留出评估为准。",
+    ],
+    links: [
+      { label: "交互学习与实验页", href: "https://www.kiiye9697.cn/renderformer-study/" },
+      { label: "技术文章", href: "/writing/30-renderformer-study/" },
+      { label: "GitHub 仓库", href: "https://github.com/kiiye9697/renderformer-study" },
+    ],
+    techPosts: [
+      { title: "RenderFormer：从三角网格到 HDR 图像", href: "/writing/30-renderformer-study/" },
+    ],
+  },
+  {
     slug: "classic-sponza-urp",
     category: "portfolio",
     eyebrow: "Rendering",
