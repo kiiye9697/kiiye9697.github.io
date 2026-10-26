@@ -165,13 +165,13 @@ export const activeProjects = [
     eyebrow: "Neural Rendering",
     status: "Ongoing",
     title: "RenderFormer：Transformer 神经渲染学习与复现",
-    summary: "从三角网格输入到 HDR 图像输出，结合论文精读、八组真实渲染对照和受控材质实验，理解两阶段 Transformer 的能力与适用边界。",
+    summary: "从三角网格到 HDR 图像，结合论文精读、八组推理对照与受限 DPT 微调，记录两阶段 Transformer 的能力、验证早停与适配代价。",
     cover: "https://www.kiiye9697.cn/renderformer-study/assets/metal-040/B_prediction.png",
     tags: ["Transformer", "Neural Rendering", "PyTorch", "Blender"],
     highlights: [
       "固定代码与权重版本，对齐 Cycles 参考和 RenderFormer 预测的几何、相机与显示变换。",
       "保留金属高光的 HDR 局部误差与 Sponza 建筑失败案例，不只展示成功结果。",
-      "整理实际输入输出形状、论文精读和教学微调协议；训练收敛须以正式日志及留出评估为准。",
+      "完成48/16/16划分的受限DPT微调与留出评估：对数误差改善，但金属SSIM和历史场景保真度出现退步。",
     ],
     links: [
       { label: "交互学习与实验页", href: "https://www.kiiye9697.cn/renderformer-study/" },
