@@ -19,7 +19,7 @@ order: 30
 
 原生Sponza保留网格和材质，用来检查复杂场景的输入能力。几何简化、缺失贴图或不兼容的光照表示都会改变比较条件，不能把这些误差直接归因于模型。
 
-参考图已确认，Cornell 场景族正在生成训练数据。历史相机与光源边界测量单独保留，不与新基线合并。[实测记录](https://www.kiiye9697.cn/renderformer-study/experiments.html)中说明各组版本、颜色处理与指标范围。
+192 组数据已检查通过，Cornell 场景族四卡训练已启动。[阶段报告](https://www.kiiye9697.cn/renderformer-study/course-training.html)保留完整验证集指标与固定视角的参考、预测和误差图。历史相机与光源边界测量单独保留，不与新基线合并。[实测记录](https://www.kiiye9697.cn/renderformer-study/experiments.html)中说明各组版本、颜色处理与指标范围。
 
 ## 数据与报告
 
