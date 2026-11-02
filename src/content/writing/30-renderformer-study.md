@@ -19,10 +19,10 @@ order: 30
 
 原生Sponza保留网格和材质，用来检查复杂场景的输入能力。几何简化、缺失贴图或不兼容的光照表示都会改变比较条件，不能把这些误差直接归因于模型。
 
-新一轮参考图尚待验收，正式训练未开始。历史相机与光源边界测量单独保留，不与新基线合并。[实测记录](https://www.kiiye9697.cn/renderformer-study/experiments.html)中说明各组版本、颜色处理与指标范围。
+参考图已确认，Cornell 场景族正在生成训练数据。历史相机与光源边界测量单独保留，不与新基线合并。[实测记录](https://www.kiiye9697.cn/renderformer-study/experiments.html)中说明各组版本、颜色处理与指标范围。
 
 ## 数据与报告
 
 模型输入和参考应共享几何、法线、材质与相机；线性HDR用于保存与计算，展示时采用相同曝光和颜色处理。参考图还需要检查直接光、间接光、反弹次数与采样稳定性。
 
-[参考图标准](https://www.kiiye9697.cn/renderformer-study/reference.html)集中记录这些要求。未确认的参考和未运行的结果不会作为训练效果发布。
+[参考图标准](https://www.kiiye9697.cn/renderformer-study/reference.html)保存了原生 Sponza 的完整参考、直接光与间接光预览，以及固定渲染参数。
