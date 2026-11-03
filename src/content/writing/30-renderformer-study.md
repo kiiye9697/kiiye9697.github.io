@@ -1,28 +1,18 @@
 ---
 title: "RenderFormer：从三角网格到 HDR 图像"
-course: "神经渲染 · 论文学习与复现"
+course: "神经渲染 · 论文学习与实验"
 source: "https://microsoft.github.io/renderformer/"
 order: 30
 ---
 
-这个项目用RenderFormer研究Transformer怎样读取三角网格、材质和相机，并从参考渲染中学习生成HDR图像。
+RenderFormer将三角网格、材质和相机编码为token，通过场景Transformer、视角Transformer和DPT解码器生成HDR图像。我围绕这条计算过程，完成了官方模型推理、Cycles参考渲染和Cornell场景族训练实验。
 
-[学习入口](https://www.kiiye9697.cn/renderformer-study/) · [实验记录](https://www.kiiye9697.cn/renderformer-study/experiments.html) · [代码](https://github.com/kiiye9697/renderformer-study)
+官方V1 Base权重在Cornell示例上的PSNR为38.30 dB、SSIM为0.9771。参考与预测使用相同场景和相机，指标在Reinhard线性RGB上计算。
 
-## 方法
+![官方Cornell示例：参考、模型预测与误差](https://www.kiiye9697.cn/renderformer-study/assets/course-control/cornell-control.png)
 
-模型包含场景Transformer、视角Transformer和DPT图像解码器。场景三角形交换特征，射线束查询读取场景信息，最后解码为图像。[方法笔记](https://www.kiiye9697.cn/renderformer-study/learn.html)按输入表示、注意力、网络结构、监督损失和评估展开。
+另构建192组Cornell配置，按完整配置划分训练、验证和测试。从头训练10000步后，128张验证图的平均PSNR达到21.46 dB、SSIM达到0.8163；同一验证集上的官方权重为8.63 dB、0.2251。这组场景与上方官方示例不同，不能直接比较分数。训练目前暂停，尚未进行最终测试。
 
-## 实验
+固定视角中，模型先恢复大面积颜色与布局，再逐渐形成物体轮廓；偏色、边缘和阴影仍有误差。原生Sponza则保留完整几何与材质作为复杂输入案例，用于分析V1的表示限制。
 
-官方Cornell Box用于核对场景转换、参考渲染与预训练推理。课程训练限定在Cornell场景族，按完整配置划分训练、验证和测试，观察材质、位置与光照变化下的学习效果。
-
-原生Sponza保留网格和材质，用来检查复杂场景的输入能力。几何简化、缺失贴图或不兼容的光照表示都会改变比较条件，不能把这些误差直接归因于模型。
-
-192 组数据已检查通过，Cornell 场景族四卡训练已启动。[阶段报告](https://www.kiiye9697.cn/renderformer-study/course-training.html)保留完整验证集指标与固定视角的参考、预测和误差图。历史相机与光源边界测量单独保留，不与新基线合并。[实测记录](https://www.kiiye9697.cn/renderformer-study/experiments.html)中说明各组版本、颜色处理与指标范围。
-
-## 数据与报告
-
-模型输入和参考应共享几何、法线、材质与相机；线性HDR用于保存与计算，展示时采用相同曝光和颜色处理。参考图还需要检查直接光、间接光、反弹次数与采样稳定性。
-
-[参考图标准](https://www.kiiye9697.cn/renderformer-study/reference.html)保存了原生 Sponza 的完整参考、直接光与间接光预览，以及固定渲染参数。
+[方法与实验](https://www.kiiye9697.cn/renderformer-study/) · [训练结果](https://www.kiiye9697.cn/renderformer-study/course-training.html) · [代码](https://github.com/kiiye9697/renderformer-study)
