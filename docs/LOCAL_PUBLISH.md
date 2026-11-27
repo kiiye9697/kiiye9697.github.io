@@ -57,6 +57,20 @@ OSS_ACCESS_KEY_SECRET=your-key-secret
 
 图床上传成功的图片仍保留仓库副本。读者浏览时优先图床，收到加载错误后切到 `/notes/...`；长时间挂起的请求需要等待浏览器判定失败。Bucket 应允许公开读取图片，密钥应仅授予相应目录的上传权限。脚本不打印密钥，也不会将密钥写入网页。
 
+## NTC 作品集
+
+NTC 工程中的 `tools/Export-NtcPortfolio.py` 负责导出通道图、轻量预览、录像、训练与插值图表、参数和绑定清单。网站只保存页面和公开资源清单，媒体文件使用 OSS/CDN。
+
+```powershell
+node scripts/publish-ntc-media.mjs '<exported media directory>'
+node scripts/build-ntc-page.mjs '<exported media directory>' '<NTC repo>/tools/ntc-review.html'
+npm run build
+```
+
+上传器读取本机 PicGo 的阿里云配置，`PICGO_CONFIG` 可指定配置文件；`NTC_MEDIA_ORIGIN` 可选择已验证 HTTPS 的 CDN 域名。对象路径包含内容哈希，设置长期缓存，已上传的同哈希文件复用。`src/lib/ntc-media.json` 仅包含公开 URL、字节数和 SHA-256。页面在 `/ntc/`，项目入口由 `resume.ts` 管理。
+
+`configure-ntc-uploader.mjs '<RAM CSV>' '<public probe image>'` 用于密钥轮换后的本机配置：先验证一次实际上传，再更新 PicGo 当前配置与对应 profile，并在 PicGo 配置目录保留本地备份。CSV 和 PicGo 配置不进入网站仓库。
+
 ## 视觉参考
 
 - Liverpool FC 官网：https://www.liverpoolfc.com/

@@ -1,3 +1,5 @@
+import ntcMedia from "./ntc-media.json";
+
 export const profile = {
   name: "Kiiye9697",
   nameReal: "孙浩然",
@@ -160,6 +162,25 @@ export const projectCategories = [
 
 export const activeProjects = [
   {
+    slug: "ntc-texture-compression",
+    category: "portfolio",
+    eyebrow: "Material Textures",
+    status: "Ongoing",
+    title: "NTC 材质纹理压缩与 Unity 接入",
+    summary: "将材质纹理组压缩为特征网格和小型网络，接入 Unity URP 的 PBR 纹理访问，并整理同机位 A/B、通道重建、训练与插值误差。",
+    cover: ntcMedia["cover.webp"].url,
+    tags: ["Unity URP", "Neural Texture Compression", "HLSL", "PBR"],
+    highlights: [
+      "GUID 纹理组绑定，统一访问入口重建完整 PBR 通道，保留源贴图的采样约定。",
+      "梳理烘焙、数据发布、材质绑定、原图回收与恢复的完整链路。",
+      "同机位 A/B 拖动对比，配套输入输出原理图、通道差值、训练曲线与插值误差数据。",
+    ],
+    links: [
+      { label: "贴图、A/B 与训练数据", href: "/ntc/" },
+      { label: "GitHub 工程与工具链", href: "https://github.com/kiiye9697/NTCinUnity" },
+    ],
+  },
+  {
     slug: "renderformer-study",
     category: "research",
     eyebrow: "Neural Rendering",
@@ -201,6 +222,7 @@ export const activeProjects = [
     ],
     links: [
       { label: "GTAO 技术贴", href: "/writing/24-gtao-implementation/" },
+      { label: "NTC 贴图压缩与 A/B 对比", href: "/ntc/" },
       { label: "返回项目列表", href: "/projects/#portfolio" },
     ],
     techPosts: [
