@@ -56,9 +56,11 @@ ntc-cli --loadManifest manifest.json -g -c -S 100000 -b 16 --gdeflate off -D -o 
 
 未在窗口单独覆盖的参数来自配套 SDK：网络学习率 0.005、网格学习率 0.1、batch 上限 64 KPixels、randomSeed 0、stableTraining false。实际 batch 还受当前纹理像素数限制。学习率采用 cosine schedule；配套实现以 95% 步数作为 latent 冻结阈值，以 96% 和 98% 作为 FP8、INT8 细化阈值，Unity 读取其中受支持的 INT8 表示。对应代码见 [SDK 的训练循环](https://github.com/NVIDIA-RTX/RTXNTC-Library/blob/7ab602cb9b42ee3856e63c7a6b5e9575af051a4c/src/TextureSet.cpp) 和 [训练参数定义](https://github.com/NVIDIA-RTX/RTXNTC-Library/blob/7ab602cb9b42ee3856e63c7a6b5e9575af051a4c/include/libntc/ntc.h)。
 
+下面的历史训练曲线按 SponzaBricks、MetalPlates013 分别标记，不与后文三组当前材质的图片配对。Original 是各自的重建参考，MSE 为 0、PSNR 为 ∞，没有训练步数。
+
 已有两份历史训练日志各记录 100 个检查点，均训练到 100,000 步：SponzaBricks 最终记录的 PSNR 为 51.37 dB，MetalPlates013 为 46.50 dB。日志没有保存完整学习率、seed 与通道权重，因此这些曲线作为独立的训练案例保存，不与当前场景的 24 个绑定组一一对应。
 
-![两组历史训练的 PSNR 与归一化重建误差](https://oss.kiiye9697.cn/portfolio/ntc/c958b05d09af2f87/training-curves.svg)
+![两组历史训练的 PSNR 与归一化重建误差](https://oss.kiiye9697.cn/portfolio/ntc/f398ce4f0f2a58f1/training-curves.svg)
 
 曲线中的 MSE 用 `10^(-PSNR/10)` 从日志 PSNR 换算，表示归一化重建误差；原始优化器的加权 loss 没有记录。参数表、原始检查点和图表数据在页面的数据下载中保留。
 
@@ -133,9 +135,48 @@ A/B 页面使用同一路径逐帧导出的两段画面，拖动条只改变两�
 
 通道示例保留输入、重建和差值图，以及逐通道 PSNR。浏览器先加载缩略图，放大时加载无损通道图。图片、视频和原始数据使用内容哈希 URL 通过 OSS/CDN 分发。
 
-![固定亚像素位置的 Point 与 Bilinear 重建误差](https://oss.kiiye9697.cn/portfolio/ntc/e918db3c48fd21ad/interpolation-loss.svg)
+### 原图、重建与曲线逐组对应
 
-插值图固定 mip 0，在 2048 个 texel 位置上扫描 65 个亚像素相位，比较 Point 与 Bilinear 重建相对原图双线性结果的误差；seed 为 20261127，纵向相位固定为 0.37。指标在存储 RGB 的 UNORM8 域计算，用来观察过滤引入的变化。它与训练曲线分别提供重建和采样的证据。
+下面三组均比较同一材质的 Color、mip 0。每组的图片、曲线和 CSV 使用同一份配对像素，模型 SHA-256 与图像像素哈希保存在[对应清单](https://oss.kiiye9697.cn/portfolio/ntc/5a74755a4459988b/sampling-correspondence.json)。这里的 Original 是无 NTC 的源贴图参考；场景 A/B 的 Original 则是 Unity 导入后的原材质。
+
+左图统一以 Original Bilinear 为参考，列出 Original Point、Original Bilinear、NTC Point、NTC Bilinear 四条曲线。右图保持过滤方式相同，分别比较 NTC Point 与 Original Point、NTC Bilinear 与 Original Bilinear。Original 自比较的 MSE 为 0。
+
+#### Curtain_Red / Color
+
+源文件：`Fabric_Curtain_Diffuse_Red.tif`；比较尺寸：1024 × 1024。
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/b129ee894f25c71e/Color-input.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/e6e1c6d9640cfbd9/Color-input.webp" alt="Curtain_Red Color Original 源贴图（无 NTC）"></a><figcaption>Original 源贴图（无 NTC）</figcaption></figure>
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/fb7e89ea48163ec1/Color-output.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/7c540df57660302b/Color-output.webp" alt="Curtain_Red Color NTC 重建"></a><figcaption>NTC 重建</figcaption></figure>
+</div>
+
+![Curtain_Red 的无 NTC 与 NTC 采样对照，以及相同过滤方式的重建误差](https://oss.kiiye9697.cn/portfolio/ntc/85316876744d5169/Curtain_Red-sampling-comparison.svg)
+
+#### Floor / Color
+
+源文件：`Floor_Diffuse.tif`；比较尺寸：2048 × 2048。
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/a43b056e64e21781/Color-input.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/236208ad2775ca6a/Color-input.webp" alt="Floor Color Original 源贴图（无 NTC）"></a><figcaption>Original 源贴图（无 NTC）</figcaption></figure>
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/65332ec9dfd44cd8/Color-output.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/ded43a3c3cb200bf/Color-output.webp" alt="Floor Color NTC 重建"></a><figcaption>NTC 重建</figcaption></figure>
+</div>
+
+![Floor 的无 NTC 与 NTC 采样对照，以及相同过滤方式的重建误差](https://oss.kiiye9697.cn/portfolio/ntc/f11f12412bc354c8/Floor-sampling-comparison.svg)
+
+#### Column_A / Color
+
+源文件：`Column_A_Diffuse.tif`；比较尺寸：2048 × 2048。
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/edd04d70a14e2687/Color-input.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/92dfef14f2d4e7b3/Color-input.webp" alt="Column_A Color Original 源贴图（无 NTC）"></a><figcaption>Original 源贴图（无 NTC）</figcaption></figure>
+<figure style="margin:0"><a href="https://oss.kiiye9697.cn/portfolio/ntc/0981482f32dda888/Color-output.webp"><img loading="lazy" decoding="async" width="640" height="640" style="width:100%;height:auto" src="https://oss.kiiye9697.cn/portfolio/ntc/51a494d196f89468/Color-output.webp" alt="Column_A Color NTC 重建"></a><figcaption>NTC 重建</figcaption></figure>
+</div>
+
+![Column_A 的无 NTC 与 NTC 采样对照，以及相同过滤方式的重建误差](https://oss.kiiye9697.cn/portfolio/ntc/def9c7362cb662b2/Column_A-sampling-comparison.svg)
+
+![各材质、各通道相对 Original 源图的 MSE，无 NTC 的自比较误差为零](https://oss.kiiye9697.cn/portfolio/ntc/4af3d7ec5f2f247c/channel-mse.svg)
+
+每组固定 2048 个采样位置、65 个横向亚像素相位，纵向相位为 0.37，seed 为 20261127。指标在存储 RGB 的 UNORM8 域计算；尺寸不同时，源图先双线性缩放到 NTC 分辨率。原始数据：[采样曲线 CSV](https://oss.kiiye9697.cn/portfolio/ntc/d017ecca8067ce71/interpolation-loss.csv)、[通道 MSE CSV](https://oss.kiiye9697.cn/portfolio/ntc/e3ac1e531ca1ee66/channel-mse.csv)。
 
 ### 固定场景的性能与内存对照
 

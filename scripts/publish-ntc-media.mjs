@@ -43,5 +43,6 @@ async function worker() {
   }
 }
 await Promise.all(Array.from({ length: 4 }, worker));
-await fs.writeFile('src/lib/ntc-media.json', JSON.stringify(manifest, null, 2)+'\n');
+const ordered = Object.fromEntries(Object.entries(manifest).sort(([a],[b])=>a<b?-1:a>b?1:0));
+await fs.writeFile('src/lib/ntc-media.json', JSON.stringify(ordered, null, 2)+'\n');
 console.log(`Uploaded ${uploaded}, reused ${reused} public media/data files; manifest saved. Credentials remain in PicGo.`);
