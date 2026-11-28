@@ -176,6 +176,7 @@ export const activeProjects = [
       "同机位 A/B 拖动对比，配套输入输出原理图、通道差值、训练曲线与插值误差数据。",
     ],
     links: [
+      { label: "技术报告：训练与 Unity 接入", href: "/writing/31-ntc-unity-material-texture-compression/" },
       { label: "贴图、A/B 与训练数据", href: "/ntc/" },
       { label: "GitHub 工程与工具链", href: "https://github.com/kiiye9697/NTCinUnity" },
     ],

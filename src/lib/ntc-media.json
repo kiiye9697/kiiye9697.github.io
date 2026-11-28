@@ -19,6 +19,11 @@
     "bytes": 2202428,
     "sha256": "7d19d4346525b856dec9cc5bb24d184353ff22b6adc8084604f1b01ea5336c7d"
   },
+  "Column_A/Color-input.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/edd04d70a14e2687/Color-input.webp",
+    "bytes": 3960816,
+    "sha256": "edd04d70a14e2687ae2fe4384369ae8b6cfcb8f1aff306a654a44759196870b8"
+  },
   "Column_A/latent-0.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/bb95af9792a1b6a4/latent-0.png",
     "bytes": 1765635,
@@ -29,15 +34,15 @@
     "bytes": 1774166,
     "sha256": "0ccd6696f63fe10bedbcc55f2893fc476f0349993662a74643527d8a648c0db6"
   },
+  "Column_A/Color-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/0981482f32dda888/Color-output.webp",
+    "bytes": 4133196,
+    "sha256": "0981482f32dda88849db96a829036a45c89d646d538b94b688aabd71ce4e541b"
+  },
   "Column_A/Metalness-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-diff.webp",
     "bytes": 218,
     "sha256": "f45ff958b534784280ea9be72642e074bf23184c69602c523b08f9a29dbbad12"
-  },
-  "Column_A/Color-input.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/edd04d70a14e2687/Color-input.webp",
-    "bytes": 3960816,
-    "sha256": "edd04d70a14e2687ae2fe4384369ae8b6cfcb8f1aff306a654a44759196870b8"
   },
   "Column_A/Metalness-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-input.webp",
@@ -49,20 +54,10 @@
     "bytes": 1696650,
     "sha256": "8961e9aedf38508568dd5d7137d59afc4ad4fb83ffebf06edca4af73860f64ee"
   },
-  "Column_A/Color-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/0981482f32dda888/Color-output.webp",
-    "bytes": 4133196,
-    "sha256": "0981482f32dda88849db96a829036a45c89d646d538b94b688aabd71ce4e541b"
-  },
   "Column_A/Metalness-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-output.webp",
     "bytes": 218,
     "sha256": "f45ff958b534784280ea9be72642e074bf23184c69602c523b08f9a29dbbad12"
-  },
-  "Column_A/Smoothness-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/5f181389e49b5c80/Smoothness-diff.webp",
-    "bytes": 571332,
-    "sha256": "5f181389e49b5c8026788f99720aef2515698c5e49abae7585517de75b27579c"
   },
   "Column_A/Normal-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/839cda523c9054ab/Normal-diff.webp",
@@ -73,6 +68,16 @@
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/d73f3fcc6bcefc56/Normal-input.webp",
     "bytes": 2108516,
     "sha256": "d73f3fcc6bcefc560572d4d3a30a2b3e29ce61517f148bc69560d6c3e686e164"
+  },
+  "Column_A/Smoothness-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/5f181389e49b5c80/Smoothness-diff.webp",
+    "bytes": 571332,
+    "sha256": "5f181389e49b5c8026788f99720aef2515698c5e49abae7585517de75b27579c"
+  },
+  "Column_A/weights.png": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/0bb1b40ab212d290/weights.png",
+    "bytes": 5911,
+    "sha256": "0bb1b40ab212d290894dc21e0d722c95a66f97c63d01e457cab20e65777799ea"
   },
   "Column_A/Smoothness-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/034569b5cd4f7df6/Smoothness-output.webp",
@@ -88,11 +93,6 @@
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/c326d587a93bf9eb/Normal-output.webp",
     "bytes": 3444266,
     "sha256": "c326d587a93bf9ebb61eb3ea9ba63fc877cca81a0be14a69bc5b3079ccf4f709"
-  },
-  "Column_A/weights.png": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/0bb1b40ab212d290/weights.png",
-    "bytes": 5911,
-    "sha256": "0bb1b40ab212d290894dc21e0d722c95a66f97c63d01e457cab20e65777799ea"
   },
   "cover.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/bb12080cae2fe029/cover.webp",
@@ -139,25 +139,25 @@
     "bytes": 1791240,
     "sha256": "fb7e89ea48163ec153ac5d0f849f1e47da6ddb1ed6b2f8a37a34d8a314347759"
   },
-  "Curtain_Red/Metalness-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f4ec7479de3180e8/Metalness-diff.webp",
-    "bytes": 136560,
-    "sha256": "f4ec7479de3180e8620e2182b090ebb82839740b7c1a2d9cb880b73f4f1ad3be"
-  },
-  "Curtain_Red/Metalness-input.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/1da1b4c3d79de709/Metalness-input.webp",
-    "bytes": 138506,
-    "sha256": "1da1b4c3d79de7097a9a0c35933c7d183ac258f139dbe8ed9da809024a0d3470"
-  },
   "Curtain_Red/latent-2.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/1e3435658da06501/latent-2.png",
     "bytes": 464711,
     "sha256": "1e3435658da06501bf60d1c89ee80dd20a32a0456ae99fb199c50b3116177a16"
   },
+  "Curtain_Red/Metalness-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f4ec7479de3180e8/Metalness-diff.webp",
+    "bytes": 136560,
+    "sha256": "f4ec7479de3180e8620e2182b090ebb82839740b7c1a2d9cb880b73f4f1ad3be"
+  },
   "Curtain_Red/Metalness-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/8d71e5c933de5008/Metalness-output.webp",
     "bytes": 213426,
     "sha256": "8d71e5c933de500891b48fdbe8f1a0b224ec84fc9353c0d12003a0cd0dbdca77"
+  },
+  "Curtain_Red/Metalness-input.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/1da1b4c3d79de709/Metalness-input.webp",
+    "bytes": 138506,
+    "sha256": "1da1b4c3d79de7097a9a0c35933c7d183ac258f139dbe8ed9da809024a0d3470"
   },
   "Curtain_Red/Normal-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/feef9425ffa0c738/Normal-diff.webp",
@@ -204,15 +204,15 @@
     "bytes": 20360,
     "sha256": "559cc2361c31a1a2bb25bd7db1f100c0d03956e5e0fd276e6252c88fd91f4c30"
   },
-  "figures/compressed-size.png": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/469fa0ccde7f7ae3/compressed-size.png",
-    "bytes": 33825,
-    "sha256": "469fa0ccde7f7ae3d86bbb4d5f8d247b46fd4b84eb0644eb7916ef8287b2fd0a"
-  },
   "figures/Column_A-pipeline.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/7ec6034cc9695f9b/Column_A-pipeline.png",
     "bytes": 842689,
     "sha256": "7ec6034cc9695f9bf852fc60ea9eb2fe5dba419fa28689c2b07b8a41218ceb6e"
+  },
+  "figures/compressed-size.png": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/469fa0ccde7f7ae3/compressed-size.png",
+    "bytes": 33825,
+    "sha256": "469fa0ccde7f7ae3d86bbb4d5f8d247b46fd4b84eb0644eb7916ef8287b2fd0a"
   },
   "figures/Column_A-pipeline.svg": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/66845ce3697e98f5/Column_A-pipeline.svg",
@@ -229,10 +229,10 @@
     "bytes": 910383,
     "sha256": "4a2d7c774c34ee861bf1641568e726fbb29472cc063d252dbe7f9fc3d5e9a84f"
   },
-  "figures/Curtain_Red-pipeline.svg": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/b419877ab46ed12b/Curtain_Red-pipeline.svg",
-    "bytes": 1130254,
-    "sha256": "b419877ab46ed12b492e7f60ba43fa4f6baecd73215df5900cc024548214b016"
+  "experiment-data.zip": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/df20795b2a9e682d/experiment-data.zip",
+    "bytes": 5302719,
+    "sha256": "df20795b2a9e682dca7a2093ccf243f6e680a02f8bf9d8a413040e23d403024f"
   },
   "figures/Floor-pipeline.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/d3193522ad74d2fd/Floor-pipeline.png",
@@ -243,6 +243,11 @@
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/6458fe6ca62f98b6/latent-layout.png",
     "bytes": 40516,
     "sha256": "6458fe6ca62f98b6c652c6a031ba3be11c416d81e6fca8fa840cad234a96704d"
+  },
+  "figures/Curtain_Red-pipeline.svg": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/b419877ab46ed12b/Curtain_Red-pipeline.svg",
+    "bytes": 1130254,
+    "sha256": "b419877ab46ed12b492e7f60ba43fa4f6baecd73215df5900cc024548214b016"
   },
   "figures/Floor-pipeline.svg": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/ee1f7a865d319a99/Floor-pipeline.svg",
@@ -274,33 +279,28 @@
     "bytes": 2808004,
     "sha256": "02efb5e09a4ba7cf07a95e1166a639cf1e433f5b99e3db3d86b300f8b333ccc2"
   },
-  "Floor/Color-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/65332ec9dfd44cd8/Color-output.webp",
-    "bytes": 4618576,
-    "sha256": "65332ec9dfd44cd830765fc022d724d2ea801436288cc6e4cca1d6d6fb87a7ac"
+  "Floor/latent-0.png": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/6a33fd779eb14a2f/latent-0.png",
+    "bytes": 1826770,
+    "sha256": "6a33fd779eb14a2f9c59520d3d213b139df39c272d13ac7fa75f1ab74107c795"
   },
   "Floor/Color-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/a43b056e64e21781/Color-input.webp",
     "bytes": 4517096,
     "sha256": "a43b056e64e217818930a3fbc4ab84d2a3823135acf6f875e2adc756e04e46ef"
   },
-  "Floor/latent-0.png": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/6a33fd779eb14a2f/latent-0.png",
-    "bytes": 1826770,
-    "sha256": "6a33fd779eb14a2f9c59520d3d213b139df39c272d13ac7fa75f1ab74107c795"
-  },
-  "Floor/Metalness-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-diff.webp",
-    "bytes": 218,
-    "sha256": "f45ff958b534784280ea9be72642e074bf23184c69602c523b08f9a29dbbad12"
-  },
   "Floor/latent-1.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/6033dcbbc760ce88/latent-1.png",
     "bytes": 1845958,
     "sha256": "6033dcbbc760ce8802e4d6af0460e26137ea5eacca138ddfc832408291c7bb4e"
   },
-  "Floor/Metalness-input.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-input.webp",
+  "Floor/Color-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/65332ec9dfd44cd8/Color-output.webp",
+    "bytes": 4618576,
+    "sha256": "65332ec9dfd44cd830765fc022d724d2ea801436288cc6e4cca1d6d6fb87a7ac"
+  },
+  "Floor/Metalness-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-diff.webp",
     "bytes": 218,
     "sha256": "f45ff958b534784280ea9be72642e074bf23184c69602c523b08f9a29dbbad12"
   },
@@ -308,6 +308,11 @@
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/421136e57c1a2794/latent-2.png",
     "bytes": 1835435,
     "sha256": "421136e57c1a27942883a662f82bbd3ddff16627048e811a62bfd775d25dd035"
+  },
+  "Floor/Metalness-input.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-input.webp",
+    "bytes": 218,
+    "sha256": "f45ff958b534784280ea9be72642e074bf23184c69602c523b08f9a29dbbad12"
   },
   "Floor/Metalness-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f45ff958b5347842/Metalness-output.webp",
@@ -329,40 +334,45 @@
     "bytes": 2082750,
     "sha256": "5b7e25bab97832337f0d1fbb7c1900ceecce74920ec53742cd630336a7c72c1c"
   },
-  "Floor/Normal-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/37e16055c5e94b8a/Normal-output.webp",
-    "bytes": 6473366,
-    "sha256": "37e16055c5e94b8a3865b6f3de5bf3167909043cf6f2de0068262ee56a0eae29"
-  },
-  "Floor/Normal-input.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/7460f082ded699d4/Normal-input.webp",
-    "bytes": 6427312,
-    "sha256": "7460f082ded699d4ff158b682ca3c86acb1c91ef3933221f7e6be59949e31fff"
+  "Floor/Smoothness-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/b7a61469a2372536/Smoothness-output.webp",
+    "bytes": 2103066,
+    "sha256": "b7a61469a2372536b50abccd47506cacbb7b00c86ce8e37e0d70a5f9ef8c7206"
   },
   "Floor/weights.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/2994b05f34ea63f0/weights.png",
     "bytes": 5911,
     "sha256": "2994b05f34ea63f0f6c180fc1b3fef73ab0acae15a0e05de792f78cc4a17a0be"
   },
-  "historical-metalplates-quality.csv": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/002b3b8ae3c63fe3/historical-metalplates-quality.csv",
-    "bytes": 676,
-    "sha256": "002b3b8ae3c63fe3855b9b53d5e90001182a4aadc1d470ec1ffae6e2bdb543bd"
+  "Floor/Normal-input.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/7460f082ded699d4/Normal-input.webp",
+    "bytes": 6427312,
+    "sha256": "7460f082ded699d4ff158b682ca3c86acb1c91ef3933221f7e6be59949e31fff"
+  },
+  "Floor/Normal-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/37e16055c5e94b8a/Normal-output.webp",
+    "bytes": 6473366,
+    "sha256": "37e16055c5e94b8a3865b6f3de5bf3167909043cf6f2de0068262ee56a0eae29"
   },
   "interpolation-loss.csv": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f56f4f1e6e6f7735/interpolation-loss.csv",
     "bytes": 14189,
     "sha256": "f56f4f1e6e6f773502fa0ff40174364173bbc88809ae3eef40ac064f83f0b5bb"
   },
-  "Floor/Smoothness-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/b7a61469a2372536/Smoothness-output.webp",
-    "bytes": 2103066,
-    "sha256": "b7a61469a2372536b50abccd47506cacbb7b00c86ce8e37e0d70a5f9ef8c7206"
+  "historical-metalplates-quality.csv": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/002b3b8ae3c63fe3/historical-metalplates-quality.csv",
+    "bytes": 676,
+    "sha256": "002b3b8ae3c63fe3855b9b53d5e90001182a4aadc1d470ec1ffae6e2bdb543bd"
   },
   "interpolation-loss.png": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/92b1753a70e4b7ba/interpolation-loss.png",
     "bytes": 107328,
     "sha256": "92b1753a70e4b7bafd10e061cfcfaaaf951a7887cdba746bb0e2e38e19c7fa9f"
+  },
+  "interpolation-loss.svg": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/e918db3c48fd21ad/interpolation-loss.svg",
+    "bytes": 56361,
+    "sha256": "e918db3c48fd21ad954753162022ce7910ca834f601ca4e2b1dd5e64102629c6"
   },
   "material-inventory.json": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/c42dc23e65a14f86/material-inventory.json",
@@ -374,25 +384,70 @@
     "bytes": 157266,
     "sha256": "8de5efa0ecbfeaebeae2ece2d9a453002e7bfe0d8b6094b3b1187df51aea0e81"
   },
+  "media/original.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/48e78397a11401c7/original.webp",
+    "bytes": 182674,
+    "sha256": "48e78397a11401c769ad4c187bc6dd687ee6b83e8d69b2aa147003aea2d268a7"
+  },
+  "performance/direct-after.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/5afce655b2032499/direct-after.webp",
+    "bytes": 525848,
+    "sha256": "5afce655b2032499b3b996acb4ffa0e7b4b5d7677869b4c03e51674cf8ab1b01"
+  },
+  "performance/direct-before.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/fe10c93852ea680e/direct-before.webp",
+    "bytes": 526402,
+    "sha256": "fe10c93852ea680e27b14603971fced19717c78361030051ae295745341203fc"
+  },
+  "performance/original.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/341a8cc21c8ecda1/original.webp",
+    "bytes": 579446,
+    "sha256": "341a8cc21c8ecda191005ef4d82c67412676ff8e68c53d728ae6a3afb8f44b9a"
+  },
   "media/NTC-Direct.mp4": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/393285c1a7004f88/NTC-Direct.mp4",
     "bytes": 4315180,
     "sha256": "393285c1a7004f88a835099234c62c0d20a359e742fe0a566c08f378314e6e27"
   },
-  "media/original.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/48e78397a11401c7/original.webp",
-    "bytes": 182674,
-    "sha256": "48e78397a11401c769ad4c187bc6dd687ee6b83e8d69b2aa147003aea2d268a7"
+  "performance/performance-comparison.png": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f46c381158d299b8/performance-comparison.png",
+    "bytes": 70367,
+    "sha256": "f46c381158d299b8235c946300bab68d1cc68c52b81c4f952f2d8add94c88ed1"
+  },
+  "performance/performance-comparison.svg": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/7f6280bd067da118/performance-comparison.svg",
+    "bytes": 73617,
+    "sha256": "7f6280bd067da1185c790b9e51886c483bcf1c1b1cd4ecadd685261f7d23aaec"
+  },
+  "performance/performance-frames.csv": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/a50969c34ff457d5/performance-frames.csv",
+    "bytes": 56891,
+    "sha256": "a50969c34ff457d5f80b9cb9d8d4ccdaeb401abd417a12bf9204fb9144462f32"
   },
   "media/Original.mp4": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/4ccf21b85b76c4a5/Original.mp4",
     "bytes": 5226516,
     "sha256": "4ccf21b85b76c4a532dab5f09d01fb55e3f3c607acb43605a1ce74fac95baa02"
   },
+  "performance/performance-trials.csv": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/54b908fc0bbb49e0/performance-trials.csv",
+    "bytes": 2397,
+    "sha256": "54b908fc0bbb49e059c10151b32bda9b1f186562e90c01b141cd533299dee6ea"
+  },
+  "performance/performance-summary.csv": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/6754303ed07966d3/performance-summary.csv",
+    "bytes": 525,
+    "sha256": "6754303ed07966d314d7ea94c0593dc5bdec8ebd051b9aaf97e5b75d4070f91e"
+  },
   "previews/Column_A/AO-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/22b3cc85347ea819/AO-diff.webp",
     "bytes": 9038,
     "sha256": "22b3cc85347ea819c27a01a3a5989d76e1c8425571b9b2d6405416e108afadaf"
+  },
+  "performance/render-comparison.json": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/f8883cede98e7e9c/render-comparison.json",
+    "bytes": 926,
+    "sha256": "f8883cede98e7e9cdad35a1c220cd30e43febc0bb0ef50f9b5c83359e5b7a271"
   },
   "previews/Column_A/AO-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/781384d56583bb5f/AO-input.webp",
@@ -404,11 +459,6 @@
     "bytes": 46028,
     "sha256": "71b24b1f0adecedcdf590686dd711fc95d710dc29ff8675fb64629fec861b824"
   },
-  "interpolation-loss.svg": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/e918db3c48fd21ad/interpolation-loss.svg",
-    "bytes": 56361,
-    "sha256": "e918db3c48fd21ad954753162022ce7910ca834f601ca4e2b1dd5e64102629c6"
-  },
   "previews/Column_A/Color-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/1188a611727b2260/Color-diff.webp",
     "bytes": 6474,
@@ -419,30 +469,30 @@
     "bytes": 57412,
     "sha256": "92dfef14f2d4e7b3037d841441f0855ad5fbf10dffd25e1c6230c6835b3f3584"
   },
-  "previews/Column_A/Color-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/51a494d196f89468/Color-output.webp",
-    "bytes": 58064,
-    "sha256": "51a494d196f894685ad524f28fc37ecfd9dc754e6cd34db3937504f6156e587c"
-  },
   "previews/Column_A/latent-0.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/99b2a5319c25501e/latent-0.webp",
     "bytes": 56096,
     "sha256": "99b2a5319c25501e1fab8d81fb4613b07b12e3b78011efd6b7b05eaabc9eadb2"
+  },
+  "previews/Column_A/Color-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/51a494d196f89468/Color-output.webp",
+    "bytes": 58064,
+    "sha256": "51a494d196f894685ad524f28fc37ecfd9dc754e6cd34db3937504f6156e587c"
   },
   "previews/Column_A/latent-1.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/8b971ef90d1b95e5/latent-1.webp",
     "bytes": 55010,
     "sha256": "8b971ef90d1b95e54cdfc413f2644d88d51520aaaed392f001aac5d3ffa6aa00"
   },
-  "previews/Column_A/latent-2.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/496293ad67c2a873/latent-2.webp",
-    "bytes": 58328,
-    "sha256": "496293ad67c2a873efaa2c1be3a901aa9919d51565721640dc3bf6b48e77d37f"
-  },
   "previews/Column_A/Metalness-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f1e10817ef5e79f6/Metalness-diff.webp",
     "bytes": 790,
     "sha256": "f1e10817ef5e79f687ed87d5ae33145bd322965b5113035882834ccba152143d"
+  },
+  "previews/Column_A/latent-2.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/496293ad67c2a873/latent-2.webp",
+    "bytes": 58328,
+    "sha256": "496293ad67c2a873efaa2c1be3a901aa9919d51565721640dc3bf6b48e77d37f"
   },
   "previews/Column_A/Metalness-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f1e10817ef5e79f6/Metalness-input.webp",
@@ -464,11 +514,6 @@
     "bytes": 52656,
     "sha256": "d5e035183ef11f175d4e1d8712f8c9e985ff4ac7715a3c28f85c5919c775b856"
   },
-  "experiment-data.zip": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/df20795b2a9e682d/experiment-data.zip",
-    "bytes": 5302719,
-    "sha256": "df20795b2a9e682dca7a2093ccf243f6e680a02f8bf9d8a413040e23d403024f"
-  },
   "previews/Column_A/Smoothness-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/efd7b7a970b6412c/Smoothness-diff.webp",
     "bytes": 1138,
@@ -489,30 +534,25 @@
     "bytes": 51308,
     "sha256": "3db10156695be23c60707b5c8cf8415b2ec789010c83652d6b5c2eabd3fe40b5"
   },
-  "previews/Curtain_Red/AO-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/1e4ec3f4b12d3424/AO-output.webp",
-    "bytes": 47700,
-    "sha256": "1e4ec3f4b12d342415427a74b8900a80407d22a3b1fab63874f34f2b759b0c4a"
+  "previews/Curtain_Red/AO-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/2c4019777123ba9c/AO-diff.webp",
+    "bytes": 71620,
+    "sha256": "2c4019777123ba9c4b62bbcb901f674c14c21975361df65a34b6127861fc70b5"
   },
   "previews/Curtain_Red/AO-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/c2a22dc5d8ddd8d8/AO-input.webp",
     "bytes": 49660,
     "sha256": "c2a22dc5d8ddd8d886d86dbb2ca0bd65b4aa5a1886f120b84a97cea8949a4095"
   },
+  "previews/Curtain_Red/AO-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/1e4ec3f4b12d3424/AO-output.webp",
+    "bytes": 47700,
+    "sha256": "1e4ec3f4b12d342415427a74b8900a80407d22a3b1fab63874f34f2b759b0c4a"
+  },
   "previews/Curtain_Red/Color-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/0ba1e07e75e7cabf/Color-diff.webp",
     "bytes": 74688,
     "sha256": "0ba1e07e75e7cabfdc5935182d9d40a90ad4f1402f01aedf10dcb36dfcdb3608"
-  },
-  "previews/Curtain_Red/AO-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/2c4019777123ba9c/AO-diff.webp",
-    "bytes": 71620,
-    "sha256": "2c4019777123ba9c4b62bbcb901f674c14c21975361df65a34b6127861fc70b5"
-  },
-  "previews/Curtain_Red/latent-0.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/57b9379e3c01f48d/latent-0.webp",
-    "bytes": 60804,
-    "sha256": "57b9379e3c01f48d3ad217d7407ea9aabebd6af0d666238c1adb5a92c3abc7fe"
   },
   "previews/Curtain_Red/Color-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/e6e1c6d9640cfbd9/Color-input.webp",
@@ -523,6 +563,11 @@
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/7c540df57660302b/Color-output.webp",
     "bytes": 139256,
     "sha256": "7c540df57660302b524b4f13650c64fbbb7244907a999e1460ec00cfa0571453"
+  },
+  "previews/Curtain_Red/latent-0.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/57b9379e3c01f48d/latent-0.webp",
+    "bytes": 60804,
+    "sha256": "57b9379e3c01f48d3ad217d7407ea9aabebd6af0d666238c1adb5a92c3abc7fe"
   },
   "previews/Curtain_Red/latent-1.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/643d71a43699151a/latent-1.webp",
@@ -554,15 +599,15 @@
     "bytes": 73248,
     "sha256": "0d95e72e67bedea863d04684a3539f3fedf8102b7000147ba4ddc4f33b455672"
   },
-  "previews/Curtain_Red/Normal-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/66245a915546628f/Normal-output.webp",
-    "bytes": 95744,
-    "sha256": "66245a915546628f9f35493278a4e2c97b4d5df7dc1ea9341c00b88cc6ea5e82"
-  },
   "previews/Curtain_Red/Normal-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/86b774a7d8ef4214/Normal-input.webp",
     "bytes": 96760,
     "sha256": "86b774a7d8ef421459222a0e3423f8fa28b0986689018131508de716a0d29625"
+  },
+  "previews/Curtain_Red/Normal-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/66245a915546628f/Normal-output.webp",
+    "bytes": 95744,
+    "sha256": "66245a915546628f9f35493278a4e2c97b4d5df7dc1ea9341c00b88cc6ea5e82"
   },
   "previews/Curtain_Red/Smoothness-diff.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/abc569c8c9874c74/Smoothness-diff.webp",
@@ -574,15 +619,15 @@
     "bytes": 130166,
     "sha256": "7785b26d570b1ace7080c796d0b585a2d5bcaa8f6076a8c53b893e99a6dc6cf7"
   },
-  "previews/Floor/AO-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/788ac11d3544411a/AO-diff.webp",
-    "bytes": 12934,
-    "sha256": "788ac11d3544411acdf7b6511eb49b01a671a7e0a89f12e3fee0bd393f0dd8ae"
-  },
   "previews/Curtain_Red/Smoothness-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/9836f1922000c848/Smoothness-output.webp",
     "bytes": 129946,
     "sha256": "9836f1922000c8486ce6a1c6a036de0c314345bfb8ce2f598beb3fdeb261a3b9"
+  },
+  "previews/Floor/AO-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/788ac11d3544411a/AO-diff.webp",
+    "bytes": 12934,
+    "sha256": "788ac11d3544411acdf7b6511eb49b01a671a7e0a89f12e3fee0bd393f0dd8ae"
   },
   "previews/Floor/AO-input.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/f2db56f6fe3c77a9/AO-input.webp",
@@ -649,6 +694,11 @@
     "bytes": 131294,
     "sha256": "1c2dc5eac8d686d122e516bd60a80090a0dfe07ef9f4c3472418a9a6b3bac5c9"
   },
+  "previews/Floor/Smoothness-diff.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/71f14d9388a54445/Smoothness-diff.webp",
+    "bytes": 2454,
+    "sha256": "71f14d9388a5444598db958fdaf70df544d8d7737b95c3e67cf0315dd0c0bc15"
+  },
   "previews/Floor/Normal-output.webp": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/be64878e2e4f1d12/Normal-output.webp",
     "bytes": 131398,
@@ -659,39 +709,39 @@
     "bytes": 118532,
     "sha256": "5713d268d7eff5c117025967d2e5f55f9d442b76291e89905b7f22ddf9f4a936"
   },
-  "training-curves.csv": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/190999b54ad87c7b/training-curves.csv",
-    "bytes": 11286,
-    "sha256": "190999b54ad87c7b85ef2317663ffd714b95dd1454777aa3c4a095a1b8a095d8"
-  },
-  "training-curves.png": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/388137b947ce1f29/training-curves.png",
-    "bytes": 89611,
-    "sha256": "388137b947ce1f293f4a399059d7c895e4c81205240ca9cbf8d1201033d947bc"
-  },
-  "previews/Floor/Smoothness-diff.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/71f14d9388a54445/Smoothness-diff.webp",
-    "bytes": 2454,
-    "sha256": "71f14d9388a5444598db958fdaf70df544d8d7737b95c3e67cf0315dd0c0bc15"
-  },
-  "training-parameters.json": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/d9cd570fc54bf295/training-parameters.json",
-    "bytes": 1305,
-    "sha256": "d9cd570fc54bf2951b692775d639b12dd2d75a7f207bbd8de9924130377375b5"
+  "previews/Floor/Smoothness-output.webp": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/16bcd4e1a1be5059/Smoothness-output.webp",
+    "bytes": 117600,
+    "sha256": "16bcd4e1a1be5059936dcf24d388d1e5ffcc756f8acdd6ba0c192b4d8fa46f70"
   },
   "review-data.json": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/2ff5c985cabdfe8d/review-data.json",
     "bytes": 12591,
     "sha256": "2ff5c985cabdfe8dd924f62b4a288f9a9e3ee2b6d9fb988eff18d849d288a838"
   },
-  "previews/Floor/Smoothness-output.webp": {
-    "url": "https://oss.kiiye9697.cn/portfolio/ntc/16bcd4e1a1be5059/Smoothness-output.webp",
-    "bytes": 117600,
-    "sha256": "16bcd4e1a1be5059936dcf24d388d1e5ffcc756f8acdd6ba0c192b4d8fa46f70"
+  "training-curves.csv": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/190999b54ad87c7b/training-curves.csv",
+    "bytes": 11286,
+    "sha256": "190999b54ad87c7b85ef2317663ffd714b95dd1454777aa3c4a095a1b8a095d8"
   },
   "training-curves.svg": {
     "url": "https://oss.kiiye9697.cn/portfolio/ntc/c958b05d09af2f87/training-curves.svg",
     "bytes": 39827,
     "sha256": "c958b05d09af2f8754599ba4a221b194bdc2290bf202d45697efc778a812a047"
+  },
+  "training-curves.png": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/388137b947ce1f29/training-curves.png",
+    "bytes": 89611,
+    "sha256": "388137b947ce1f293f4a399059d7c895e4c81205240ca9cbf8d1201033d947bc"
+  },
+  "training-parameters.json": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/d9cd570fc54bf295/training-parameters.json",
+    "bytes": 1305,
+    "sha256": "d9cd570fc54bf2951b692775d639b12dd2d75a7f207bbd8de9924130377375b5"
+  },
+  "performance/performance-method.json": {
+    "url": "https://oss.kiiye9697.cn/portfolio/ntc/82b2f037dc53d2e1/performance-method.json",
+    "bytes": 2046,
+    "sha256": "82b2f037dc53d2e1ca9aa88b9528968e0af99eee3b814984bf474cecde6b71ba"
   }
 }
